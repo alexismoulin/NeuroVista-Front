@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import Copyright from './components/Copyright/Copyright.jsx';
 import Table from "./components/Table/Table.jsx";
+import Intro from "./components/Intro/Intro.jsx";
 
 import "./App.css"
 import "./assets/css/main.css"
-import "./assets/css/fontawesome-all.min.css"
 import "./assets/css/noscript.css"
 import "./components/NavBar/NavBar.css"
 import "./components/Content/Content.css"
@@ -13,10 +13,25 @@ import "./components/Intro/Intro.css"
 import { aseg , brain, whiteMatter, lhsParcellation, rhsParcellation,
     brainStem, amygdala, hippocampus, thalamus, hypothalamus } from "./data/data.js"
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import cortical from "./data/cortical.json";
+
 
 export default function App() {
-    const [selectedType, setSelectedType] = useState(true)
-    const [selectedData, setSelectedData] = useState(aseg);
+    const [type, setType] = useState("cortical")
+    const [selectedData, setSelectedData] = useState(aseg)
+
+    function handleDefaultType(defaultType) {
+        if (defaultType === "cortical") {
+            setType("cortical")
+            setSelectedData(aseg)
+        }
+        else if (defaultType === "sub-cortical") {
+            setType("sub-cortical")
+            setSelectedData(brainStem)
+        }
+    }
 
     function corticalNavBar() {
         return (
@@ -64,36 +79,11 @@ export default function App() {
 
     return (
         <div id="wrapper">
-            <div id="intro">
-                <h1>Results Analysis</h1>
-                <p>MRI Analysis Results for Patient Serie</p>
-                <ul className="actions">
-                    <li>
-                        <a
-                            className="button icon solid solo fa-solid fa-brain"
-                            onClick={() => {
-                                setSelectedType(true)
-                                setSelectedData(aseg)
-                            }}
-                        />
-                    </li>
-                    <li></li>
-                    <li>
-                        <a
-                            className="button icon solid solo fa-expand-alt"
-                            onClick={() => {
-                                setSelectedType(false)
-                                setSelectedData(brainStem)
-                            }}
-                        />
-                    </li>
-                </ul>
-            </div>
+            <Intro enabled={type} handleType={handleDefaultType} />
             <nav id="nav">
-                {selectedType ? corticalNavBar() : subCorticalNavBar()}
+                {type === "cortical" ? corticalNavBar() : subCorticalNavBar()}
                 <ul className="icons">
-                    <li><a href="#" className="icon brands fa-hospital-user"><span className="label">Twitter</span></a>
-                    </li>
+                    <FontAwesomeIcon icon={faEnvelope} />
                 </ul>
             </nav>
             <div id="main">

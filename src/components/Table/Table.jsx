@@ -1,7 +1,6 @@
 import "./Table.css"
 import LLMIcon from "../LLMIcon/LLMIcon.jsx";
 
-/* eslint-disable react/prop-types */
 export default function Table({headers, data}) {
 
     function twoRowsTable(item) {
