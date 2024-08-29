@@ -15,7 +15,6 @@ import { aseg , brain, whiteMatter, lhsParcellation, rhsParcellation,
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
-import cortical from "./data/cortical.json";
 
 
 export default function App() {
