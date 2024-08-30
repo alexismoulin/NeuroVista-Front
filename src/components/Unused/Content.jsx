@@ -1,6 +1,6 @@
 import NavBar from "../NavBar/NavBar.jsx";
 import Table from "../Table/Table.jsx";
-import "./Content.css"
+import "../Content/Content.css"
 
 export default function Content({data, title, headers, onClick}) {
     return (

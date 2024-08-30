@@ -53,15 +53,11 @@ export default function Table({headers, data}) {
 
     return (
         <div className="table-wrapper">
-        <table>
+            <table>
                 <thead>
-                <tr>
-                {headers.map(header => <th key={header}>{header}</th>)}
-                    </tr>
+                    <tr>{headers.map(header => <th key={header}>{header}</th>)}</tr>
                 </thead>
-                <tbody>
-                { bodyTable(headers) }
-                </tbody>
+                <tbody>{ bodyTable(headers) }</tbody>
             </table>
         </div>
     );
