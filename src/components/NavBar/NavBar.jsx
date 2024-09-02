@@ -1,6 +1,4 @@
 import "./NavBar.css"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 export default function NavBar({ selectedType, selectedData, setSelectedData }) {
     function corticalNavBar() {
@@ -50,9 +48,6 @@ export default function NavBar({ selectedType, selectedData, setSelectedData }) 
     return (
         <nav id="nav">
             {selectedType === "cortical" ? corticalNavBar() : subCorticalNavBar()}
-            <ul className="icons">
-                <li><FontAwesomeIcon icon={faEnvelope}/></li>
-            </ul>
         </nav>
     )
 }

@@ -74,18 +74,7 @@
 }
 
 #nav ul.links {
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: -ms-flex;
     display: flex;
-    -moz-flex-grow: 1;
-    -webkit-flex-grow: 1;
-    -ms-flex-grow: 1;
-    flex-grow: 1;
-    -moz-flex-shrink: 1;
-    -webkit-flex-shrink: 1;
-    -ms-flex-shrink: 1;
-    flex-shrink: 1;
     font-family: "Source Sans Pro", Helvetica, sans-serif;
     font-weight: 900;
     letter-spacing: 0.075em;

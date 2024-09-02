@@ -9,6 +9,7 @@ import "./assets/css/main.css"
 import "./assets/css/noscript.css"
 import "./assets/css/icon.css"
 import "./assets/css/image.css"
+import "./assets/css/button.css"
 
 import { data } from "./data/data.js"
 

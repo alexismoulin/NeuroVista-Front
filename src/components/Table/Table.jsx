@@ -9,7 +9,11 @@ export default function Table({headers, data}) {
             <tr>
                 <td>{item.name}</td>
                 <td>{item.volume}</td>
-                <td><FontAwesomeIcon icon={faRobot} size="xl"/></td>
+                <td>
+                    <button>
+                        <FontAwesomeIcon icon={faRobot} size="xl"/>
+                    </button>
+                </td>
             </tr>
         )
     }
@@ -20,7 +24,11 @@ export default function Table({headers, data}) {
                 <td>{item.name}</td>
                 <td>{item.lhs_volume}</td>
                 <td>{item.rhs_volume}</td>
-                <td><FontAwesomeIcon icon={faRobot} size="xl"/></td>
+                <td>
+                    <button>
+                        <FontAwesomeIcon icon={faRobot} size="xl"/>
+                    </button>
+                </td>
             </tr>
         )
     }
@@ -33,7 +41,11 @@ export default function Table({headers, data}) {
                 <td>{item.GrayVol}</td>
                 <td>{item.ThickAvg}</td>
                 <td>{item.MeanCurv}</td>
-                <td><FontAwesomeIcon icon={faRobot} size="xl"/></td>
+                <td>
+                    <button>
+                        <FontAwesomeIcon icon={faRobot} size="xl"/>
+                    </button>
+                </td>
             </tr>
         )
     }
