@@ -1,67 +1,34 @@
+import {useState} from 'react'
 import "./Table.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faRobot } from '@fortawesome/free-solid-svg-icons';
+import Modal from "../Modal.jsx";
 
 export default function Table({headers, data}) {
 
-    function twoRowsTable(item) {
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    function showModal() {
+        setModalIsOpen(true);
+    }
+    function dismissModal() {
+        setModalIsOpen(false);
+    }
+
+    function tableRow(item) {
         return (
-            <tr>
-                <td>{item.name}</td>
-                <td>{item.volume}</td>
-                <td>
-                    <button>
-                        <FontAwesomeIcon icon={faRobot} size="xl"/>
-                    </button>
-                </td>
-            </tr>
+            <>
+                <Modal open={modalIsOpen} close={dismissModal} item={item} />
+                <tr>
+                    {Object.values(item).map((el, index) => <td key={index}>{el}</td>)}
+                    <td>
+                        <button onClick={showModal}>
+                            <FontAwesomeIcon icon={faRobot} size="xl"/>
+                        </button>
+                    </td>
+                </tr>
+            </>
         )
     }
-
-    function threeRowsTable(item) {
-        return (
-            <tr>
-                <td>{item.name}</td>
-                <td>{item.lhs_volume}</td>
-                <td>{item.rhs_volume}</td>
-                <td>
-                    <button>
-                        <FontAwesomeIcon icon={faRobot} size="xl"/>
-                    </button>
-                </td>
-            </tr>
-        )
-    }
-
-    function fiveRowsTable(item) {
-        return (
-            <tr>
-                <td>{item.StructName}</td>
-                <td>{item.SurfArea}</td>
-                <td>{item.GrayVol}</td>
-                <td>{item.ThickAvg}</td>
-                <td>{item.MeanCurv}</td>
-                <td>
-                    <button>
-                        <FontAwesomeIcon icon={faRobot} size="xl"/>
-                    </button>
-                </td>
-            </tr>
-        )
-    }
-
-    function bodyTable(headers) {
-        if (headers.length === 3) {
-            return data.map(item => twoRowsTable(item))
-        }
-        else if (headers.length === 4) {
-            return data.map(item => threeRowsTable(item))
-        }
-        else if (headers.length === 6) {
-            return data.map(item => fiveRowsTable(item))
-        }
-    }
-
 
     return (
         <div className="table-wrapper">
@@ -69,7 +36,7 @@ export default function Table({headers, data}) {
                 <thead>
                     <tr>{headers.map(header => <th key={header}>{header}</th>)}</tr>
                 </thead>
-                <tbody>{ bodyTable(headers) }</tbody>
+                <tbody>{ data.map(item => tableRow(item)) }</tbody>
             </table>
         </div>
     );
