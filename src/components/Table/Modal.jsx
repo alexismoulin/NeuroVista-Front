@@ -1,8 +1,15 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState} from 'react';
 import { createPortal } from 'react-dom';
+import axios from 'axios';
 
+const API_KEY = import.meta.env.VITE_OPENAI_API_KEY
 export default function Modal({open, close, item, headers}) {
     const dialog = useRef()
+
+    const userInput = "Wish me a happy birthday"
+
+    const [chatResponse, setChatResponse] = useState("");
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         if (open) {
@@ -11,6 +18,30 @@ export default function Modal({open, close, item, headers}) {
             dialog.current.close()
         }
     }, [open])
+
+    const handleSendMessage = async () => {
+        setLoading(true);
+        try {
+            const response = await axios.post(
+                "https://api.openai.com/v1/chat/completions",
+                {
+                    model: "gpt-4", // or use "gpt-3.5-turbo"
+                    messages: [{ role: "user", content: userInput }],
+                },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${API_KEY}`,
+                    },
+                }
+            );
+            setChatResponse(response.data.choices[0].message.content);
+        } catch (error) {
+            setChatResponse(`There was an error fetching the response -> ${error}`);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     function zipArrays(arr1, arr2) {
         return arr1.map((element, index) => [element, arr2[index]])
@@ -31,13 +62,16 @@ export default function Modal({open, close, item, headers}) {
                 {zippedValues.map((el, index) => <li key={index}>{el.join(': ')}</li>)}
             </ul>
             </section>
-            <section>
-                <h3>Analysis</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-            </section>
-            <section>
-            <button onClick={close}>Close</button>
-            </section>
+                <section>
+                    <h3>Analysis</h3>
+                    <div>{chatResponse}</div>
+                </section>
+                <section>
+                    <button className="button primary squared" onClick={close}>Close</button>
+                    <button onClick={handleSendMessage} disabled={loading}>
+                        {loading ? "Loading..." : "Send"}
+                    </button>
+                </section>
             </div>
         </dialog>,
         document.getElementById('modal')

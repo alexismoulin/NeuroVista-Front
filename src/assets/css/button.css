@@ -27,6 +27,13 @@ button,
     text-transform: uppercase;
     white-space: nowrap;
 }
+.squared {
+    border-radius: 0;
+    height: 3rem;
+    line-height: 3rem;
+    font-size: 0.8rem;
+    padding: 0 2rem;
+}
 
 input[type="submit"].icon:before,
 input[type="reset"].icon:before,
