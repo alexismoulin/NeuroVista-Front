@@ -56,7 +56,7 @@ export default function App() {
                     setSelectedItem={setSelectedItem}
                 />
             case "large-results":
-                return <LargeResultsPage setPage={setPage} data={selectedData.data} />
+                return <LargeResultsPage setPage={setPage} data={selectedData} />
             default:
                 return 'foo';
         }
