@@ -3,25 +3,10 @@
 #intro {
     color: #ffffff;
     padding: 8rem 4rem 6rem 4rem ;
-    -moz-align-items: center;
-    -webkit-align-items: center;
-    -ms-align-items: center;
     align-items: center;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: -ms-flex;
     display: flex;
-    -moz-flex-direction: column;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
     flex-direction: column;
-    -moz-justify-content: -moz-flex-end;
-    -webkit-justify-content: -webkit-flex-end;
-    -ms-justify-content: -ms-flex-end;
     justify-content: flex-end;
-    -moz-transition: opacity 1s ease, -moz-transform 1s ease;
-    -webkit-transition: opacity 1s ease, -webkit-transform 1s ease;
-    -ms-transition: opacity 1s ease, -ms-transform 1s ease;
     transition: opacity 1s ease, transform 1s ease;
     position: relative;
     cursor: default;
@@ -119,9 +104,6 @@
 }
 
 #intro + #header .logo {
-    -moz-transform: translateY(2rem);
-    -webkit-transform: translateY(2rem);
-    -ms-transform: translateY(2rem);
     transform: translateY(2rem);
     opacity: 0;
     visibility: hidden;
@@ -129,39 +111,24 @@
 
 #intro.hidden {
     pointer-events: none;
-    -moz-transform: translateY(2rem);
-    -webkit-transform: translateY(2rem);
-    -ms-transform: translateY(2rem);
     transform: translateY(2rem);
-    -moz-transition: opacity 0.5s ease, -moz-transform 0.5s ease, visibility 0.5s;
-    -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease, visibility 0.5s;
-    -ms-transition: opacity 0.5s ease, -ms-transform 0.5s ease, visibility 0.5s;
     transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
     opacity: 0;
     visibility: hidden;
 }
 
 #intro.hidden + #header .logo {
-    -moz-transform: translateY(0);
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
 }
 
 body.is-preload #intro {
-    -moz-transform: translateY(2rem);
-    -webkit-transform: translateY(2rem);
-    -ms-transform: translateY(2rem);
     transform: translateY(2rem);
     opacity: 0;
 }
 
 body.is-preload #intro:not(.hidden) + #header + #nav {
-    -moz-transform: translateY(4rem);
-    -webkit-transform: translateY(4rem);
-    -ms-transform: translateY(4rem);
     transform: translateY(4rem);
     opacity: 0;
 }
@@ -226,9 +193,6 @@ ul.actions li {
 }
 
 ul.actions.special {
-    -moz-justify-content: center;
-    -webkit-justify-content: center;
-    -ms-justify-content: center;
     justify-content: center;
     width: 100%;
     margin-left: 0;
@@ -239,9 +203,6 @@ ul.actions.special li:first-child {
 }
 
 ul.actions.stacked {
-    -moz-flex-direction: column;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
     flex-direction: column;
     margin-left: 0;
 }
@@ -259,13 +220,7 @@ ul.actions.fit {
 }
 
 ul.actions.fit li {
-    -moz-flex-grow: 1;
-    -webkit-flex-grow: 1;
-    -ms-flex-grow: 1;
     flex-grow: 1;
-    -moz-flex-shrink: 1;
-    -webkit-flex-shrink: 1;
-    -ms-flex-shrink: 1;
     flex-shrink: 1;
     width: 100%;
 }
@@ -281,22 +236,13 @@ ul.actions.fit.stacked {
 @media screen and (max-width: 480px) {
 
     ul.actions:not(.fixed) {
-        -moz-flex-direction: column;
-        -webkit-flex-direction: column;
-        -ms-flex-direction: column;
         flex-direction: column;
         margin-left: 0;
         width: 100% !important;
     }
 
     ul.actions:not(.fixed) li {
-        -moz-flex-grow: 1;
-        -webkit-flex-grow: 1;
-        -ms-flex-grow: 1;
         flex-grow: 1;
-        -moz-flex-shrink: 1;
-        -webkit-flex-shrink: 1;
-        -ms-flex-shrink: 1;
         flex-shrink: 1;
         padding: 1rem 0 0 0;
         text-align: center;

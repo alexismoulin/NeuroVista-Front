@@ -1,4 +1,4 @@
-import "./Intro.css"
+import "../assets/css/intro.css"
 
 export default function Intro({ handleType }) {
     return (

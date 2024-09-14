@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import {handleStream} from "../util.js";
+import ReactMarkdown from 'react-markdown';
 
 export default function ResultsPage({item, headers, title, setPage, setSelectedItem}) {
 
@@ -52,7 +53,7 @@ export default function ResultsPage({item, headers, title, setPage, setSelectedI
                 </section>
                 <section>
                     <h3>Analysis</h3>
-                    <div className="gpt">{responseText || 'Waiting for response...'}</div>
+                    <ReactMarkdown>{responseText}</ReactMarkdown>
                 </section>
                 <section>
                     <button className="button primary squared" onClick={handleClose}>Close</button>

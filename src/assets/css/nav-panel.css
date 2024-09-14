@@ -2,9 +2,6 @@
 
 #navPanelToggle {
     text-decoration: none;
-    -moz-transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    -webkit-transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    -ms-transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     display: none;
     position: fixed;
@@ -67,9 +64,6 @@
 }
 
 #navPanel {
-    -moz-transform: translateX(20rem);
-    -webkit-transform: translateX(20rem);
-    -ms-transform: translateX(20rem);
     transform: translateX(20rem);
     -moz-transition: -moz-transform 0.5s ease, box-shadow 0.5s ease, visibility 0.5s;
     -webkit-transition: -webkit-transform 0.5s ease, box-shadow 0.5s ease, visibility 0.5s;
@@ -192,9 +186,6 @@
     }
 
     body.is-navPanel-visible #navPanel {
-        -moz-transform: translateX(0);
-        -webkit-transform: translateX(0);
-        -ms-transform: translateX(0);
         transform: translateX(0);
         box-shadow: 0 0 1.5rem 0 rgba(0, 0, 0, 0.2);
         visibility: visible;

@@ -1,5 +1,9 @@
 import { useState } from 'react';
-import Copyright from './components/Copyright/Copyright.jsx';
+
+import Copyright from './components/Copyright.jsx';
+import MainPage from "./components/MainPage.jsx";
+import ResultsPage from "./components/ResultsPage.jsx";
+import LargeResultsPage from "./components/LargeResultsPage.jsx";
 
 import "./App.css"
 import "./assets/css/main.css"
@@ -7,11 +11,9 @@ import "./assets/css/noscript.css"
 import "./assets/css/icon.css"
 import "./assets/css/image.css"
 import "./assets/css/button.css"
-import "./assets/css/gpt.css"
+import "./assets/css/copyright.css"
 
 import { data } from "./data/data.js"
-import MainPage from "./components/MainPage.jsx";
-import ResultsPage from "./components/ResultsPage.jsx";
 
 export default function App() {
     const [type, setType] = useState("cortical")
@@ -34,25 +36,35 @@ export default function App() {
         setSelectedData(data[selection])
     }
 
-    return (
-        <div id="wrapper">
-            {page === "main" ?
-                <MainPage
+    function renderSwitch(param) {
+        switch(param) {
+            case "main":
+                return <MainPage
                     type={type}
                     selectedData={selectedData}
                     handleDefaultType={handleDefaultType}
                     handleSelectedData={handleSelectedData}
                     setPage={setPage}
                     setSelectedItem={setSelectedItem}
-                /> :
-                <ResultsPage
+                />
+            case "results":
+                return <ResultsPage
                     headers={selectedData.headers}
                     title={selectedData.title}
                     item={selectedItem}
                     setPage={setPage}
                     setSelectedItem={setSelectedItem}
                 />
-            }
+            case "large-results":
+                return <LargeResultsPage setPage={setPage} data={selectedData.data} />
+            default:
+                return 'foo';
+        }
+    }
+
+    return (
+        <div id="wrapper">
+            {renderSwitch(page)}
             <Copyright/>
         </div>
     )

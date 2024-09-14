@@ -1,4 +1,4 @@
-import "./NavBar.css"
+import "../assets/css/nav-bar.css"
 
 export default function NavBar({ selectedType, selectedData, setSelectedData }) {
     function corticalNavBar() {
