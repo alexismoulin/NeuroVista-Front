@@ -1,8 +1,7 @@
 import {useEffect, useRef, useState} from 'react';
 import {createPortal} from 'react-dom';
-import axios from 'axios';
+import {handleStream} from "../../util.js";
 
-const API_KEY = import.meta.env.VITE_OPENAI_API_KEY
 export default function Modal({open, close, item, headers, title}) {
     const dialog = useRef()
 
@@ -14,9 +13,6 @@ export default function Modal({open, close, item, headers, title}) {
             "Please provide an analysis about those measurements"
     }
 
-    const [chatResponse, setChatResponse] = useState("");
-    const [loading, setLoading] = useState(false);
-
     useEffect(() => {
         if (open) {
             dialog.current.showModal()
@@ -25,36 +21,18 @@ export default function Modal({open, close, item, headers, title}) {
         }
     }, [open])
 
-    const handleSendMessage = async () => {
-        setLoading(true);
-        try {
-            const response = await axios.post(
-                "https://api.openai.com/v1/chat/completions",
-                {
-                    model: "gpt-4", // or use "gpt-3.5-turbo"
-                    messages: [{ role: "user", content: createPrompt(item) }],
-                },
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${API_KEY}`,
-                    },
-                }
-            );
-            setChatResponse(response.data.choices[0].message.content);
-        } catch (error) {
-            setChatResponse(`There was an error fetching the response -> ${error}`);
-        } finally {
-            setLoading(false);
-        }
-    };
-
     function zipArrays(arr1, arr2) {
         return arr1.map((element, index) => [element, arr2[index]])
     }
 
     let zippedValues = zipArrays(headers, Object.values(item)).slice(0, -1)
     let structureName = zippedValues.shift()[1]
+
+    const [responseText, setResponseText] = useState('');
+
+    const handleSubmit = () => {
+        handleStream(createPrompt(item), setResponseText); // Call the utility function
+    };
 
     return createPortal(
         <dialog ref={dialog}>
@@ -70,12 +48,12 @@ export default function Modal({open, close, item, headers, title}) {
             </section>
                 <section>
                     <h3>Analysis</h3>
-                    <div className="gpt">{chatResponse}</div>
+                    <div className="gpt">{responseText || 'Waiting for response...'}</div>
                 </section>
                 <section>
                     <button className="button primary squared" onClick={close}>Close</button>
-                    <button onClick={handleSendMessage} disabled={loading}>
-                        {loading ? "Loading..." : "Send"}
+                    <button onClick={handleSubmit}>
+                        Send
                     </button>
                 </section>
             </div>
