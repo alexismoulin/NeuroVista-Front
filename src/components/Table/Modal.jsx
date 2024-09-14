@@ -1,12 +1,18 @@
-import { useRef, useEffect, useState} from 'react';
-import { createPortal } from 'react-dom';
+import {useEffect, useRef, useState} from 'react';
+import {createPortal} from 'react-dom';
 import axios from 'axios';
 
 const API_KEY = import.meta.env.VITE_OPENAI_API_KEY
-export default function Modal({open, close, item, headers}) {
+export default function Modal({open, close, item, headers, title}) {
     const dialog = useRef()
 
-    const userInput = "Wish me a happy birthday"
+    function createPrompt(item) {
+        const elements = zippedValues.map(el => el.join(': '))
+        return "This is an MRI analysis of a patient brain. You need to analyse the measurements of the patient " + title + "\n" +
+            `Structure analyzed: ${item.name}` + "\n" +
+            elements.join('\n') + "\n" +
+            "Please provide an analysis about those measurements"
+    }
 
     const [chatResponse, setChatResponse] = useState("");
     const [loading, setLoading] = useState(false);
@@ -26,7 +32,7 @@ export default function Modal({open, close, item, headers}) {
                 "https://api.openai.com/v1/chat/completions",
                 {
                     model: "gpt-4", // or use "gpt-3.5-turbo"
-                    messages: [{ role: "user", content: userInput }],
+                    messages: [{ role: "user", content: createPrompt(item) }],
                 },
                 {
                     headers: {
@@ -64,7 +70,7 @@ export default function Modal({open, close, item, headers}) {
             </section>
                 <section>
                     <h3>Analysis</h3>
-                    <div>{chatResponse}</div>
+                    <div className="gpt">{chatResponse}</div>
                 </section>
                 <section>
                     <button className="button primary squared" onClick={close}>Close</button>

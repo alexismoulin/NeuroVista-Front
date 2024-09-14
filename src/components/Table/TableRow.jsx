@@ -3,7 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faRobot} from "@fortawesome/free-solid-svg-icons";
 import {useState} from "react";
 
-export default function TableRow({item, headers}) {
+export default function TableRow({item, headers, title}) {
 
     const [modalIsOpen, setModalIsOpen] = useState(false);
     function showModal() {
@@ -15,7 +15,7 @@ export default function TableRow({item, headers}) {
 
     return (
         <>
-            <Modal open={modalIsOpen} close={dismissModal} item={item} headers={headers} />
+            <Modal open={modalIsOpen} close={dismissModal} item={item} headers={headers} title={title} />
             <tr>
                 {Object.values(item).map((el, index) => <td key={index}>{el}</td>)}
                 <td>
