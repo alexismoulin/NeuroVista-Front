@@ -3,10 +3,15 @@ import {handleStream} from "../util.js";
 
 export default function ResultsPage({item, headers, title, setPage, setSelectedItem}) {
 
+    const age = 40
+    const sex = "Male"
+
     function createPrompt(item) {
         const elements = zippedValues.map(el => el.join(': '))
-        return "This is an MRI analysis of a patient brain. You need to analyse the measurements of the patient " + title + "\n" +
-            `Structure analyzed: ${item.name}` + "\n" +
+        return `This is an MRI analysis of a patient brain. The patient is a ${sex} of ${age} years old.` + "\n" +
+            "You need to analyse the measurements of the patient " + title + "\n" +
+            `The ${title} sub-structure analyzed is: ${item.name}` + "\n" +
+            `The measurements of the ${item.name} are:` + "\n" +
             elements.join('\n') + "\n" +
             "Please provide an analysis about those measurements"
     }
@@ -34,12 +39,14 @@ export default function ResultsPage({item, headers, title, setPage, setSelectedI
         <>
             <div id="intro">
                 <h1>{title} Analysis</h1>
-                <p>Structure Analyzed: {structureName}</p>
+                <p>Structure Analyzed: <b>{structureName}</b></p>
             </div>
             <div id="main">
                 <section>
                     <h3>Key Metrics</h3>
                     <ul>
+                        <li>Sex: {sex}</li>
+                        <li>Age: {age}</li>
                         {zippedValues.map((el, index) => <li key={index}>{el.join(': ')}</li>)}
                     </ul>
                 </section>
