@@ -1,7 +1,7 @@
 import "./Table.css"
 import TableRow from "./TableRow.jsx";
 
-export default function Table({headers, title, data}) {
+export default function Table({headers, title, data, setPage, setSelectedItem}) {
 
     return (
         <div className="table-wrapper">
@@ -10,7 +10,9 @@ export default function Table({headers, title, data}) {
                     <tr>{headers.map(header => <th key={header}>{header}</th>)}</tr>
                 </thead>
                 <tbody>
-                    { data.map((item, index) => <TableRow key={index} item={item} headers={headers} title={title} /> ) }
+                    { data.map((item, index) => <TableRow
+                        key={index} item={item} headers={headers} title={title} setPage={setPage} setSelectedItem={setSelectedItem}
+                    />)}
                 </tbody>
             </table>
         </div>

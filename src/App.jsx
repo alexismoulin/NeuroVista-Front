@@ -1,8 +1,5 @@
 import { useState } from 'react';
 import Copyright from './components/Copyright/Copyright.jsx';
-import Table from "./components/Table/Table.jsx";
-import Intro from "./components/Intro/Intro.jsx";
-import NavBar from "./components/NavBar/NavBar.jsx";
 
 import "./App.css"
 import "./assets/css/main.css"
@@ -13,10 +10,14 @@ import "./assets/css/button.css"
 import "./assets/css/gpt.css"
 
 import { data } from "./data/data.js"
+import MainPage from "./components/MainPage.jsx";
+import ResultsPage from "./components/ResultsPage.jsx";
 
 export default function App() {
     const [type, setType] = useState("cortical")
     const [selectedData, setSelectedData] = useState(data.aseg)
+    const [page, setPage] = useState("main")
+    const [selectedItem, setSelectedItem] = useState()
 
     function handleDefaultType(defaultType) {
         if (defaultType === "cortical") {
@@ -35,12 +36,23 @@ export default function App() {
 
     return (
         <div id="wrapper">
-            <Intro enabled={type} handleType={handleDefaultType} />
-            <NavBar selectedType={type} selectedData={selectedData} setSelectedData={handleSelectedData} />
-            <div id="main">
-                <h3>{selectedData.title}</h3>
-                <Table {...selectedData}/>
-            </div>
+            {page === "main" ?
+                <MainPage
+                    type={type}
+                    selectedData={selectedData}
+                    handleDefaultType={handleDefaultType}
+                    handleSelectedData={handleSelectedData}
+                    setPage={setPage}
+                    setSelectedItem={setSelectedItem}
+                /> :
+                <ResultsPage
+                    headers={selectedData.headers}
+                    title={selectedData.title}
+                    item={selectedItem}
+                    setPage={setPage}
+                    setSelectedItem={setSelectedItem}
+                />
+            }
             <Copyright/>
         </div>
     )
