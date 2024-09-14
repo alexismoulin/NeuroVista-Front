@@ -34,6 +34,22 @@ button,
     font-size: 0.8rem;
     padding: 0 2rem;
 }
+.top {
+    padding: 0;
+    font-size: 2.2rem;
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+    width: auto;
+    height: auto;
+    cursor: pointer;
+    color: inherit;
+}
+
+.top:hover {
+    color: #18bfef;
+    box-shadow: none
+}
 
 input[type="submit"].icon:before,
 input[type="reset"].icon:before,
