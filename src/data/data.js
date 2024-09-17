@@ -57,7 +57,13 @@ const hypothalamus = {
     headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)", "Analysis"]
 }
 
+const cerebellum = {
+    data: subcortical.cerebellum,
+    title: "Cerebellum",
+    headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)", "Analysis"]
+}
+
 export const data = {
     aseg: aseg, brain: brain, whiteMatter: whiteMatter, lhsParcellation: lhsParcellation, rhsParcellation: rhsParcellation,
-    hippocampus: hippocampus, thalamus: thalamus, amygdala: amygdala, brainStem: brainStem, hypothalamus: hypothalamus
+    hippocampus: hippocampus, thalamus: thalamus, amygdala: amygdala, brainStem: brainStem, hypothalamus: hypothalamus, cerebellum:cerebellum
 }
