@@ -14,11 +14,12 @@ import "./assets/css/button.css"
 import "./assets/css/copyright.css"
 
 import { data } from "./data/data.js"
+import LandingPage from "./components/LandingPage.jsx";
 
 export default function App() {
     const [type, setType] = useState("cortical")
     const [selectedData, setSelectedData] = useState(data.aseg)
-    const [page, setPage] = useState("main")
+    const [page, setPage] = useState("landing")
     const [selectedItem, setSelectedItem] = useState()
 
     function handleDefaultType(defaultType) {
@@ -38,6 +39,8 @@ export default function App() {
 
     function renderSwitch(param) {
         switch(param) {
+            case "landing":
+                return <LandingPage setPage={setPage} />
             case "main":
                 return <MainPage
                     type={type}
