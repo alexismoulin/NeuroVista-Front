@@ -1,3 +1,4 @@
+import {useEffect} from "react";
 import Intro from "./Intro.jsx";
 import NavBar from "./NavBar.jsx";
 import Table from "./Table.jsx";
@@ -5,6 +6,10 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faRobot} from "@fortawesome/free-solid-svg-icons";
 
 export default function MainPage({type, handleDefaultType, selectedData, handleSelectedData, setPage, setSelectedItem}) {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     function handleLargePage() {
         setPage("large-results")

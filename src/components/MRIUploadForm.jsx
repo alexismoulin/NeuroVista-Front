@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import classNames from 'classnames';
 
-const MRIUploadForm = () => {
+export default function MRIUploadForm({styles, setPage}) {
     const [formData, setFormData] = useState({
         subject: '',
         series: '',
@@ -50,18 +51,18 @@ const MRIUploadForm = () => {
     };
 
     return (
-        <section id="form" className="main">
+        <section id={styles.form} className={styles.main}>
             <header>
-                <div className="container">
+                <div className={styles.container}>
                     <h2>Upload & Process MRI Series</h2>
                     <p>Please upload & process <b>one</b> MRI series at a time</p>
                 </div>
             </header>
-            <div className="content style4 featured">
-                <div className="container medium">
+            <div className={classNames(styles.content, styles.style4, styles.featured)}>
+                <div className={classNames(styles.container, styles.medium)}>
                     <form onSubmit={handleSubmit} encType="multipart/form-data">
-                        <div className="row gtr-50">
-                            <div className="col-6 col-12-mobile">
+                        <div className={classNames(styles.row, styles.gtr50)}>
+                            <div className={classNames(styles.col6, styles.col12Mobile)}>
                                 <label htmlFor="subject">Subject</label>
                                 <input
                                     type="text"
@@ -73,7 +74,7 @@ const MRIUploadForm = () => {
                                     required
                                 />
                             </div>
-                            <div className="col-6 col-12-mobile">
+                            <div className={classNames(styles.col6, styles.col12Mobile)}>
                                 <label htmlFor="series">Series</label>
                                 <input
                                     type="text"
@@ -85,7 +86,7 @@ const MRIUploadForm = () => {
                                     required
                                 />
                             </div>
-                            <div className="col-12">
+                            <div className={styles.col12}>
                                 <label htmlFor="notes">Notes</label>
                                 <textarea
                                     name="notes"
@@ -95,8 +96,8 @@ const MRIUploadForm = () => {
                                     onChange={handleInputChange}
                                 />
                             </div>
-                            <div className="col-12">
-                                <ul className="actions special">
+                            <div className={styles.col12}>
+                                <ul className={classNames(styles.actions, styles.special)}>
                                     <li>
                                         <input
                                             type="file"
@@ -111,8 +112,9 @@ const MRIUploadForm = () => {
                                     <li>
                                         <input
                                             type="submit"
-                                            className="button alt"
+                                            className={classNames(styles.button, styles.alt)}
                                             value="Process"
+                                            onClick={() => setPage("main")}
                                         />
                                     </li>
                                 </ul>
@@ -124,5 +126,3 @@ const MRIUploadForm = () => {
         </section>
     );
 };
-
-export default MRIUploadForm;

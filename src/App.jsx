@@ -4,17 +4,18 @@ import Copyright from './components/Copyright.jsx';
 import MainPage from "./components/MainPage.jsx";
 import ResultsPage from "./components/ResultsPage.jsx";
 import LargeResultsPage from "./components/LargeResultsPage.jsx";
+import LandingPage from "./components/LandingPage.jsx";
 
 import "./App.css"
 import "./assets/css/main.css"
 import "./assets/css/noscript.css"
+import "./assets/css/intro.css"
 import "./assets/css/icon.css"
 import "./assets/css/image.css"
 import "./assets/css/button.css"
 import "./assets/css/copyright.css"
 
 import { data } from "./data/data.js"
-import LandingPage from "./components/LandingPage.jsx";
 
 export default function App() {
     const [type, setType] = useState("cortical")

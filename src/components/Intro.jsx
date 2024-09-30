@@ -1,5 +1,3 @@
-import "../assets/css/intro.css"
-
 export default function Intro({ handleType }) {
     return (
         <div id="intro">

@@ -1,13 +1,10 @@
-export default function Header({setPage}) {
+export default function Header({styles}) {
     return (
-        <section id="header" className="dark">
+        <section id={styles.header} className={styles.dark}>
             <header>
-                <h1>Welcome to NeuroVista</h1>
-                <p>An innovation platform for processing, analyzing, and visualizing human brain MR images</p>
+                    <h1 style={{fontSize: "5rem"}}>Welcome to NeuroVista</h1>
+                    <p>An innovation platform for processing, analyzing, and visualizing human brain MR images</p>
             </header>
-            <footer>
-                <a className="button scrolly" onClick={() => setPage("main")}>Process MRI</a>
-            </footer>
         </section>
     )
 }

@@ -13,11 +13,13 @@ section, summary, time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font: inherit;
-	vertical-align: baseline;}
+	vertical-align: baseline;
+}
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-	display: block;}
+	display: block;
+}
 
 body {
 	line-height: 1;
@@ -55,9 +57,6 @@ input::-moz-focus-inner {
 }
 
 input, select, textarea {
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	-ms-appearance: none;
 	appearance: none;
 }
 
@@ -79,8 +78,6 @@ input, select, textarea {
 		line-height: 1.75em;
 		color: #888;
 	}
-
-
 
 	.dark {
 		color: #aaa;
@@ -126,9 +123,6 @@ input, select, textarea {
 	}
 
 	a {
-		-moz-transition: border-bottom-color 0.25s ease-in-out;
-		-webkit-transition: border-bottom-color 0.25s ease-in-out;
-		-ms-transition: border-bottom-color 0.25s ease-in-out;
 		transition: border-bottom-color 0.25s ease-in-out;
 		color: inherit;
 		text-decoration: none;
@@ -347,7 +341,7 @@ input, select, textarea {
 			margin-left: 41.66667%;
 		}
 
-		.row > .col-6 {
+		.row > .col6 {
 			width: 50%;
 		}
 
@@ -395,7 +389,7 @@ input, select, textarea {
 			margin-left: 91.66667%;
 		}
 
-		.row > .col-12 {
+		.row > .col12 {
 			width: 100%;
 		}
 
@@ -404,8 +398,8 @@ input, select, textarea {
 		}
 
 		.row.gtr-0 {
-			margin-top: 0px;
-			margin-left: 0px;
+			margin-top: 0;
+			margin-left: 0;
 		}
 
 			.row.gtr-0 > * {
@@ -437,20 +431,20 @@ input, select, textarea {
 					padding-top: 12.5px;
 				}
 
-		.row.gtr-50 {
+		.row.gtr50 {
 			margin-top: -25px;
 			margin-left: -25px;
 		}
 
-			.row.gtr-50 > * {
+			.row.gtr50 > * {
 				padding: 25px 0 0 25px;
 			}
 
-			.row.gtr-50.gtr-uniform {
+			.row.gtr50.gtr-uniform {
 				margin-top: -25px;
 			}
 
-				.row.gtr-50.gtr-uniform > * {
+				.row.gtr50.gtr-uniform > * {
 					padding-top: 25px;
 				}
 
@@ -647,20 +641,20 @@ input, select, textarea {
 				}
 
 				.row.gtr-0 {
-					margin-top: 0px;
-					margin-left: 0px;
+					margin-top: 0;
+					margin-left: 0;
 				}
 
 					.row.gtr-0 > * {
-						padding: 0px 0 0 0px;
+						padding: 0 0 0 0;
 					}
 
 					.row.gtr-0.gtr-uniform {
-						margin-top: 0px;
+						margin-top: 0;
 					}
 
 						.row.gtr-0.gtr-uniform > * {
-							padding-top: 0px;
+							padding-top: 0;
 						}
 
 				.row.gtr-25 {
@@ -680,20 +674,20 @@ input, select, textarea {
 							padding-top: 10px;
 						}
 
-				.row.gtr-50 {
+				.row.gtr50 {
 					margin-top: -20px;
 					margin-left: -20px;
 				}
 
-					.row.gtr-50 > * {
+					.row.gtr50 > * {
 						padding: 20px 0 0 20px;
 					}
 
-					.row.gtr-50.gtr-uniform {
+					.row.gtr50.gtr-uniform {
 						margin-top: -20px;
 					}
 
-						.row.gtr-50.gtr-uniform > * {
+						.row.gtr50.gtr-uniform > * {
 							padding-top: 20px;
 						}
 
@@ -892,20 +886,20 @@ input, select, textarea {
 				}
 
 				.row.gtr-0 {
-					margin-top: 0px;
-					margin-left: 0px;
+					margin-top: 0;
+					margin-left: 0;
 				}
 
 					.row.gtr-0 > * {
-						padding: 0px 0 0 0px;
+						padding: 0 0 0 0;
 					}
 
 					.row.gtr-0.gtr-uniform {
-						margin-top: 0px;
+						margin-top: 0;
 					}
 
 						.row.gtr-0.gtr-uniform > * {
-							padding-top: 0px;
+							padding-top: 0;
 						}
 
 				.row.gtr-25 {
@@ -925,20 +919,20 @@ input, select, textarea {
 							padding-top: 7.5px;
 						}
 
-				.row.gtr-50 {
+				.row.gtr50 {
 					margin-top: -15px;
 					margin-left: -15px;
 				}
 
-					.row.gtr-50 > * {
+					.row.gtr50 > * {
 						padding: 15px 0 0 15px;
 					}
 
-					.row.gtr-50.gtr-uniform {
+					.row.gtr50.gtr-uniform {
 						margin-top: -15px;
 					}
 
-						.row.gtr-50.gtr-uniform > * {
+						.row.gtr50.gtr-uniform > * {
 							padding-top: 15px;
 						}
 
@@ -1128,7 +1122,7 @@ input, select, textarea {
 					margin-left: 91.66667%;
 				}
 
-				.row > .col-12-narrow {
+				.row > .col12Narrow {
 					width: 100%;
 				}
 
@@ -1137,20 +1131,20 @@ input, select, textarea {
 				}
 
 				.row.gtr-0 {
-					margin-top: 0px;
-					margin-left: 0px;
+					margin-top: 0;
+					margin-left: 0;
 				}
 
 					.row.gtr-0 > * {
-						padding: 0px 0 0 0px;
+						padding: 0 0 0 0;
 					}
 
 					.row.gtr-0.gtr-uniform {
-						margin-top: 0px;
+						margin-top: 0;
 					}
 
 						.row.gtr-0.gtr-uniform > * {
-							padding-top: 0px;
+							padding-top: 0;
 						}
 
 				.row.gtr-25 {
@@ -1170,20 +1164,20 @@ input, select, textarea {
 							padding-top: 6.25px;
 						}
 
-				.row.gtr-50 {
+				.row.gtr50 {
 					margin-top: -12.5px;
 					margin-left: -12.5px;
 				}
 
-					.row.gtr-50 > * {
+					.row.gtr50 > * {
 						padding: 12.5px 0 0 12.5px;
 					}
 
-					.row.gtr-50.gtr-uniform {
+					.row.gtr50.gtr-uniform {
 						margin-top: -12.5px;
 					}
 
-						.row.gtr-50.gtr-uniform > * {
+						.row.gtr50.gtr-uniform > * {
 							padding-top: 12.5px;
 						}
 
@@ -1373,7 +1367,7 @@ input, select, textarea {
 					margin-left: 91.66667%;
 				}
 
-				.row > .col-12-mobile {
+				.row > .col12Mobile {
 					width: 100%;
 				}
 
@@ -1382,20 +1376,20 @@ input, select, textarea {
 				}
 
 				.row.gtr-0 {
-					margin-top: 0px;
-					margin-left: 0px;
+					margin-top: 0;
+					margin-left: 0;
 				}
 
 					.row.gtr-0 > * {
-						padding: 0px 0 0 0px;
+						padding: 0 0 0 0;
 					}
 
 					.row.gtr-0.gtr-uniform {
-						margin-top: 0px;
+						margin-top: 0;
 					}
 
 						.row.gtr-0.gtr-uniform > * {
-							padding-top: 0px;
+							padding-top: 0;
 						}
 
 				.row.gtr-25 {
@@ -1415,20 +1409,20 @@ input, select, textarea {
 							padding-top: 5px;
 						}
 
-				.row.gtr-50 {
+				.row.gtr50 {
 					margin-top: -10px;
 					margin-left: -10px;
 				}
 
-					.row.gtr-50 > * {
+					.row.gtr50 > * {
 						padding: 10px 0 0 10px;
 					}
 
-					.row.gtr-50.gtr-uniform {
+					.row.gtr50.gtr-uniform {
 						margin-top: -10px;
 					}
 
-						.row.gtr-50.gtr-uniform > * {
+						.row.gtr50.gtr-uniform > * {
 							padding-top: 10px;
 						}
 
@@ -1588,9 +1582,6 @@ input, select, textarea {
 		}
 
 		ul.icons a {
-			-moz-transition: background-color 0.25s ease-in-out;
-			-webkit-transition: background-color 0.25s ease-in-out;
-			-ms-transition: background-color 0.25s ease-in-out;
 			transition: background-color 0.25s ease-in-out;
 			display: inline-block;
 			width: 2.75em;
@@ -1784,13 +1775,7 @@ input, select, textarea {
 	form select,
 	form .select,
 	form textarea {
-		-moz-transition: all 0.25s ease-in-out;
-		-webkit-transition: all 0.25s ease-in-out;
-		-ms-transition: all 0.25s ease-in-out;
 		transition: all 0.25s ease-in-out;
-		-moz-appearance: none;
-		-webkit-appearance: none;
-		-ms-appearance: none;
 		appearance: none;
 		display: block;
 		box-shadow: inset 0 0 0 1px #e6e6e6;
@@ -2127,7 +2112,6 @@ input, select, textarea {
 
 	.icon {
 		text-decoration: none;
-		text-decoration: none;
 	}
 
 		.icon:before {
@@ -2165,11 +2149,11 @@ input, select, textarea {
 		position: relative;
 		margin: 0;
 		background-color: #2d3436;
-		background-image: url("images/overlay.png");
+		background-image: url("../images/bg.jpg");
 		background-size: auto, cover;
 		background-position: top left, center center;
 		background-repeat: repeat, no-repeat;
-		padding: 14em 0 14em 0;
+		padding: 10em 0 10em 0;
 		text-align: center;
 		color: #fff;
 	}
@@ -2232,15 +2216,15 @@ input, select, textarea {
 			}
 
 			.main > .content.style1 {
-				background: url("images/bgtr.svg") top right no-repeat, url("images/bgbl.svg") bottom left no-repeat, url("images/bgbl.svg") bottom left no-repeat, url("images/overlay.png"), linear-gradient(45deg, #b39c68, #a56365, #412e4c);
+				background: linear-gradient(45deg, #b39c68, #a56365, #412e4c);
 			}
 
 			.main > .content.style2 {
-				background: url("images/bgtr.svg") top right no-repeat, url("images/bgbl.svg") bottom left no-repeat, url("images/overlay.png"), linear-gradient(45deg, #384955, #655361, #85505f);
+				background: linear-gradient(45deg, #384955, #655361, #85505f);
 			}
 
 			.main > .content.style3 {
-				background: url("images/bgtr.svg") top right no-repeat, url("images/bgbl.svg") bottom left no-repeat, url("images/overlay.png"), linear-gradient(45deg, #5f796b, #3a4e59, #2f394e);
+				background: linear-gradient(45deg, #5f796b, #3a4e59, #2f394e);
 			}
 
 			.main > .content.style4 {
