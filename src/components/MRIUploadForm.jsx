@@ -112,7 +112,6 @@ export default function MRIUploadForm({styles, setPage}) {
                                     <li>
                                         <input
                                             type="submit"
-                                            className={classNames(styles.button, styles.alt)}
                                             value="Process"
                                             onClick={() => setPage("main")}
                                         />
