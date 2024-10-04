@@ -1882,21 +1882,14 @@ input, select, textarea {
 			background: rgba(255, 255, 255, 0.1);
 		}
 
-/* Button */
+/* Input File */
 
-	input[type="button"],
-	input[type="submit"],
-	input[type="reset"],
-	input[type="file"],
-	button,
-	.button {
+	input[type="file"] {
 		transition: all 0.25s ease-in-out;
-		-webkit-appearance: none;
 		position: relative;
 		display: inline-block;
-		background: #3d3d3d;
+		background: #212931;
 		padding: 0.85em 3em 0.85em 3em;
-		border-radius: 0.25em;
 		cursor: pointer;
 		border: 0;
 		color: #fff;
@@ -1904,71 +1897,9 @@ input, select, textarea {
 		text-decoration: none;
 	}
 
-		input[type="button"]:hover,
-		input[type="submit"]:hover,
-		input[type="reset"]:hover,
-		input[type="file"]:hover,
-
-
-		input[type="button"].alt,
-		input[type="submit"].alt,
-		input[type="reset"].alt,
-		input[type="file"].alt,
-		button.alt,
-		.button.alt {
-			color: inherit;
-			box-shadow: inset 0 0 0 1px #e6e6e6;
-			background: none;
+		input[type="file"]:hover {
+			background: #18bfef;
 		}
-
-			input[type="button"].alt:hover,
-			input[type="submit"].alt:hover,
-			input[type="reset"].alt:hover,
-			input[type="file"].alt:hover,
-			button.alt:hover,
-			.button.alt:hover {
-				background: rgba(0, 0, 0, 0.025);
-			}
-
-	.dark input[type="button"],
-	.dark input[type="submit"],
-	.dark input[type="reset"],
-	.dark input[type="file"],
-	.dark button,
-	.dark .button {
-		background: rgba(255, 255, 255, 0.15);
-		box-shadow: inset 0 0 0 1px #fff;
-		color: #fff;
-	}
-
-		.dark input[type="button"]:hover,
-		.dark input[type="submit"]:hover,
-		.dark input[type="reset"]:hover,
-		.dark input[type="file"]:hover,
-		.dark button:hover,
-		.dark .button:hover {
-			background: rgba(255, 255, 255, 0.25);
-		}
-
-		.dark input[type="button"].alt,
-		.dark input[type="submit"].alt,
-		.dark input[type="reset"].alt,
-		.dark input[type="file"].alt,
-		.dark button.alt,
-		.dark .button.alt {
-			background: none;
-			box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
-		}
-
-			.dark input[type="button"].alt:hover,
-			.dark input[type="submit"].alt:hover,
-			.dark input[type="reset"].alt:hover,
-			.dark input[type="file"].alt:hover,
-			.dark button.alt:hover,
-			.dark .button.alt:hover {
-				background: rgba(255, 255, 255, 0.15);
-				box-shadow: inset 0 0 0 1px #fff;
-			}
 
 /* Feature Icon */
 
