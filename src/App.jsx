@@ -14,6 +14,7 @@ import "./assets/css/icon.css"
 import "./assets/css/image.css"
 import "./assets/css/button.css"
 import "./assets/css/copyright.css"
+import "./assets/css/input.css"
 
 import { data } from "./data/data.js"
 

@@ -1,54 +1,64 @@
 import { useState } from 'react';
 import classNames from 'classnames';
+import DropFiles from './DropFiles';
 
-export default function MRIUploadForm({styles, setPage}) {
+export default function MRIUploadForm({ styles, setPage }) {
     const [formData, setFormData] = useState({
         subject: '',
         series: '',
         notes: '',
-        dicoms: null,
+        dicoms: [],
     });
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
+    const handleInputChange = ({ target: { name, value } }) => {
+        setFormData((prevData) => ({ ...prevData, [name]: value }));
+    };
+
+    const handleFileChange = (files) => {
         setFormData((prevData) => ({
             ...prevData,
-            [name]: value,
+            dicoms: Array.from(files), // Convert FileList to an array
         }));
     };
 
-    const handleFileChange = (e) => {
-        setFormData((prevData) => ({
-            ...prevData,
-            dicoms: e.target.files,
-        }));
-    };
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Here you could add form validation before submission
+
+        if (formData.dicoms.length === 0) {
+            alert('Please select at least one file to upload.');
+            return;
+        }
 
         const data = new FormData();
         data.append('subject', formData.subject);
         data.append('series', formData.series);
         data.append('notes', formData.notes);
-        Array.from(formData.dicoms).forEach((file) => {
-            data.append('dicoms', file);
+
+        formData.dicoms.forEach((file) => {
+            data.append('dicoms', file); // Append each file separately
         });
 
-        // Handle form submission, e.g., send it to your server
-        fetch('/run_script', {
-            method: 'POST',
-            body: data,
-        })
-            .then((response) => response.json())
-            .then((result) => {
-                console.log('Success:', result);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
+        try {
+            const response = await fetch('/run_script', {
+                method: 'POST',
+                body: data,
             });
+
+            if (!response.ok) {
+                throw new Error('Failed to upload files');
+            }
+
+            const result = await response.json();
+            console.log('Success:', result);
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred during file upload. Please try again.');
+        }
     };
+
+    /*function handleCancelFiles() {
+        setFormData((prevData) => ({...prevData, dicoms: []}));
+    }*/
 
     return (
         <section id={styles.form} className={styles.main}>
@@ -62,30 +72,20 @@ export default function MRIUploadForm({styles, setPage}) {
                 <div className={classNames(styles.container, styles.medium)}>
                     <form onSubmit={handleSubmit} encType="multipart/form-data">
                         <div className={classNames(styles.row, styles.gtr50)}>
-                            <div className={classNames(styles.col6, styles.col12Mobile)}>
-                                <label htmlFor="subject">Subject</label>
-                                <input
-                                    type="text"
-                                    name="subject"
-                                    id="subject"
-                                    placeholder="Subject"
-                                    value={formData.subject}
-                                    onChange={handleInputChange}
-                                    required
-                                />
-                            </div>
-                            <div className={classNames(styles.col6, styles.col12Mobile)}>
-                                <label htmlFor="series">Series</label>
-                                <input
-                                    type="text"
-                                    name="series"
-                                    id="series"
-                                    placeholder="Series"
-                                    value={formData.series}
-                                    onChange={handleInputChange}
-                                    required
-                                />
-                            </div>
+                            {['subject', 'series'].map((field) => (
+                                <div key={field} className={classNames(styles.col6, styles.col12Mobile)}>
+                                    <label htmlFor={field}>{field.charAt(0).toUpperCase() + field.slice(1)}</label>
+                                    <input
+                                        type="text"
+                                        name={field}
+                                        id={field}
+                                        placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+                                        value={formData[field]}
+                                        onChange={handleInputChange}
+                                        required
+                                    />
+                                </div>
+                            ))}
                             <div className={styles.col12}>
                                 <label htmlFor="notes">Notes</label>
                                 <textarea
@@ -97,26 +97,14 @@ export default function MRIUploadForm({styles, setPage}) {
                                 />
                             </div>
                             <div className={styles.col12}>
-                                <ul className={classNames(styles.actions, styles.special)}>
-                                    <li>
-                                        <input
-                                            type="file"
-                                            name="dicoms"
-                                            id="dicoms"
-                                            multiple
-                                            onChange={handleFileChange}
-                                            hidden
-                                            required
-                                        />
-                                    </li>
-                                    <li>
-                                        <input
-                                            type="submit"
-                                            value="Process"
-                                            onClick={() => setPage("main")}
-                                        />
-                                    </li>
-                                </ul>
+                                <DropFiles onFileChange={handleFileChange} />
+                            </div>
+                            <div className={styles.col12}>
+                                <input
+                                    type="submit"
+                                    value="Process"
+                                    onClick={() => setPage("main")}
+                                />
                             </div>
                         </div>
                     </form>
@@ -124,4 +112,4 @@ export default function MRIUploadForm({styles, setPage}) {
             </div>
         </section>
     );
-};
+}

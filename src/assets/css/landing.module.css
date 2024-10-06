@@ -1882,24 +1882,6 @@ input, select, textarea {
 			background: rgba(255, 255, 255, 0.1);
 		}
 
-/* Input File */
-
-	input[type="file"] {
-		transition: all 0.25s ease-in-out;
-		position: relative;
-		display: inline-block;
-		background: #212931;
-		padding: 0.85em 3em 0.85em 3em;
-		cursor: pointer;
-		border: 0;
-		color: #fff;
-		text-align: center;
-		text-decoration: none;
-	}
-
-		input[type="file"]:hover {
-			background: #18bfef;
-		}
 
 /* Feature Icon */
 
