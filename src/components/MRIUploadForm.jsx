@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import classNames from 'classnames';
-import DropFiles from './DropFiles';
+import DropFiles from './DropFileComponent.jsx';
 
 export default function MRIUploadForm({ styles, setPage }) {
     const [formData, setFormData] = useState({
@@ -39,7 +39,7 @@ export default function MRIUploadForm({ styles, setPage }) {
         });
 
         try {
-            const response = await fetch('/run_script', {
+            const response = await fetch('http://127.0.0.1:5000/upload', {
                 method: 'POST',
                 body: data,
             });
@@ -54,11 +54,8 @@ export default function MRIUploadForm({ styles, setPage }) {
             console.error('Error:', error);
             alert('An error occurred during file upload. Please try again.');
         }
+        setPage("processing")
     };
-
-    /*function handleCancelFiles() {
-        setFormData((prevData) => ({...prevData, dicoms: []}));
-    }*/
 
     return (
         <section id={styles.form} className={styles.main}>
@@ -82,7 +79,6 @@ export default function MRIUploadForm({ styles, setPage }) {
                                         placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
                                         value={formData[field]}
                                         onChange={handleInputChange}
-                                        required
                                     />
                                 </div>
                             ))}
@@ -97,14 +93,13 @@ export default function MRIUploadForm({ styles, setPage }) {
                                 />
                             </div>
                             <div className={styles.col12}>
-                                <DropFiles onFileChange={handleFileChange} />
+                                <DropFiles onFileChange={handleFileChange}/>
                             </div>
-                            <div className={styles.col12}>
-                                <input
-                                    type="submit"
-                                    value="Process"
-                                    onClick={() => setPage("main")}
-                                />
+                            <div className={styles.col6}>
+                                <input type="reset" value="Reset"/>
+                            </div>
+                            <div className={styles.col6}>
+                                <input type="submit" value="Process"/>
                             </div>
                         </div>
                     </form>

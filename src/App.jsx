@@ -17,6 +17,7 @@ import "./assets/css/copyright.css"
 import "./assets/css/input.css"
 
 import { data } from "./data/data.js"
+import ProcessingPage from "./components/ProcessingPage.jsx";
 
 export default function App() {
     const [type, setType] = useState("cortical")
@@ -43,6 +44,8 @@ export default function App() {
         switch(param) {
             case "landing":
                 return <LandingPage setPage={setPage} />
+            case "processing":
+                return <ProcessingPage setPage={setPage} />
             case "main":
                 return <MainPage
                     type={type}
