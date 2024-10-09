@@ -54,7 +54,9 @@ export default function ProcessingPage({setPage, loadedData}) {
             <section id="main">
                 <h3>Information uploaded</h3>
                 <p>{JSON.stringify(loadedData.form_data)}</p>
-                <p>{JSON.stringify(loadedData.file_names)}</p>
+                <ol>
+                    {loadedData.file_names.map((el, index) => (<li key={index}>{el}</li>))}
+                </ol>
             </section>
 
             <div id="intro">
