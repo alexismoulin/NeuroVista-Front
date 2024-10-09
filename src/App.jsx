@@ -24,6 +24,7 @@ export default function App() {
     const [selectedData, setSelectedData] = useState(data.aseg)
     const [page, setPage] = useState("landing")
     const [selectedItem, setSelectedItem] = useState()
+    const [loadedData, setLoadedData] = useState()
 
     function handleDefaultType(defaultType) {
         if (defaultType === "cortical") {
@@ -43,9 +44,9 @@ export default function App() {
     function renderSwitch(param) {
         switch(param) {
             case "landing":
-                return <LandingPage setPage={setPage} />
+                return <LandingPage setPage={setPage} setLoadedData={setLoadedData} />
             case "processing":
-                return <ProcessingPage setPage={setPage} />
+                return <ProcessingPage setPage={setPage} loadedData={loadedData} />
             case "main":
                 return <MainPage
                     type={type}

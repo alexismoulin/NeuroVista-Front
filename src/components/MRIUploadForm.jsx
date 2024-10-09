@@ -2,7 +2,7 @@ import { useState } from 'react';
 import classNames from 'classnames';
 import DropFiles from './DropFileComponent.jsx';
 
-export default function MRIUploadForm({ styles, setPage }) {
+export default function MRIUploadForm({ styles, setPage, setLoadedData }) {
     const [formData, setFormData] = useState({
         subject: '',
         series: '',
@@ -38,8 +38,10 @@ export default function MRIUploadForm({ styles, setPage }) {
             data.append('dicoms', file); // Append each file separately
         });
 
+        const SERVER_URL = "http://172.22.118.43:5001"
+
         try {
-            const response = await fetch('http://127.0.0.1:5000/upload', {
+            const response = await fetch(`${SERVER_URL}/upload`, {
                 method: 'POST',
                 body: data,
             });
@@ -50,9 +52,11 @@ export default function MRIUploadForm({ styles, setPage }) {
 
             const result = await response.json();
             console.log('Success:', result);
+            setLoadedData(result)
         } catch (error) {
             console.error('Error:', error);
             alert('An error occurred during file upload. Please try again.');
+            setLoadedData(error)
         }
         setPage("processing")
     };
