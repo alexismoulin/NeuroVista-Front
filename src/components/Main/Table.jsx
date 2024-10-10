@@ -1,4 +1,4 @@
-import "../assets/css/table.css"
+import "../../assets/css/table.css"
 import TableRow from "./TableRow.jsx";
 
 export default function Table({headers, title, data, setPage, setSelectedItem}) {

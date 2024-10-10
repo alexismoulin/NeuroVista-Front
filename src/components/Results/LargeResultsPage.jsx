@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {handleStream} from "../util.js";
+import {handleStream} from "../../util.js";
 import ReactMarkdown from 'react-markdown';
 
 export default function LargeResultsPage({setPage, data}) {

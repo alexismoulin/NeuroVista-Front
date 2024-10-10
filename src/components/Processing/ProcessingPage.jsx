@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import GridLoader from "react-spinners/GridLoader";
-import LoadingStep from "./LoadingStep";
-import CompletedStep from "./CompletedStep";
+import LoadingStep from "./LoadingStep.jsx";
+import CompletedStep from "./CompletedStep.jsx";
 
 export default function ProcessingPage({setPage, loadedData}) {
     const [response, setResponse] = useState({dicom: true, nifti: true, recon: false, subs: false, json: false});

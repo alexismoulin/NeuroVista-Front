@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-import Copyright from './components/Copyright.jsx';
-import MainPage from "./components/MainPage.jsx";
-import ResultsPage from "./components/ResultsPage.jsx";
-import LargeResultsPage from "./components/LargeResultsPage.jsx";
-import LandingPage from "./components/LandingPage.jsx";
+import Copyright from './components/Main/Copyright.jsx';
+import MainPage from "./components/Main/MainPage.jsx";
+import ResultsPage from "./components/Results/ResultsPage.jsx";
+import LargeResultsPage from "./components/Results/LargeResultsPage.jsx";
+import LandingPage from "./components/Landing/LandingPage.jsx";
 
 import "./App.css"
 import "./assets/css/main.css"
@@ -17,7 +17,7 @@ import "./assets/css/copyright.css"
 import "./assets/css/input.css"
 
 import { data } from "./data/data.js"
-import ProcessingPage from "./components/ProcessingPage.jsx";
+import ProcessingPage from "./components/Processing/ProcessingPage.jsx";
 
 export default function App() {
     const [type, setType] = useState("cortical")

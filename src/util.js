@@ -1,4 +1,4 @@
-// util.js
+// Stream OpenAI GPT response
 
 export const handleStream = async (prompt, updateResponseText) => {
     try {
@@ -67,3 +67,44 @@ export const handleStream = async (prompt, updateResponseText) => {
         updateResponseText('Error occurred while fetching response.');
     }
 };
+
+
+// Test function for data loading
+
+export async function testFunction(e, formData, setLoadedData, setPage, serverUrl) {
+    e.preventDefault();
+
+    if (formData.dicoms.length === 0) {
+        alert('Please select at least one file to upload.');
+        return;
+    }
+
+    const data = new FormData();
+    data.append('subject', formData.subject);
+    data.append('series', formData.series);
+    data.append('notes', formData.notes);
+
+    formData.dicoms.forEach((file) => {
+        data.append('dicoms', file); // Append each file separately
+    });
+
+    try {
+        const response = await fetch(
+            `${serverUrl}/upload`,
+            { method: 'POST', body: data }
+        );
+
+        if (!response.ok) {
+            throw new Error('Failed to upload files');
+        }
+
+        const result = await response.json();
+        console.log('Success:', result);
+        setLoadedData(result)
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred during file upload. Please try again.');
+        setLoadedData(error)
+    }
+    setPage("processing")
+}

@@ -2,7 +2,7 @@ import Header from "./Header.jsx";
 import Infos from "./Infos.jsx";
 import MRIUploadForm from "./MRIUploadForm.jsx";
 
-import styles from "../assets/css/landing.module.css"
+import styles from "../../assets/css/landing.module.css"
 
 export default function LandingPage({ setPage, setLoadedData }) {
     return (

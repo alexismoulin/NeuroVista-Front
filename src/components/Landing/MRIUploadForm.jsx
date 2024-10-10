@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import classNames from 'classnames';
 import DropFiles from './DropFileComponent.jsx';
+import {testFunction} from "../../util.js";
+
+const SERVER_URL = "http://127.0.0.1:5001"
 
 export default function MRIUploadForm({ styles, setPage, setLoadedData }) {
     const [formData, setFormData] = useState({
@@ -20,7 +23,6 @@ export default function MRIUploadForm({ styles, setPage, setLoadedData }) {
             dicoms: Array.from(files) // Convert FileList to an array
         }));
     };
-    
 
     const handleSubmitStream = async (e) => {
         e.preventDefault();
@@ -38,8 +40,6 @@ export default function MRIUploadForm({ styles, setPage, setLoadedData }) {
         formData.dicoms.forEach((file) => {
             data.append('dicoms', file); // Append each file separately
         });
-
-        const SERVER_URL = "http://172.22.118.43:5001"
 
         try {
             const response = await fetch(`${SERVER_URL}/run_script`, {
@@ -81,49 +81,12 @@ export default function MRIUploadForm({ styles, setPage, setLoadedData }) {
             alert('An error occurred during file upload. Please try again.');
             setLoadedData(error);
         }
-        
 
         setPage("processing")
     };
 
-    async function handleSubmitTest(e) {
-        e.preventDefault();
-
-        if (formData.dicoms.length === 0) {
-            alert('Please select at least one file to upload.');
-            return;
-        }
-
-        const data = new FormData();
-        data.append('subject', formData.subject);
-        data.append('series', formData.series);
-        data.append('notes', formData.notes);
-
-        formData.dicoms.forEach((file) => {
-            data.append('dicoms', file); // Append each file separately
-        });
-
-        const SERVER_URL = "http://172.22.118.43:5001"
-
-        try {
-            const response = await fetch(`${SERVER_URL}/upload`, { 
-                method: 'POST',
-                body: data,
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to upload files');
-            }
-
-            const result = await response.json();
-            console.log('Success:', result);
-            setLoadedData(result)
-        } catch (error) {
-            console.error('Error:', error);
-            alert('An error occurred during file upload. Please try again.');
-            setLoadedData(error)
-        }
-        setPage("processing")
+    const handleSubmitTest = async (e) => {
+        await testFunction(e, formData, setLoadedData, setPage, SERVER_URL);
     }
 
     return (
@@ -136,7 +99,7 @@ export default function MRIUploadForm({ styles, setPage, setLoadedData }) {
             </header>
             <div className={classNames(styles.content, styles.style4, styles.featured)}>
                 <div className={classNames(styles.container, styles.medium)}>
-                    <form onSubmit={handleSubmitTest} encType="multipart/form-data">
+                    <form onSubmit={handleSubmitStream} encType="multipart/form-data">
                         <div className={classNames(styles.row, styles.gtr50)}>
                             {['subject', 'series'].map((field) => (
                                 <div key={field} className={classNames(styles.col6, styles.col12Mobile)}>
