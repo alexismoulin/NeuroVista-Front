@@ -4,7 +4,7 @@ import LoadingStep from "./LoadingStep.jsx";
 import CompletedStep from "./CompletedStep.jsx";
 
 export default function ProcessingPage({setPage, loadedData}) {
-    const [response, setResponse] = useState({dicom: true, nifti: true, freesurfer: false, json: false});
+    const [response, setResponse] = useState({dicom: false, nifti: false, recon: false, subs: false, json: false});
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -31,24 +31,42 @@ export default function ProcessingPage({setPage, loadedData}) {
                 <div>
                     <ol>
                         <li>
-                            {response.dicom ?
-                            <CompletedStep stepText="Dicom upload Completed"/>:
-                            <LoadingStep stepText="Dicom upload in Progress"/>}
+                            {
+                                response.dicom ?
+                                    <CompletedStep stepText="Dicom upload Completed"/> :
+                                    <LoadingStep stepText="Dicom upload in Progress"/>
+                            }
                         </li>
                         <li>
-                            {response.nifti ?
-                            <CompletedStep stepText="Nifti creation completed"/>:
-                            <LoadingStep stepText="Nifti creation in Progress"/>}
+                            {
+                                response.nifti ?
+                                    <CompletedStep stepText="Nifti creation completed"/> :
+                                    <LoadingStep stepText="Nifti creation in Progress"/>
+                            }
                         </li>
                         <li>
-                            {response.freesurfer ?
-                            <CompletedStep stepText="Brain reconstruction completed"/>:
-                            <LoadingStep stepText="Brain reconstruction in Progress (very long - can take up to 16h)"/>}
+                            {
+                                response.recon ?
+                                    <CompletedStep stepText="Brain reconstruction completed"/> :
+                                    <LoadingStep
+                                        stepText="Brain reconstruction in Progress (very long - can take up to 16h)"/>
+                            }
                         </li>
                         <li>
-                            {response.json ?
-                            <CompletedStep stepText="Json files created"/>:
-                            <LoadingStep stepText="Json files in Progress"/>}
+                            {
+                                response.subs ?
+                                    <CompletedStep stepText="Extra subcortical segmentations completed"/> :
+                                    <LoadingStep
+                                        stepText="Extra subcortical segmentations in Progress (takes up to 1h)"/>
+                            }
+                        </li>
+                        <li>
+                            {
+                                response.subs ?
+                                    <CompletedStep stepText="Json files created"/> :
+                                    <LoadingStep
+                                        stepText="Json files in Progress"/>
+                            }
                         </li>
                     </ol>
                 </div>
