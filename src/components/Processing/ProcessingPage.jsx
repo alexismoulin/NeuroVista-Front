@@ -4,7 +4,7 @@ import LoadingStep from "./LoadingStep.jsx";
 import CompletedStep from "./CompletedStep.jsx";
 
 export default function ProcessingPage({setPage, loadedData}) {
-    const [response, setResponse] = useState({dicom: true, nifti: true, recon: false, subs: false, json: false});
+    const [response, setResponse] = useState({dicom: true, nifti: true, freesurfer: false, json: false});
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -41,12 +41,15 @@ export default function ProcessingPage({setPage, loadedData}) {
                             <LoadingStep stepText="Nifti creation in Progress"/>}
                         </li>
                         <li>
-                            {response.recon ?
+                            {response.freesurfer ?
                             <CompletedStep stepText="Brain reconstruction completed"/>:
                             <LoadingStep stepText="Brain reconstruction in Progress (very long - can take up to 16h)"/>}
                         </li>
-                        <li>{response.subs ? "Extra subcortical segmentations completed" : "Extra subcortical segmentations not started"}</li>
-                        <li>{response.json ? "Json files created" : "Json files not started"}</li>
+                        <li>
+                            {response.json ?
+                            <CompletedStep stepText="Json files created"/>:
+                            <LoadingStep stepText="Json files in Progress"/>}
+                        </li>
                     </ol>
                 </div>
             </section>
