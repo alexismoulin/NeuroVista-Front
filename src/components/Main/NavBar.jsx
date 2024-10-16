@@ -41,9 +41,9 @@ export default function NavBar({ selectedType, selectedData, setSelectedData }) 
                 <li className={selectedData.title === "Hypothalamus" ? "active" : undefined}>
                     <a onClick={() => setSelectedData("hypothalamus")}>Hypothalamus</a>
                 </li>
-                <li className={selectedData.title === "Cerebellum" ? "active" : undefined}>
+                {/*<li className={selectedData.title === "Cerebellum" ? "active" : undefined}>
                     <a onClick={() => setSelectedData("cerebellum")}>Cerebellum</a>
-                </li>
+                </li>*/}
             </ul>
         )
     }
