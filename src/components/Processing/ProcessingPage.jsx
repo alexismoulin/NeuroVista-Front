@@ -62,7 +62,7 @@ export default function ProcessingPage({setPage, loadedData}) {
                         </li>
                         <li>
                             {
-                                response.subs ?
+                                response.json ?
                                     <CompletedStep stepText="Json files created"/> :
                                     <LoadingStep
                                         stepText="Json files in Progress"/>
@@ -70,14 +70,6 @@ export default function ProcessingPage({setPage, loadedData}) {
                         </li>
                     </ol>
                 </div>
-            </section>
-            <div id="intro"></div>
-            <section id="main">
-                <h3>Information uploaded</h3>
-                <p>{JSON.stringify(loadedData.form_data)}</p>
-                <ol>
-                    {loadedData.file_names.map((el, index) => (<li key={index}>{el}</li>))}
-                </ol>
             </section>
 
             <div id="intro">
