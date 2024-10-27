@@ -1,1 +1,540 @@
-{"hippocampus": [{"name": "Hippocampal_tail", "lhs_volume": 692.62, "rhs_volume": 684.7}, {"name": "subiculum-body", "lhs_volume": 211.3, "rhs_volume": 163.22}, {"name": "CA1-body", "lhs_volume": 183.11, "rhs_volume": 174.59}, {"name": "subiculum-head", "lhs_volume": 162.21, "rhs_volume": 164.1}, {"name": "hippocampal-fissure", "lhs_volume": 177.59, "rhs_volume": 73.04}, {"name": "presubiculum-head", "lhs_volume": 88.03, "rhs_volume": 119.28}, {"name": "CA1-head", "lhs_volume": 594.44, "rhs_volume": 579.28}, {"name": "presubiculum-body", "lhs_volume": 184.69, "rhs_volume": 101.21}, {"name": "parasubiculum", "lhs_volume": 40.27, "rhs_volume": 52.96}, {"name": "molecular_layer_HP-head", "lhs_volume": 355.5, "rhs_volume": 356.65}, {"name": "molecular_layer_HP-body", "lhs_volume": 266.16, "rhs_volume": 213.71}, {"name": "GC-ML-DG-head", "lhs_volume": 183.7, "rhs_volume": 187.49}, {"name": "CA3-body", "lhs_volume": 122.35, "rhs_volume": 99.02}, {"name": "GC-ML-DG-body", "lhs_volume": 150.57, "rhs_volume": 116.97}, {"name": "CA4-head", "lhs_volume": 150.86, "rhs_volume": 157.77}, {"name": "CA4-body", "lhs_volume": 140.03, "rhs_volume": 101.18}, {"name": "fimbria", "lhs_volume": 132.72, "rhs_volume": 167.11}, {"name": "CA3-head", "lhs_volume": 151.28, "rhs_volume": 149.97}, {"name": "HATA", "lhs_volume": 63.02, "rhs_volume": 75.44}, {"name": "Whole_hippocampus", "lhs_volume": 3872.84, "rhs_volume": 3664.65}, {"name": "Whole_hippocampal_body", "lhs_volume": 1390.92, "rhs_volume": 1137.01}, {"name": "Whole_hippocampal_head", "lhs_volume": 1789.3, "rhs_volume": 1842.93}], "thalamus": [{"name": "LGN", "lhs_volume": 173.95, "rhs_volume": 187.21}, {"name": "MGN", "lhs_volume": 308.25, "rhs_volume": 148.7}, {"name": "PuI", "lhs_volume": 318.31, "rhs_volume": 319.87}, {"name": "PuM", "lhs_volume": 1336.15, "rhs_volume": 1372.06}, {"name": "L-Sg", "lhs_volume": 43.12, "rhs_volume": 26.25}, {"name": "VPL", "lhs_volume": 1136.71, "rhs_volume": 1205.88}, {"name": "CM", "lhs_volume": 373.8, "rhs_volume": 349.17}, {"name": "VLa", "lhs_volume": 909.3, "rhs_volume": 930.72}, {"name": "PuA", "lhs_volume": 227.45, "rhs_volume": 259.73}, {"name": "MDm", "lhs_volume": 913.89, "rhs_volume": 849.52}, {"name": "Pf", "lhs_volume": 85.41, "rhs_volume": 105.87}, {"name": "VAmc", "lhs_volume": 50.57, "rhs_volume": 53.02}, {"name": "MDl", "lhs_volume": 327.56, "rhs_volume": 315.05}, {"name": "CeM", "lhs_volume": 81.69, "rhs_volume": 91.22}, {"name": "VA", "lhs_volume": 622.5, "rhs_volume": 567.21}, {"name": "MV(Re)", "lhs_volume": 12.58, "rhs_volume": 19.3}, {"name": "VM", "lhs_volume": 32.65, "rhs_volume": 33.83}, {"name": "CL", "lhs_volume": 64.54, "rhs_volume": 61.91}, {"name": "PuL", "lhs_volume": 226.97, "rhs_volume": 237.8}, {"name": "Pt", "lhs_volume": 11.87, "rhs_volume": 10.53}, {"name": "AV", "lhs_volume": 183.26, "rhs_volume": 181.14}, {"name": "Pc", "lhs_volume": 4.56, "rhs_volume": 5.49}, {"name": "VLp", "lhs_volume": 1103.11, "rhs_volume": 1178.35}, {"name": "LP", "lhs_volume": 171.26, "rhs_volume": 158.94}, {"name": "LD", "lhs_volume": 39.89, "rhs_volume": 36.5}, {"name": "Whole_thalamus", "lhs_volume": 8759.34, "rhs_volume": 8705.23}], "amygdala": [{"name": "Lateral-nucleus", "lhs_volume": 708.73, "rhs_volume": 594.33}, {"name": "Basal-nucleus", "lhs_volume": 407.95, "rhs_volume": 396.45}, {"name": "Accessory-Basal-nucleus", "lhs_volume": 276.05, "rhs_volume": 269.64}, {"name": "Anterior-amygdaloid-area-AAA", "lhs_volume": 56.36, "rhs_volume": 54.45}, {"name": "Central-nucleus", "lhs_volume": 49.69, "rhs_volume": 66.01}, {"name": "Medial-nucleus", "lhs_volume": 26.65, "rhs_volume": 28.36}, {"name": "Cortical-nucleus", "lhs_volume": 30.56, "rhs_volume": 30.18}, {"name": "Corticoamygdaloid-transitio", "lhs_volume": 196.5, "rhs_volume": 166.88}, {"name": "Paralaminar-nucleus", "lhs_volume": 37.04, "rhs_volume": 36.8}, {"name": "Whole_amygdala", "lhs_volume": 1789.53, "rhs_volume": 1643.11}], "brain_stem": [{"name": "Medulla", "volume": 2776.92}, {"name": "Pons", "volume": 12897.63}, {"name": "SCP", "volume": 323.57}, {"name": "Midbrain", "volume": 6375.87}, {"name": "Whole_brainstem", "volume": 22374.0}], "hypothalamus": [{"name": "anterior-inferior", "lhs_volume": 16.745, "rhs_volume": 17.212}, {"name": "anterior-superior", "lhs_volume": 17.678, "rhs_volume": 25.936}, {"name": "posterior", "lhs_volume": 56.81, "rhs_volume": 58.471}, {"name": "tubular inferior", "lhs_volume": 97.135, "rhs_volume": 71.68}, {"name": "tubular superior", "lhs_volume": 60.911, "rhs_volume": 94.331}, {"name": "whole", "lhs_volume": 249.279, "rhs_volume": 267.63}, {"name": "N.opticus", "lhs_volume": 181.4, "rhs_volume": 68.1}, {"name": "Optic-tract", "lhs_volume": 94.0, "rhs_volume": 48.6}, {"name": "C.mammilare", "lhs_volume": 59.7, "rhs_volume": 38.1}, {"name": "Chiasma-Opticum", "lhs_volume": 80.8, "rhs_volume": 71.6}, {"name": "Fornix", "lhs_volume": 214.2, "rhs_volume": 178.6}, {"name": "Med-Hypothalamus", "lhs_volume": 49.0, "rhs_volume": 40.5}, {"name": "Lat-Hypothalamus", "lhs_volume": 103.1, "rhs_volume": 72.7}, {"name": "Ant-Hypothalamus", "lhs_volume": 144.4, "rhs_volume": 123.0}, {"name": "Post-Hypothalamus", "lhs_volume": 237.1, "rhs_volume": 228.0}], "cerebellum": [{"name": "Cerebellum-White-Matter", "lhs_volume": 24003.31, "rhs_volume": 20830.25}, {"name": "Cerebellum-Cortex", "lhs_volume": 28443.25, "rhs_volume": 21903.72}, {"name": "Cbm_I_IV", "lhs_volume": 1466.33, "rhs_volume": 1382.98}, {"name": "Cbm_V", "lhs_volume": 1030.57, "rhs_volume": 748.99}, {"name": "Cbm_VI", "lhs_volume": 3839.32, "rhs_volume": 1741.77}, {"name": "Cbm_CrusI", "lhs_volume": 8222.1, "rhs_volume": 7030.26}, {"name": "Cbm_CrusII", "lhs_volume": 8087.06, "rhs_volume": 6137.4}, {"name": "Cbm_VIIb", "lhs_volume": 2162.72, "rhs_volume": 2554.26}, {"name": "Cbm_VIIIa", "lhs_volume": 824.45, "rhs_volume": 488.15}, {"name": "Cbm_VIIIb", "lhs_volume": 593.6, "rhs_volume": 85.31}, {"name": "Cbm_IX", "lhs_volume": 1960.12, "rhs_volume": 1552.66}, {"name": "Cbm_X", "lhs_volume": 256.97, "rhs_volume": 181.94}]}
+{
+    "hippocampus": [
+        {
+            "name": "Hippocampal_tail",
+            "lhs_volume": 656.53,
+            "rhs_volume": 701.74
+        },
+        {
+            "name": "subiculum-body",
+            "lhs_volume": 166.12,
+            "rhs_volume": 172.35
+        },
+        {
+            "name": "CA1-body",
+            "lhs_volume": 186.84,
+            "rhs_volume": 153.75
+        },
+        {
+            "name": "subiculum-head",
+            "lhs_volume": 125.26,
+            "rhs_volume": 148.86
+        },
+        {
+            "name": "hippocampal-fissure",
+            "lhs_volume": 96.12,
+            "rhs_volume": 67.96
+        },
+        {
+            "name": "presubiculum-head",
+            "lhs_volume": 118.18,
+            "rhs_volume": 113.64
+        },
+        {
+            "name": "CA1-head",
+            "lhs_volume": 588.65,
+            "rhs_volume": 546.26
+        },
+        {
+            "name": "presubiculum-body",
+            "lhs_volume": 163.08,
+            "rhs_volume": 102.87
+        },
+        {
+            "name": "parasubiculum",
+            "lhs_volume": 54.51,
+            "rhs_volume": 50.36
+        },
+        {
+            "name": "molecular_layer_HP-head",
+            "lhs_volume": 319.86,
+            "rhs_volume": 340.72
+        },
+        {
+            "name": "molecular_layer_HP-body",
+            "lhs_volume": 246.01,
+            "rhs_volume": 213.85
+        },
+        {
+            "name": "GC-ML-DG-head",
+            "lhs_volume": 149.43,
+            "rhs_volume": 178.1
+        },
+        {
+            "name": "CA3-body",
+            "lhs_volume": 124.29,
+            "rhs_volume": 102.79
+        },
+        {
+            "name": "GC-ML-DG-body",
+            "lhs_volume": 151.27,
+            "rhs_volume": 115.53
+        },
+        {
+            "name": "CA4-head",
+            "lhs_volume": 119.6,
+            "rhs_volume": 149.41
+        },
+        {
+            "name": "CA4-body",
+            "lhs_volume": 135.35,
+            "rhs_volume": 104.07
+        },
+        {
+            "name": "fimbria",
+            "lhs_volume": 119.0,
+            "rhs_volume": 161.46
+        },
+        {
+            "name": "CA3-head",
+            "lhs_volume": 130.88,
+            "rhs_volume": 151.7
+        },
+        {
+            "name": "HATA",
+            "lhs_volume": 56.71,
+            "rhs_volume": 80.01
+        },
+        {
+            "name": "Whole_hippocampus",
+            "lhs_volume": 3611.56,
+            "rhs_volume": 3587.48
+        },
+        {
+            "name": "Whole_hippocampal_body",
+            "lhs_volume": 1291.96,
+            "rhs_volume": 1126.69
+        },
+        {
+            "name": "Whole_hippocampal_head",
+            "lhs_volume": 1663.08,
+            "rhs_volume": 1759.06
+        }
+    ],
+    "thalamus": [
+        {
+            "name": "LGN",
+            "lhs_volume": 142.03,
+            "rhs_volume": 173.86
+        },
+        {
+            "name": "MGN",
+            "lhs_volume": 183.05,
+            "rhs_volume": 120.33
+        },
+        {
+            "name": "PuI",
+            "lhs_volume": 272.39,
+            "rhs_volume": 288.16
+        },
+        {
+            "name": "PuM",
+            "lhs_volume": 1257.99,
+            "rhs_volume": 1337.74
+        },
+        {
+            "name": "L-Sg",
+            "lhs_volume": 37.89,
+            "rhs_volume": 24.39
+        },
+        {
+            "name": "VPL",
+            "lhs_volume": 1017.16,
+            "rhs_volume": 1124.03
+        },
+        {
+            "name": "CM",
+            "lhs_volume": 350.26,
+            "rhs_volume": 328.36
+        },
+        {
+            "name": "VLa",
+            "lhs_volume": 860.49,
+            "rhs_volume": 909.15
+        },
+        {
+            "name": "PuA",
+            "lhs_volume": 212.93,
+            "rhs_volume": 251.31
+        },
+        {
+            "name": "MDm",
+            "lhs_volume": 864.69,
+            "rhs_volume": 820.22
+        },
+        {
+            "name": "Pf",
+            "lhs_volume": 84.0,
+            "rhs_volume": 97.77
+        },
+        {
+            "name": "VAmc",
+            "lhs_volume": 46.55,
+            "rhs_volume": 49.25
+        },
+        {
+            "name": "MDl",
+            "lhs_volume": 310.32,
+            "rhs_volume": 299.99
+        },
+        {
+            "name": "CeM",
+            "lhs_volume": 80.96,
+            "rhs_volume": 91.16
+        },
+        {
+            "name": "VA",
+            "lhs_volume": 573.36,
+            "rhs_volume": 569.88
+        },
+        {
+            "name": "MV(Re)",
+            "lhs_volume": 14.0,
+            "rhs_volume": 18.88
+        },
+        {
+            "name": "VM",
+            "lhs_volume": 27.7,
+            "rhs_volume": 32.7
+        },
+        {
+            "name": "CL",
+            "lhs_volume": 63.87,
+            "rhs_volume": 64.93
+        },
+        {
+            "name": "PuL",
+            "lhs_volume": 207.51,
+            "rhs_volume": 221.56
+        },
+        {
+            "name": "Pt",
+            "lhs_volume": 10.94,
+            "rhs_volume": 9.63
+        },
+        {
+            "name": "AV",
+            "lhs_volume": 189.53,
+            "rhs_volume": 193.81
+        },
+        {
+            "name": "Pc",
+            "lhs_volume": 4.34,
+            "rhs_volume": 5.15
+        },
+        {
+            "name": "VLp",
+            "lhs_volume": 1063.65,
+            "rhs_volume": 1150.01
+        },
+        {
+            "name": "LP",
+            "lhs_volume": 181.03,
+            "rhs_volume": 171.13
+        },
+        {
+            "name": "LD",
+            "lhs_volume": 42.11,
+            "rhs_volume": 36.87
+        },
+        {
+            "name": "Whole_thalamus",
+            "lhs_volume": 8098.77,
+            "rhs_volume": 8390.29
+        }
+    ],
+    "amygdala": [
+        {
+            "name": "Lateral-nucleus",
+            "lhs_volume": 663.35,
+            "rhs_volume": 536.05
+        },
+        {
+            "name": "Basal-nucleus",
+            "lhs_volume": 373.89,
+            "rhs_volume": 409.09
+        },
+        {
+            "name": "Accessory-Basal-nucleus",
+            "lhs_volume": 258.98,
+            "rhs_volume": 290.19
+        },
+        {
+            "name": "Anterior-amygdaloid-area-AAA",
+            "lhs_volume": 42.48,
+            "rhs_volume": 61.41
+        },
+        {
+            "name": "Central-nucleus",
+            "lhs_volume": 55.87,
+            "rhs_volume": 62.71
+        },
+        {
+            "name": "Medial-nucleus",
+            "lhs_volume": 21.99,
+            "rhs_volume": 27.71
+        },
+        {
+            "name": "Cortical-nucleus",
+            "lhs_volume": 28.11,
+            "rhs_volume": 30.71
+        },
+        {
+            "name": "Corticoamygdaloid-transitio",
+            "lhs_volume": 154.22,
+            "rhs_volume": 200.42
+        },
+        {
+            "name": "Paralaminar-nucleus",
+            "lhs_volume": 35.92,
+            "rhs_volume": 37.1
+        },
+        {
+            "name": "Whole_amygdala",
+            "lhs_volume": 1634.81,
+            "rhs_volume": 1655.4
+        }
+    ],
+    "brain_stem": [
+        {
+            "name": "Medulla",
+            "volume": 3377.57
+        },
+        {
+            "name": "Pons",
+            "volume": 16188.27
+        },
+        {
+            "name": "SCP",
+            "volume": 386.48
+        },
+        {
+            "name": "Midbrain",
+            "volume": 6745.3
+        },
+        {
+            "name": "Whole_brainstem",
+            "volume": 26697.62
+        }
+    ],
+    "hypothalamus": [
+        {
+            "name": "Right-N.opticus",
+            "volume": 66.2
+        },
+        {
+            "name": "Left-N.opticus",
+            "volume": 184.1
+        },
+        {
+            "name": "Right-C.mammilare",
+            "volume": 39.7
+        },
+        {
+            "name": "Right-Optic-tract",
+            "volume": 56.2
+        },
+        {
+            "name": "Left-Optic-tract",
+            "volume": 92.2
+        },
+        {
+            "name": "Left-C.mammilare",
+            "volume": 63.8
+        },
+        {
+            "name": "Right-Chiasma-Opticum",
+            "volume": 70.2
+        },
+        {
+            "name": "Left-Chiasma-Opticum",
+            "volume": 78.9
+        },
+        {
+            "name": "Ant-Commisure",
+            "volume": 112.3
+        },
+        {
+            "name": "Third-Ventricle",
+            "volume": 961.9
+        },
+        {
+            "name": "Right-Fornix",
+            "volume": 177.1
+        },
+        {
+            "name": "Left-Fornix",
+            "volume": 211.4
+        },
+        {
+            "name": "Epiphysis",
+            "volume": 93.6
+        },
+        {
+            "name": "Hypophysis",
+            "volume": 524.4
+        },
+        {
+            "name": "Infundibulum",
+            "volume": 115.1
+        },
+        {
+            "name": "Tuberal-Region",
+            "volume": 2.4
+        },
+        {
+            "name": "Left-Med-Hypothalamus",
+            "volume": 48.0
+        },
+        {
+            "name": "Left-Lat-Hypothalamus",
+            "volume": 103.9
+        },
+        {
+            "name": "Left-Ant-Hypothalamus",
+            "volume": 144.2
+        },
+        {
+            "name": "Left-Post-Hypothalamus",
+            "volume": 234.8
+        },
+        {
+            "name": "Right-Med-Hypothalamus",
+            "volume": 40.7
+        },
+        {
+            "name": "Right-Lat-Hypothalamus",
+            "volume": 69.7
+        },
+        {
+            "name": "Right-Ant-Hypothalamus",
+            "volume": 121.9
+        },
+        {
+            "name": "Right-Post-Hypothalamus",
+            "volume": 233.8
+        }
+    ],
+    "cerebellum": [
+        {
+            "name": "Left-Cerebellum-White-Matter",
+            "volume": 24113.466
+        },
+        {
+            "name": "Left-Cerebellum-Cortex",
+            "volume": 28409.843
+        },
+        {
+            "name": "Right-Cerebellum-White-Matter",
+            "volume": 20737.287
+        },
+        {
+            "name": "Right-Cerebellum-Cortex",
+            "volume": 22000.652
+        },
+        {
+            "name": "Cbm_Left_I_IV",
+            "volume": 1462.236
+        },
+        {
+            "name": "Cbm_Right_I_IV",
+            "volume": 1391.849
+        },
+        {
+            "name": "Cbm_Left_V",
+            "volume": 1021.956
+        },
+        {
+            "name": "Cbm_Right_V",
+            "volume": 756.949
+        },
+        {
+            "name": "Cbm_Left_VI",
+            "volume": 3824.898
+        },
+        {
+            "name": "Cbm_Vermis_VI",
+            "volume": 353.226
+        },
+        {
+            "name": "Cbm_Right_VI",
+            "volume": 1759.981
+        },
+        {
+            "name": "Cbm_Left_CrusI",
+            "volume": 8205.901
+        },
+        {
+            "name": "Cbm_Right_CrusI",
+            "volume": 7033.962
+        },
+        {
+            "name": "Cbm_Left_CrusII",
+            "volume": 8085.854
+        },
+        {
+            "name": "Cbm_Right_CrusII",
+            "volume": 6149.742
+        },
+        {
+            "name": "Cbm_Left_VIIb",
+            "volume": 2172.824
+        },
+        {
+            "name": "Cbm_Right_VIIb",
+            "volume": 2553.675
+        },
+        {
+            "name": "Cbm_Left_VIIIa",
+            "volume": 825.831
+        },
+        {
+            "name": "Cbm_Right_VIIIa",
+            "volume": 501.792
+        },
+        {
+            "name": "Cbm_Left_VIIIb",
+            "volume": 586.291
+        },
+        {
+            "name": "Cbm_Right_VIIIb",
+            "volume": 92.626
+        },
+        {
+            "name": "Cbm_Left_IX",
+            "volume": 1959.792
+        },
+        {
+            "name": "Cbm_Vermis_IX",
+            "volume": 757.52
+        },
+        {
+            "name": "Cbm_Right_IX",
+            "volume": 1578.249
+        },
+        {
+            "name": "Cbm_Left_X",
+            "volume": 264.26
+        },
+        {
+            "name": "Cbm_Vermis_X",
+            "volume": 318.038
+        },
+        {
+            "name": "Cbm_Right_X",
+            "volume": 181.826
+        },
+        {
+            "name": "Cbm_Vermis_VII",
+            "volume": 262.394
+        },
+        {
+            "name": "Cbm_Vermis_VIII",
+            "volume": 2201.105
+        },
+        {
+            "name": "Cbm_Vermis",
+            "volume": 3892.282
+        }
+    ]
+}
