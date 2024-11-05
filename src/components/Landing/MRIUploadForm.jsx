@@ -7,9 +7,9 @@ const SERVER_URL = "http://127.0.0.1:5001"
 
 export default function MRIUploadForm({ styles, setPage, setLoadedData }) {
     const [formData, setFormData] = useState({
-        subject: '',
-        series: '',
-        notes: '',
+        subject: "",
+        study: "",
+        notes: "",
         dicoms: [],
     });
 
@@ -34,7 +34,7 @@ export default function MRIUploadForm({ styles, setPage, setLoadedData }) {
 
         const data = new FormData();
         data.append('subject', formData.subject);
-        data.append('series', formData.series);
+        data.append('study', formData.study);
         data.append('notes', formData.notes);
 
         formData.dicoms.forEach((file) => {
@@ -55,6 +55,7 @@ export default function MRIUploadForm({ styles, setPage, setLoadedData }) {
 
     };
 
+    // eslint-disable-next-line no-unused-vars
     const handleSubmitTest = async (e) => {
         await testFunction(e, formData, setLoadedData, setPage, SERVER_URL);
     }
@@ -63,15 +64,15 @@ export default function MRIUploadForm({ styles, setPage, setLoadedData }) {
         <section id={styles.form} className={styles.main}>
             <header>
                 <div className={styles.container}>
-                    <h2>Upload & Process MRI Series</h2>
-                    <p>Please upload & process <b>one</b> MRI series at a time</p>
+                    <h2>Upload & Process your T1 MRI Study</h2>
+                    <p>Please upload only T1 MRI series within your study</p>
                 </div>
             </header>
             <div className={classNames(styles.content, styles.style4, styles.featured)}>
                 <div className={classNames(styles.container, styles.medium)}>
                     <form onSubmit={handleSubmit} encType="multipart/form-data">
                         <div className={classNames(styles.row, styles.gtr50)}>
-                            {['subject', 'series'].map((field) => (
+                            {['subject', 'study'].map((field) => (
                                 <div key={field} className={classNames(styles.col6, styles.col12Mobile)}>
                                     <label htmlFor={field}>{field.charAt(0).toUpperCase() + field.slice(1)}</label>
                                     <input

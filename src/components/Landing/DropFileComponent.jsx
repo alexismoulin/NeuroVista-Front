@@ -56,7 +56,7 @@ export default function DropFileComponent({ onFileChange }) {
             onDragLeave={(e) => handleDrag(e, false)}
             onDrop={handleDrop}
         >
-            <span className="drop-title">Drop files here</span> or
+            <span className="drop-title">Drop DICOM files here</span> or
             <input
                 type="file"
                 name="dicoms"

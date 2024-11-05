@@ -5,6 +5,7 @@ import MainPage from "./components/Main/MainPage.jsx";
 import ResultsPage from "./components/Results/ResultsPage.jsx";
 import LargeResultsPage from "./components/Results/LargeResultsPage.jsx";
 import LandingPage from "./components/Landing/LandingPage.jsx";
+import ProcessingPage from "./components/Processing/ProcessingPage.jsx";
 
 import "./App.css"
 import "./assets/css/main.css"
@@ -17,7 +18,6 @@ import "./assets/css/copyright.css"
 import "./assets/css/input.css"
 
 import { data } from "./data/data.js"
-import ProcessingPage from "./components/Processing/ProcessingPage.jsx";
 
 export default function App() {
     const [type, setType] = useState("cortical")
