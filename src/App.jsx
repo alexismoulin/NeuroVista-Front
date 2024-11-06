@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import Copyright from './components/Main/Copyright.jsx';
 import MainPage from "./components/Main/MainPage.jsx";
@@ -17,14 +17,29 @@ import "./assets/css/button.css"
 import "./assets/css/copyright.css"
 import "./assets/css/input.css"
 
-import { data } from "./data/data.js"
+const SERVER_URL = "http://127.0.0.1:5001"
+import { initializeData } from "./helpers/data.js"
 
 export default function App() {
     const [type, setType] = useState("cortical")
-    const [selectedData, setSelectedData] = useState(data.aseg)
+    const [data, setData] = useState(null);
+    const [selectedData, setSelectedData] = useState(null)
     const [page, setPage] = useState("landing")
     const [selectedItem, setSelectedItem] = useState()
     const [loadedData, setLoadedData] = useState()
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await initializeData();
+            setData(result);
+            setSelectedData(result.aseg);
+            console.log(result);
+        };
+
+        fetchData();
+    }, []);
+
+    if (!data) return <div>Loading...</div>;
 
     function handleDefaultType(defaultType) {
         if (defaultType === "cortical") {
@@ -44,7 +59,7 @@ export default function App() {
     function renderSwitch(param) {
         switch(param) {
             case "landing":
-                return <LandingPage setPage={setPage} setLoadedData={setLoadedData} />
+                return <LandingPage setPage={setPage} serverUrl={SERVER_URL} />
             case "processing":
                 return <ProcessingPage setPage={setPage} loadedData={loadedData} />
             case "main":

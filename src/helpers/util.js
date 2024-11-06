@@ -63,13 +63,13 @@ export const handleStream = async (prompt, updateResponseText) => {
             }
         }
     } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching helpers:', error);
         updateResponseText('Error occurred while fetching response.');
     }
 };
 
 
-// Test function for data loading
+// Test function for helpers loading
 
 export async function testFunction(e, formData, setLoadedData, setPage, serverUrl) {
     e.preventDefault();

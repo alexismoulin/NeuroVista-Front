@@ -1,11 +1,8 @@
 import { useState } from 'react';
 import classNames from 'classnames';
 import DropFiles from './DropFileComponent.jsx';
-import {testFunction} from "../../util.js";
 
-const SERVER_URL = "http://127.0.0.1:5001"
-
-export default function MRIUploadForm({ styles, setPage, setLoadedData }) {
+export default function MRIUploadForm({ styles, setPage, serverUrl }) {
     const [formData, setFormData] = useState({
         subject: "",
         study: "",
@@ -44,7 +41,7 @@ export default function MRIUploadForm({ styles, setPage, setLoadedData }) {
         setPage("processing")
 
         try {
-             await fetch(`${SERVER_URL}/run_script`, {
+             await fetch(`${serverUrl}/run_script`, {
                 method: 'POST',
                 body: data,
             });
@@ -54,11 +51,6 @@ export default function MRIUploadForm({ styles, setPage, setLoadedData }) {
         }
 
     };
-
-    // eslint-disable-next-line no-unused-vars
-    const handleSubmitTest = async (e) => {
-        await testFunction(e, formData, setLoadedData, setPage, SERVER_URL);
-    }
 
     return (
         <section id={styles.form} className={styles.main}>

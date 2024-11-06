@@ -6,14 +6,14 @@ import MRIUploadForm from "./MRIUploadForm.jsx";
 
 import styles from "../../assets/css/landing.module.css"
 
-export default function LandingPage({ setPage, setLoadedData }) {
+export default function LandingPage({ setPage, serverUrl }) {
 
     const [showForm, setShowForm] = useState(false)
 
     return (
         <div>
             <Header setPage={setPage} setShowForm={setShowForm}/>
-            {showForm && <MRIUploadForm setPage={setPage} styles={styles} setLoadedData={setLoadedData}/>}
+            {showForm && <MRIUploadForm setPage={setPage} styles={styles} serverUrl={serverUrl}/>}
             <Infos styles={styles} />
         </div>
     )
