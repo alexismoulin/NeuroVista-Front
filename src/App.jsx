@@ -77,7 +77,7 @@ export default function App() {
     }
 
     return (
-        <div className="bg-basic">
+        <div>
             {renderSwitch(page)}
             <Copyright/>
         </div>
