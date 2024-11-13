@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import classNames from 'classnames';
 
 export default function DropFileComponent({ onFileChange }) {
     const [isDragging, setIsDragging] = useState(false);
@@ -50,7 +49,7 @@ export default function DropFileComponent({ onFileChange }) {
 
     return (
         <label
-            className={classNames("drop-container", { "drag-active": isDragging })}
+            className=""
             onDragOver={(e) => e.preventDefault()}
             onDragEnter={(e) => handleDrag(e, true)}
             onDragLeave={(e) => handleDrag(e, false)}

@@ -7,16 +7,6 @@ import LargeResultsPage from "./components/Results/LargeResultsPage.jsx";
 import LandingPage from "./components/Landing/LandingPage.jsx";
 import ProcessingPage from "./components/Processing/ProcessingPage.jsx";
 
-import "./App.css"
-import "./assets/css/main.css"
-import "./assets/css/noscript.css"
-import "./assets/css/intro.css"
-import "./assets/css/icon.css"
-import "./assets/css/image.css"
-import "./assets/css/button.css"
-import "./assets/css/copyright.css"
-import "./assets/css/input.css"
-
 const SERVER_URL = "http://127.0.0.1:5001"
 import { initializeData } from "./helpers/data.js"
 
@@ -87,7 +77,7 @@ export default function App() {
     }
 
     return (
-        <div id="wrapper">
+        <div className="bg-basic">
             {renderSwitch(page)}
             <Copyright/>
         </div>

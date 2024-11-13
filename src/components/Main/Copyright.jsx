@@ -1,9 +1,7 @@
 export default function Copyright() {
     return (
-        <div id="copyright">
-            <ul>
-                <li>&copy; Neurovista</li>
-            </ul>
+        <div>
+            <p className="font-opensans">&copy; Neurovista</p>
         </div>
     )
 }

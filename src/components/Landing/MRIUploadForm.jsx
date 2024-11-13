@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import classNames from 'classnames';
 import DropFiles from './DropFileComponent.jsx';
 
-export default function MRIUploadForm({ styles, setPage, serverUrl }) {
+export default function MRIUploadForm({ setPage, serverUrl }) {
     const [formData, setFormData] = useState({
         subject: "",
         study: "",
@@ -53,53 +52,56 @@ export default function MRIUploadForm({ styles, setPage, serverUrl }) {
     };
 
     return (
-        <section id={styles.form} className={styles.main}>
-            <header>
-                <div className={styles.container}>
-                    <h2>Upload & Process your T1 MRI Study</h2>
-                    <p>Please upload only T1 MRI series within your study</p>
-                </div>
+        <section className="p-8 max-w-7xl mx-auto mt-10 bg-white">
+            <header className="text-center mb-6">
+                <h2 className="text-3xl font-bold font-opensans uppercase text-slatey mb-2">Upload & Process your T1 MRI Study</h2>
             </header>
-            <div className={classNames(styles.content, styles.style4, styles.featured)}>
-                <div className={classNames(styles.container, styles.medium)}>
-                    <form onSubmit={handleSubmit} encType="multipart/form-data">
-                        <div className={classNames(styles.row, styles.gtr50)}>
-                            {['subject', 'study'].map((field) => (
-                                <div key={field} className={classNames(styles.col6, styles.col12Mobile)}>
-                                    <label htmlFor={field}>{field.charAt(0).toUpperCase() + field.slice(1)}</label>
-                                    <input
-                                        type="text"
-                                        name={field}
-                                        id={field}
-                                        placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
-                                        value={formData[field]}
-                                        onChange={handleInputChange}
-                                    />
-                                </div>
-                            ))}
-                            <div className={styles.col12}>
-                                <label htmlFor="notes">Notes</label>
-                                <textarea
-                                    name="notes"
-                                    id="notes"
-                                    placeholder="Notes"
-                                    value={formData.notes}
-                                    onChange={handleInputChange}
-                                />
-                            </div>
-                            <div className={styles.col12}>
-                                <DropFiles onFileChange={handleFileChange}/>
-                            </div>
-                            <div className={styles.col6}>
-                                <input type="reset" value="Reset"/>
-                            </div>
-                            <div className={styles.col6}>
-                                <input type="submit" value="Process"/>
-                            </div>
+            <form onSubmit={handleSubmit} encType="multipart/form-data" className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {['subject', 'study'].map((field) => (
+                        <div key={field}>
+                            <label htmlFor={field} className="block text-slatey font-black mb-2 font-merriweather">
+                                {field.charAt(0).toUpperCase() + field.slice(1)}
+                            </label>
+                            <input
+                                type="text"
+                                name={field}
+                                id={field}
+                                placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+                                value={formData[field]}
+                                onChange={handleInputChange}
+                                className="w-full px-4 py-2 border rounded-lg font-merriweather focus:outline-none focus:ring-2 focus:ring-tahiti"
+                            />
                         </div>
-                    </form>
+                    ))}
                 </div>
-            </div>
+                <div>
+                    <label htmlFor="notes" className="block text-slatey font-merriweather font-black mb-2">Notes</label>
+                    <textarea
+                        name="notes"
+                        id="notes"
+                        placeholder="Notes"
+                        value={formData.notes}
+                        onChange={handleInputChange}
+                        className="w-full h-32 px-4 py-2 border rounded-lg font-merriweather focus:outline-none focus:ring-2 focus:ring-tahiti"
+                    />
+                </div>
+                <div className="border-2 border-dashed border-gray-300 p-6 rounded-lg text-center">
+                    <DropFiles onFileChange={handleFileChange}/>
+                </div>
+                <div className="flex justify-end space-x-4">
+                    <input
+                        type="reset"
+                        value="Reset"
+                        className="px-4 py-2 bg-gray-200 text-gray-700 font-semibold rounded-lg cursor-pointer hover:bg-gray-300"
+                    />
+                    <input
+                        type="submit"
+                        value="Process"
+                        className="px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg cursor-pointer hover:bg-blue-700"
+                    />
+                </div>
+            </form>
         </section>
     );
 }
