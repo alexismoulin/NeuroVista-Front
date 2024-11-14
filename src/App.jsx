@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 
-import Copyright from './components/Reusable/Copyright.jsx';
 import MainPage from "./components/Main/MainPage.jsx";
 import ResultsPage from "./components/Results/ResultsPage.jsx";
 import LargeResultsPage from "./components/Results/LargeResultsPage.jsx";

@@ -52,7 +52,7 @@ export default function MRIUploadForm({ setPage, serverUrl }) {
     };
 
     return (
-        <section className="p-8 max-w-7xl mx-auto mt-10 bg-white">
+        <section className="p-8 w-11/12 mx-auto mt-10 bg-white">
             <header className="text-center mb-6">
                 <h2 className="text-3xl font-bold font-opensans uppercase text-slatey mb-2">Upload & Process your T1 MRI Study</h2>
             </header>

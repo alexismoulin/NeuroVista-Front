@@ -1,56 +1,72 @@
-import "../../assets/css/nav-bar.css"
-
 export default function NavBar({ selectedType, selectedData, setSelectedData }) {
     function corticalNavBar() {
+        const links = [
+            { title: "General Segmentations", data: "aseg" },
+            { title: "General Volumes", data: "brain" },
+            { title: "White Matter", data: "whiteMatter" },
+            { title: "LHS Parcellations", data: "lhsParcellation" },
+            { title: "RHS Parcellations", data: "rhsParcellation" },
+        ]
+        const navItemClass =
+            `px-8 py-4 transition-colors duration-200 cursor-pointer hover:bg-white hover:bg-opacity-10 
+            flex items-center justify-center w-1/${links.length}`;
+        const activeNavItemClass = "bg-white text-gray-800";
+
         return (
-            <ul className="links">
-                <li className={selectedData.title === "General Segmentations" ? "active" : undefined}>
-                    <a onClick={() => setSelectedData("aseg")}>General Segmentations</a>
-                </li>
-                <li className={selectedData.title === "General Volumes" ? "active" : undefined}>
-                    <a onClick={() => setSelectedData("brain")}>General Volumes</a>
-                </li>
-                <li className={selectedData.title === "White Matter" ? "active" : undefined}>
-                    <a onClick={() => setSelectedData("whiteMatter")}>White Matter</a>
-                </li>
-                <li className={selectedData.title === "LHS Parcellations" ? "active" : undefined}>
-                    <a onClick={() => setSelectedData("lhsParcellation")}>LHS Parcellations</a>
-                </li>
-                <li className={selectedData.title === "RHS Parcellations" ? "active" : undefined}>
-                    <a onClick={() => setSelectedData("rhsParcellation")}>RHS Parcellations</a>
-                </li>
+            <ul className="flex font-black tracking-wider uppercase text-white text-sm list-none mb-0 pl-0 w-full">
+                {links.map((link) => (
+                    <li
+                        key={link.title}
+                        className={`${navItemClass} ${
+                            selectedData.title === link.title ? activeNavItemClass : ""
+                        }`}
+                        onClick={() => setSelectedData(link.data)}
+                    >
+                        <a>{link.title}</a>
+                    </li>
+                ))}
             </ul>
-        )
+        );
     }
 
     function subCorticalNavBar() {
+        const links = [
+            { title: "Brain Stem", data: "brainStem" },
+            { title: "Amygdala", data: "amygdala" },
+            { title: "Hippocampus", data: "hippocampus" },
+            { title: "Thalamus", data: "thalamus" },
+            { title: "Hypothalamus", data: "hypothalamus" },
+            { title: "Cerebellum", data: "cerebellum" },
+        ]
+
+        const navItemClass =
+            `px-8 py-4 transition-colors duration-200 cursor-pointer hover:bg-white hover:bg-opacity-10 
+            flex items-center justify-center w-1/${links.length}`;
+        const activeNavItemClass = "bg-white text-gray-800";
+
         return (
-            <ul className="links">
-                <li className={selectedData.title === "Brain Stem" ? "active" : undefined}>
-                    <a onClick={() => setSelectedData("brainStem")}>Brain Stem</a>
-                </li>
-                <li className={selectedData.title === "Amygdala" ? "active" : undefined}>
-                    <a onClick={() => setSelectedData("amygdala")}>Amygdala</a>
-                </li>
-                <li className={selectedData.title === "Hippocampus" ? "active" : undefined}>
-                    <a onClick={() => setSelectedData("hippocampus")}>Hippocampus</a>
-                </li>
-                <li className={selectedData.title === "Thalamus" ? "active" : undefined}>
-                    <a onClick={() => setSelectedData("thalamus")}>Thalamus</a>
-                </li>
-                <li className={selectedData.title === "Hypothalamus" ? "active" : undefined}>
-                    <a onClick={() => setSelectedData("hypothalamus")}>Hypothalamus</a>
-                </li>
-                <li className={selectedData.title === "Cerebellum" ? "active" : undefined}>
-                    <a onClick={() => setSelectedData("cerebellum")}>Cerebellum</a>
-                </li>
+            <ul className="flex font-black tracking-wider uppercase text-white text-sm list-none mb-0 pl-0 w-full">
+                {links.map((link) => (
+                    <li
+                        key={link.title}
+                        className={`${navItemClass} ${
+                            selectedData.title === link.title ? activeNavItemClass : ""
+                        }`}
+                        onClick={() => setSelectedData(link.data)}
+                    >
+                        <a>{link.title}</a>
+                    </li>
+                ))}
             </ul>
-        )
+        );
     }
 
     return (
-        <nav id="nav">
+        <nav
+            className="flex transition-transform duration-1000 ease-in-out transform-gpu opacity-100 bg-white
+            bg-opacity-20 h-16 mx-auto -mt-16 w-11/12 z-20"
+        >
             {selectedType === "cortical" ? corticalNavBar() : subCorticalNavBar()}
         </nav>
-    )
+    );
 }

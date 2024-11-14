@@ -4,6 +4,7 @@ import NavBar from "./NavBar.jsx";
 import Table from "./Table.jsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faRobot} from "@fortawesome/free-solid-svg-icons";
+import Copyright from "../Reusable/Copyright.jsx";
 
 export default function MainPage({type, handleDefaultType, selectedData, handleSelectedData, setPage, setSelectedItem}) {
 
@@ -28,6 +29,7 @@ export default function MainPage({type, handleDefaultType, selectedData, handleS
                 </div>
                 <Table {...selectedData} setPage={setPage} setSelectedItem={setSelectedItem}/>
             </div>
+            <Copyright />
         </div>
     )
 }
