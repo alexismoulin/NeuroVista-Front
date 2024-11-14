@@ -16,18 +16,18 @@ export default function MainPage({type, handleDefaultType, selectedData, handleS
     }
 
     return (
-        <>
-            <Intro enabled={type} handleType={handleDefaultType} />
-            <NavBar selectedType={type} selectedData={selectedData} setSelectedData={handleSelectedData} />
+        <div className="bg-basic">
+            <Intro enabled={type} handleType={handleDefaultType}/>
+            <NavBar selectedType={type} selectedData={selectedData} setSelectedData={handleSelectedData}/>
             <div id="main">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-                    <h3 style={{ margin: 0 }}>{selectedData.title}</h3>
+                <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%'}}>
+                    <h3 style={{margin: 0}}>{selectedData.title}</h3>
                     <button className="top" onClick={handleLargePage}>
                         <FontAwesomeIcon icon={faRobot} size="xl"/>
                     </button>
                 </div>
                 <Table {...selectedData} setPage={setPage} setSelectedItem={setSelectedItem}/>
             </div>
-        </>
+        </div>
     )
 }

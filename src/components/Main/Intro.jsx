@@ -1,17 +1,15 @@
+import PillButton from "../Reusable/PillButton.jsx";
+
 export default function Intro({ handleType }) {
     return (
-        <div id="intro">
-            <h1>Results Analysis</h1>
-            <p>MRI Analysis Results for Patient Series</p>
-            <ul className="actions">
-                <li>
-                    <button onClick={() => handleType("cortical")}>Cortical</button>
-                </li>
-                <li></li>
-                <li>
-                    <button onClick={() => handleType("sub-cortical")}>Sub-Cortical</button>
-                </li>
-            </ul>
-        </div>
+        <section className="flex items-center flex-col pt-24 pb-12 mb-4 w-full">
+            <h1 className="text-white text-7xl tracking-wider uppercase font-bold font-opensans mb-8">Results
+                Analysis</h1>
+            <p className="text-white font-merriweather mb-8">MRI Analysis Results for Patient Series</p>
+            <div className="flex items-center flex-row gap-10">
+                <PillButton onClick={() => handleType("cortical")}>Cortical</PillButton>
+                <PillButton onClick={() => handleType("sub-cortical")}>SubCortical</PillButton>
+            </div>
+        </section>
     );
 }
