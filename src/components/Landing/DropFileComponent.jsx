@@ -55,7 +55,7 @@ export default function DropFileComponent({ onFileChange }) {
             onDragLeave={(e) => handleDrag(e, false)}
             onDrop={handleDrop}
         >
-            <span className="drop-title">Drop DICOM files here</span> or
+            <p className="font-merriweather text-slatey font-black mb-8">Drop your DICOM files here</p>
             <input
                 type="file"
                 name="dicoms"

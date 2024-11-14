@@ -1,20 +1,20 @@
-import {useState} from "react"
+import { useState } from "react"
 
 import Header from "./Header.jsx";
 import Infos from "./Infos.jsx";
 import MRIUploadForm from "./MRIUploadForm.jsx";
-
-import styles from "../../assets/css/landing.module.css"
+import Copyright from "../Reusable/Copyright.jsx";
 
 export default function LandingPage({ setPage, serverUrl }) {
 
     const [showForm, setShowForm] = useState(false)
 
     return (
-        <div>
+        <div className="bg-basic">
             <Header setPage={setPage} setShowForm={setShowForm}/>
-            {showForm && <MRIUploadForm setPage={setPage} styles={styles} serverUrl={serverUrl}/>}
-            <Infos styles={styles} />
+            {showForm && <MRIUploadForm setPage={setPage} serverUrl={serverUrl}/>}
+            <Infos />
+            <Copyright />
         </div>
     )
 }

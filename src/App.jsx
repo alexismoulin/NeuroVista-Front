@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import Copyright from './components/Main/Copyright.jsx';
+import Copyright from './components/Reusable/Copyright.jsx';
 import MainPage from "./components/Main/MainPage.jsx";
 import ResultsPage from "./components/Results/ResultsPage.jsx";
 import LargeResultsPage from "./components/Results/LargeResultsPage.jsx";
@@ -79,7 +79,6 @@ export default function App() {
     return (
         <div>
             {renderSwitch(page)}
-            <Copyright/>
         </div>
     )
 }
