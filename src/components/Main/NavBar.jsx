@@ -9,8 +9,8 @@ export default function NavBar({ selectedType, selectedData, setSelectedData }) 
         ]
         const navItemClass =
             `px-8 py-4 transition-colors duration-200 cursor-pointer hover:bg-white hover:bg-opacity-10 
-            flex items-center justify-center w-1/${links.length}`;
-        const activeNavItemClass = "bg-white text-gray-800";
+            flex items-center justify-center w-1/5`;
+        const activeNavItemClass = "bg-white text-tahiti";
 
         return (
             <ul className="flex font-black tracking-wider uppercase text-white text-sm list-none mb-0 pl-0 w-full">
@@ -41,8 +41,8 @@ export default function NavBar({ selectedType, selectedData, setSelectedData }) 
 
         const navItemClass =
             `px-8 py-4 transition-colors duration-200 cursor-pointer hover:bg-white hover:bg-opacity-10 
-            flex items-center justify-center w-1/${links.length}`;
-        const activeNavItemClass = "bg-white text-gray-800";
+            flex items-center justify-center w-1/6`;
+        const activeNavItemClass = "bg-white text-tahiti";
 
         return (
             <ul className="flex font-black tracking-wider uppercase text-white text-sm list-none mb-0 pl-0 w-full">
