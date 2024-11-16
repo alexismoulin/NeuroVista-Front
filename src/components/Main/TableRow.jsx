@@ -1,5 +1,4 @@
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faRobot} from "@fortawesome/free-solid-svg-icons";
+import RobotButton from "../Reusable/RobotButton.jsx";
 
 export default function TableRow({ item, headers, setPage, setSelectedItem }) {
 
@@ -9,16 +8,14 @@ export default function TableRow({ item, headers, setPage, setSelectedItem }) {
     }
 
     return (
-        <tr>
+        <tr className="border-t border-gray-200 even:bg-gray-100">
             {headers.map((header, index) => (
                 header === "Analysis" ? (
-                    <td key={index}>
-                        <button onClick={handlePage}>
-                            <FontAwesomeIcon icon={faRobot} size="xl"/>
-                        </button>
+                    <td className="w-1/12 px-3 py-2" key={index}>
+                        <RobotButton onClick={handlePage} />
                     </td>
                 ) : (
-                    <td key={index}>{item[header]}</td>
+                    <td className="font-merriweather text-slatey px-3 py-2" key={index}>{item[header]}</td>
                 )
             ))}
         </tr>
