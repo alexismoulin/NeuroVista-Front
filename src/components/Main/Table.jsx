@@ -3,7 +3,7 @@ import TableRow from "./TableRow.jsx";
 export default function Table({ headers, title, data, setPage, setSelectedItem }) {
     return (
         <div className="w-11/12 bg-white">
-            <table className="w-full mb-8 border-separate border-spacing-0">
+            <table className="w-full my-8 border-separate border-spacing-0">
                 <thead className="border-b-2 border-gray-200">
                 <tr>
                     {headers.map((header) => (

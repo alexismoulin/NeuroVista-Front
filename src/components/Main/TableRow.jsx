@@ -8,7 +8,7 @@ export default function TableRow({ item, headers, setPage, setSelectedItem }) {
     }
 
     return (
-        <tr className="border-t border-gray-200 even:bg-gray-100">
+        <tr className="border-y-gray-200 odd:bg-gray-100 even:bg-white">
             {headers.map((header, index) => (
                 header === "Analysis" ? (
                     <td className="w-1/12 px-3 py-2" key={index}>
