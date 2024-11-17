@@ -15,14 +15,12 @@ export default function App() {
     const [selectedData, setSelectedData] = useState(null)
     const [page, setPage] = useState("landing")
     const [selectedItem, setSelectedItem] = useState()
-    const [loadedData, setLoadedData] = useState()
 
     useEffect(() => {
         const fetchData = async () => {
             const result = await initializeData();
             setData(result);
             setSelectedData(result.aseg);
-            console.log(result);
         };
 
         fetchData();
@@ -50,7 +48,7 @@ export default function App() {
             case "landing":
                 return <LandingPage setPage={setPage} serverUrl={SERVER_URL} />
             case "processing":
-                return <ProcessingPage setPage={setPage} loadedData={loadedData} />
+                return <ProcessingPage setPage={setPage} />
             case "main":
                 return <MainPage
                     type={type}
@@ -62,7 +60,6 @@ export default function App() {
                 />
             case "results":
                 return <ResultsPage
-                    headers={selectedData.headers}
                     title={selectedData.title}
                     item={selectedItem}
                     setPage={setPage}

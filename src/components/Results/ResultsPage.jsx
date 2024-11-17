@@ -1,33 +1,36 @@
 import {useState, useEffect} from 'react';
 import {handleStream} from "../../helpers/util.js";
-import ReactMarkdown from 'react-markdown';
+import Copyright from "../Reusable/Copyright.jsx";
+import MarkdownRenderer from "../Main/MarkdownRenderer.jsx";
 
-export default function ResultsPage({item, headers, title, setPage, setSelectedItem}) {
+export default function ResultsPage({item, title, setPage, setSelectedItem}) {
 
     const age = 40
     const sex = "Male"
 
-    function createPrompt(item) {
-        const elements = zippedValues.map(el => el.join(': '))
-        return `This is an MRI analysis of a patient brain. The patient is a ${sex} of ${age} years old.` + "\n" +
-            "You need to analyse the measurements of the patient " + title + "\n" +
-            `The ${title} sub-structure analyzed is: ${item.name}` + "\n" +
-            `The measurements of the ${item.name} are:` + "\n" +
-            elements.join('\n') + "\n" +
-            "Please provide an analysis about those measurements"
+    function createPrompt(item, sex, age, title) {
+        // Convert the object to a Markdown unordered list
+        const markdownList = Object.entries(item)
+            .filter(([key]) => key !== "Structure") // Exclude the Structure key from the list
+            .map(([key, value]) => `- **${key}**: ${value}`)
+            .join("\n");
+
+        return `
+            This is an MRI analysis of a patient brain. The patient is a ${sex} of ${age} years old.
+            You need to analyze the measurements of the patient ${title}.
+            The ${title} sub-structure analyzed is: ${item.Structure}.
+            The measurements of the ${item.Structure} are:
+            ${markdownList}
+            
+            Please provide an analysis about those measurements and return this analysis in a Markdown format.
+            `.trim(); // `.trim()` ensures no extra whitespace at the start or end.
     }
 
-    function zipArrays(arr1, arr2) {
-        return arr1.map((element, index) => [element, arr2[index]])
-    }
-
-    let zippedValues = zipArrays(headers, Object.values(item)).slice(0, -1)
-    let structureName = zippedValues.shift()[1]
 
     const [responseText, setResponseText] = useState('');
 
     useEffect(() => {
-        handleStream(createPrompt(item), setResponseText); // Call the utility function
+        handleStream(createPrompt(item, sex, age, title), setResponseText); // Call the utility function
     }, []);
 
     function handleClose() {
@@ -36,29 +39,34 @@ export default function ResultsPage({item, headers, title, setPage, setSelectedI
         setSelectedItem(undefined)
     }
 
+    console.log(createPrompt(item, sex, age, title))
+
     return (
-        <>
-            <div id="intro">
-                <h1>{title} Analysis</h1>
-                <p>Structure Analyzed: <b>{structureName}</b></p>
-            </div>
-            <div id="main">
-                <section>
-                    <h3>Key Metrics</h3>
-                    <ul>
-                        <li>Sex: {sex}</li>
-                        <li>Age: {age}</li>
-                        {zippedValues.map((el, index) => <li key={index}>{el.join(': ')}</li>)}
+        <div className="bg-basic flex flex-col items-center">
+            <section className="flex items-center flex-col pt-24 pb-12 mb-4 w-full">
+                <h1 className="text-white text-7xl tracking-wider uppercase font-bold font-opensans mb-8">{title} Analysis</h1>
+                <p className="text-white font-merriweather text-xl mb-8">Structure Analyzed: <b>{item.Structure}</b></p>
+            </section>
+            <div className="bg-white w-11/12">
+                <section className="border-b-2">
+                    <h3 className="font-opensans uppercase text-slatey p-6">Key Metrics</h3>
+                    <ul className="list-disc px-10 pb-6">
+                        <li className="font-merriweather text-slatey">Sex: {sex}</li>
+                        <li className="font-merriweather text-slatey">Age: {age}</li>
+                        {Object.entries(item).map((el, index) => <li className="font-merriweather text-slatey" key={index}>{el.join(': ')}</li>)}
                     </ul>
                 </section>
-                <section>
-                    <h3>Analysis</h3>
-                    <ReactMarkdown>{responseText}</ReactMarkdown>
+                <section className="border-b-2">
+                    <h3 className="font-opensans uppercase text-slatey pt-6 px-6">Analysis</h3>
+                    <div className="p-6 font-merriweather text-slatey">
+                        <MarkdownRenderer markdown={responseText} />
+                    </div>
                 </section>
                 <section>
                     <button className="button primary squared" onClick={handleClose}>Close</button>
                 </section>
             </div>
-        </>
+            <Copyright />
+        </div>
     )
 }
