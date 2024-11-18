@@ -93,12 +93,12 @@ export default function MRIUploadForm({ setPage, serverUrl }) {
                     <input
                         type="reset"
                         value="Reset"
-                        className="px-4 py-2 bg-gray-200 text-gray-700 font-semibold rounded-lg cursor-pointer hover:bg-gray-300"
+                        className="font-opensans uppercase text-slatey border-slatey border-2 py-3 px-6 text-center bg-white text-sm tracking-widest hover:text-tahiti hover:border-tahiti transition-colors duration-200 ease-in-out w-32"
                     />
                     <input
                         type="submit"
                         value="Process"
-                        className="px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg cursor-pointer hover:bg-blue-700"
+                        className="font-opensans uppercase text-white py-3 px-6 text-center bg-slatey text-sm tracking-widest hover:bg-tahiti transition-colors duration-200 ease-in-out w-32"
                     />
                 </div>
             </form>

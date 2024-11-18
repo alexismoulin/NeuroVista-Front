@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import {handleStream} from "../../helpers/util.js";
 import Copyright from "../Reusable/Copyright.jsx";
 import MarkdownRenderer from "../Main/MarkdownRenderer.jsx";
+import PrimaryButton from "../Reusable/PrimaryButton.jsx";
 
 export default function ResultsPage({item, title, setPage, setSelectedItem}) {
 
@@ -25,7 +26,6 @@ export default function ResultsPage({item, title, setPage, setSelectedItem}) {
             Please provide an analysis about those measurements and return this analysis in a Markdown format.
             `.trim(); // `.trim()` ensures no extra whitespace at the start or end.
     }
-
 
     const [responseText, setResponseText] = useState('');
 
@@ -62,8 +62,8 @@ export default function ResultsPage({item, title, setPage, setSelectedItem}) {
                         <MarkdownRenderer markdown={responseText} />
                     </div>
                 </section>
-                <section>
-                    <button className="button primary squared" onClick={handleClose}>Close</button>
+                <section className="flex justify-end p-6">
+                    <PrimaryButton onClick={handleClose}>Close</PrimaryButton>
                 </section>
             </div>
             <Copyright />
