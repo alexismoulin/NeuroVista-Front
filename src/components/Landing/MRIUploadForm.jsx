@@ -60,7 +60,7 @@ export default function MRIUploadForm({ setPage, serverUrl }) {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {['subject', 'study'].map((field) => (
                         <div key={field}>
-                            <label htmlFor={field} className="block text-slatey font-black mb-2 font-merriweather">
+                            <label htmlFor={field} className="block text-slatey mb-2 font-opensans uppercase">
                                 {field.charAt(0).toUpperCase() + field.slice(1)}
                             </label>
                             <input
@@ -76,7 +76,7 @@ export default function MRIUploadForm({ setPage, serverUrl }) {
                     ))}
                 </div>
                 <div>
-                    <label htmlFor="notes" className="block text-slatey font-merriweather font-black mb-2">Notes</label>
+                    <label htmlFor="notes" className="block text-slatey font-opensans uppercase mb-2">Notes</label>
                     <textarea
                         name="notes"
                         id="notes"

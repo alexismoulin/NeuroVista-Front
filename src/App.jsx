@@ -15,18 +15,27 @@ export default function App() {
     const [selectedData, setSelectedData] = useState(null)
     const [page, setPage] = useState("landing")
     const [selectedItem, setSelectedItem] = useState()
+    const [noData, setNoData] = useState(false)
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await initializeData();
-            setData(result);
-            setSelectedData(result.aseg);
+            try {
+                const result = await initializeData();
+                if (result) {
+                    setData(result);
+                    setSelectedData(result.aseg);
+                    console.log("Data correctly loaded")
+                } else {
+                    setNoData(true);
+                    console.log("No data loaded")
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                setNoData(true);
+            }
         };
-
         fetchData();
     }, []);
-
-    if (!data) return <div>Loading...</div>;
 
     function handleDefaultType(defaultType) {
         if (defaultType === "cortical") {
@@ -46,7 +55,7 @@ export default function App() {
     function renderSwitch(param) {
         switch(param) {
             case "landing":
-                return <LandingPage setPage={setPage} serverUrl={SERVER_URL} />
+                return <LandingPage setPage={setPage} serverUrl={SERVER_URL} noData={noData} />
             case "processing":
                 return <ProcessingPage setPage={setPage} />
             case "main":
