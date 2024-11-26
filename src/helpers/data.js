@@ -1,11 +1,11 @@
 const SERVER_URL = "http://127.0.0.1:5001"
 
-export async function fetchCortical(serverUrl) {
+async function fetchCortical(serverUrl) {
     const response = await fetch(`${serverUrl}/cortical`);
     return await response.json();
 }
 
-export async function fetchSubcortical(serverUrl) {
+async function fetchSubcortical(serverUrl) {
     const response = await fetch(`${serverUrl}/subcortical`);
     return await response.json();
 }
@@ -80,6 +80,16 @@ export async function initializeData() {
         };
     } catch (error) {
         console.error("Error initializing data:", error.message);
+        return null;
+    }
+}
+
+export async function get_series(serverUrl) {
+    try {
+        const response = await fetch(`${serverUrl}/series`);
+        return await response.json();
+    } catch (error) {
+        console.error("Error getting series data:", error.message);
         return null;
     }
 }

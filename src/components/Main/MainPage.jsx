@@ -5,7 +5,7 @@ import Table from "./Table.jsx";
 import Copyright from "../Reusable/Copyright.jsx";
 import Top from "./Top.jsx";
 
-export default function MainPage({type, handleDefaultType, selectedData, handleSelectedData, setPage, setSelectedItem}) {
+export default function MainPage({type, handleDefaultType, selectedData, handleSelectedData, series, setPage, setSelectedItem}) {
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -19,7 +19,7 @@ export default function MainPage({type, handleDefaultType, selectedData, handleS
         <div className="bg-basic flex flex-col items-center">
             <Intro enabled={type} handleType={handleDefaultType}/>
             <NavBar selectedType={type} selectedData={selectedData} setSelectedData={handleSelectedData}/>
-            <Top selectedData={selectedData} handleLargePage={handleLargePage}/>
+            <Top selectedData={selectedData} series={series} handleLargePage={handleLargePage}/>
             <Table {...selectedData} setPage={setPage} setSelectedItem={setSelectedItem}/>
             <Copyright />
         </div>

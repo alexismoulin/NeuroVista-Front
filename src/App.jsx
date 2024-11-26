@@ -7,11 +7,12 @@ import LandingPage from "./components/Landing/LandingPage.jsx";
 import ProcessingPage from "./components/Processing/ProcessingPage.jsx";
 
 const SERVER_URL = "http://127.0.0.1:5001"
-import { initializeData } from "./helpers/data.js"
+import { initializeData, get_series } from "./helpers/data.js"
 
 export default function App() {
     const [type, setType] = useState("cortical")
     const [data, setData] = useState(null);
+    const [series, setSeries] = useState(null);
     const [selectedData, setSelectedData] = useState(null)
     const [page, setPage] = useState("landing")
     const [selectedItem, setSelectedItem] = useState()
@@ -34,7 +35,23 @@ export default function App() {
                 setNoData(true);
             }
         };
+
+        const fetchSeries = async () => {
+            try {
+                const result = await get_series(SERVER_URL);
+                if (result) {
+                    setSeries(result);
+                    console.log("series correctly loaded")
+                } else {
+                    console.log("No series loaded")
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                setNoData(true);
+            }
+        }
         fetchData();
+        fetchSeries()
     }, []);
 
     function handleDefaultType(defaultType) {
@@ -64,6 +81,7 @@ export default function App() {
                     selectedData={selectedData}
                     handleDefaultType={handleDefaultType}
                     handleSelectedData={handleSelectedData}
+                    series={series}
                     setPage={setPage}
                     setSelectedItem={setSelectedItem}
                 />

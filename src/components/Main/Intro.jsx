@@ -11,5 +11,5 @@ export default function Intro({ handleType }) {
                 <PillButton onClick={() => handleType("sub-cortical")}>SubCortical</PillButton>
             </div>
         </section>
-    );
+);
 }
