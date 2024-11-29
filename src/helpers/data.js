@@ -10,12 +10,18 @@ async function fetchSubcortical(serverUrl) {
     return await response.json();
 }
 
-export async function initializeData() {
+export async function initializeData(series) {
 
     try {
 
-        const cortical = await fetchCortical(SERVER_URL);
-        const subcortical = await fetchSubcortical(SERVER_URL);
+        const cortical2 = await fetchCortical(SERVER_URL);
+        const subcortical2 = await fetchSubcortical(SERVER_URL);
+
+        const cortical = cortical2[series]
+        const subcortical = subcortical2[series]
+
+        console.log(cortical)
+        console.log(subcortical)
 
         return {
             aseg: {

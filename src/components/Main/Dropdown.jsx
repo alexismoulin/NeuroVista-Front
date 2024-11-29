@@ -1,11 +1,17 @@
 import { useState, useEffect, useRef } from "react";
 
-export default function Dropdown({ series }) {
+export default function Dropdown({ series, selectedSeries, setSelectedSeries }) {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null); // Reference to the dropdown container
 
     const toggleDropdown = () => {
         setIsOpen((prev) => !prev);
+    };
+
+    // Handle selection of a series
+    function handleSelect(name) {
+        setSelectedSeries(name); // Trigger the setSelectedSeries function
+        setIsOpen(false); // Close the dropdown
     };
 
     // Close dropdown when clicking outside
@@ -38,7 +44,7 @@ export default function Dropdown({ series }) {
                 className="w-full px-4 py-2 text-center text-slatey font-merriweather
                 border border-gray-300 rounded-md shadow-sm bg-white hover:bg-gray-100"
             >
-                - Select a T1 Series -
+                {selectedSeries ? selectedSeries : "- Select a T1 Series -"}
                 <span className="float-right"> ▼ </span>
             </button>
 
@@ -52,6 +58,7 @@ export default function Dropdown({ series }) {
                         <li
                             key={index}
                             className="px-4 py-2 text-slatey font-merriweather cursor-pointer hover:bg-gray-100"
+                            onClick={() => handleSelect(name)}
                         >
                             {name}: {formatDimensions(dimensions)}
                         </li>
@@ -59,6 +66,7 @@ export default function Dropdown({ series }) {
                     <li
                         key={-1}
                         className="px-4 py-2 text-slatey font-merriweather cursor-pointer hover:bg-gray-100"
+                        onClick={() => handleSelect("AVERAGES")}
                     >
                         - CALCULATED AVERAGES -
                     </li>

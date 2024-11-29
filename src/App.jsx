@@ -13,6 +13,7 @@ export default function App() {
     const [type, setType] = useState("cortical")
     const [data, setData] = useState(null);
     const [series, setSeries] = useState(null);
+    const [selectedSeries, setSelectedSeries] = useState("AVERAGES")
     const [selectedData, setSelectedData] = useState(null)
     const [page, setPage] = useState("landing")
     const [selectedItem, setSelectedItem] = useState()
@@ -21,7 +22,7 @@ export default function App() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const result = await initializeData();
+                const result = await initializeData(selectedSeries);
                 if (result) {
                     setData(result);
                     setSelectedData(result.aseg);
@@ -50,9 +51,9 @@ export default function App() {
                 setNoData(true);
             }
         }
-        fetchData();
+        fetchData()
         fetchSeries()
-    }, []);
+    }, [selectedSeries]);
 
     function handleDefaultType(defaultType) {
         if (defaultType === "cortical") {
@@ -82,6 +83,8 @@ export default function App() {
                     handleDefaultType={handleDefaultType}
                     handleSelectedData={handleSelectedData}
                     series={series}
+                    selectedSeries = {selectedSeries}
+                    setSelectedSeries = {setSelectedSeries}
                     setPage={setPage}
                     setSelectedItem={setSelectedItem}
                 />
