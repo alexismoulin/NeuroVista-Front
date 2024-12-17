@@ -6,8 +6,8 @@ import LargeResultsPage from "./components/Results/LargeResultsPage.jsx";
 import LandingPage from "./components/Landing/LandingPage.jsx";
 import ProcessingPage from "./components/Processing/ProcessingPage.jsx";
 
-const SERVER_URL = "http://127.0.0.1:5001"
-import { initializeData, get_series } from "./helpers/data.js"
+import { initializeData, get_series, SERVER_URL } from "./helpers/data.js"
+import DataContextProvider from "./store/store.jsx";
 
 export default function App() {
     const [type, setType] = useState("cortical")
@@ -103,8 +103,8 @@ export default function App() {
     }
 
     return (
-        <div>
+        <DataContextProvider>
             {renderSwitch(page)}
-        </div>
+        </DataContextProvider>
     )
 }
