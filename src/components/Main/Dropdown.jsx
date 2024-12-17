@@ -1,6 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import {useState, useEffect, useRef, useContext} from "react";
+import {DataContext} from "../../store/store.jsx";
 
-export default function Dropdown({ series, selectedSeries, setSelectedSeries }) {
+export default function Dropdown() {
+
+    const { series, selectedSeries, setSelectedSeries } = useContext(DataContext)
+
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null); // Reference to the dropdown container
 

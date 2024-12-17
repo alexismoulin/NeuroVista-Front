@@ -1,13 +1,16 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext} from 'react';
 import {handleStream} from "../../helpers/util.js";
 import Copyright from "../Reusable/Copyright.jsx";
 import MarkdownRenderer from "../Main/MarkdownRenderer.jsx";
 import PrimaryButton from "../Reusable/PrimaryButton.jsx";
+import {DataContext} from "../../store/store.jsx";
 
-export default function ResultsPage({item, title, setPage, setSelectedItem}) {
+export default function ResultsPage({setPage}) {
 
     const age = 40
     const sex = "Male"
+
+    const { selectedData, selectedItem, setSelectedItem } = useContext(DataContext)
 
     function createPrompt(item, sex, age, title) {
         // Convert the object to a Markdown unordered list
@@ -30,7 +33,7 @@ export default function ResultsPage({item, title, setPage, setSelectedItem}) {
     const [responseText, setResponseText] = useState('');
 
     useEffect(() => {
-        handleStream(createPrompt(item, sex, age, title), setResponseText); // Call the utility function
+        handleStream(createPrompt(selectedItem, sex, age, selectedData.title), setResponseText); // Call the utility function
     }, []);
 
     function handleClose() {
@@ -39,13 +42,11 @@ export default function ResultsPage({item, title, setPage, setSelectedItem}) {
         setSelectedItem(undefined)
     }
 
-    console.log(createPrompt(item, sex, age, title))
-
     return (
         <div className="bg-basic flex flex-col items-center">
             <section className="flex items-center flex-col pt-24 pb-12 mb-4 w-full">
-                <h1 className="text-white text-7xl tracking-wider uppercase font-bold font-opensans mb-8">{title} Analysis</h1>
-                <p className="text-white font-merriweather text-xl mb-8">Structure Analyzed: <b>{item.Structure}</b></p>
+                <h1 className="text-white text-7xl tracking-wider uppercase font-bold font-opensans mb-8">{selectedData.title} Analysis</h1>
+                <p className="text-white font-merriweather text-xl mb-8">Structure Analyzed: <b>{selectedItem.Structure}</b></p>
             </section>
             <div className="bg-white w-11/12">
                 <section className="border-b-2">
@@ -53,7 +54,7 @@ export default function ResultsPage({item, title, setPage, setSelectedItem}) {
                     <ul className="list-disc px-10 pb-6">
                         <li className="font-merriweather text-slatey">Sex: {sex}</li>
                         <li className="font-merriweather text-slatey">Age: {age}</li>
-                        {Object.entries(item).map((el, index) => <li className="font-merriweather text-slatey" key={index}>{el.join(': ')}</li>)}
+                        {Object.entries(selectedItem).map((el, index) => <li className="font-merriweather text-slatey" key={index}>{el.join(': ')}</li>)}
                     </ul>
                 </section>
                 <section className="border-b-2">

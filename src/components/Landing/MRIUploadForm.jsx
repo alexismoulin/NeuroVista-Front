@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import DropFiles from './DropFileComponent.jsx';
+import {SERVER_URL} from "../../helpers/data.js"
 
-export default function MRIUploadForm({ setPage, serverUrl }) {
+export default function MRIUploadForm({ setPage }) {
     const [formData, setFormData] = useState({
         subject: "",
         study: "",
@@ -40,7 +41,7 @@ export default function MRIUploadForm({ setPage, serverUrl }) {
         setPage("processing")
 
         try {
-             await fetch(`${serverUrl}/run_script`, {
+             await fetch(`${SERVER_URL}/run_script`, {
                 method: 'POST',
                 body: data,
             });

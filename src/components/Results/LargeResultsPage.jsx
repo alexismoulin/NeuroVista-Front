@@ -1,13 +1,16 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext} from 'react';
 import {handleStream} from "../../helpers/util.js";
 import PrimaryButton from "../Reusable/PrimaryButton.jsx";
 import Copyright from "../Reusable/Copyright.jsx";
 import MarkdownRenderer from "../Main/MarkdownRenderer.jsx";
+import {DataContext} from "../../store/store.jsx";
 
-export default function LargeResultsPage({setPage, data}) {
+export default function LargeResultsPage({ setPage }) {
 
     const age = 40
     const sex = "Male"
+
+    const { selectedData } = useContext(DataContext)
 
     function createPrompt(data, sex, age) {
         // Loop through each item in the data array and create Markdown for its details
@@ -36,22 +39,20 @@ export default function LargeResultsPage({setPage, data}) {
 
 
     useEffect(() => {
-        handleStream(createPrompt(data, sex, age), setResponseText); // Call the utility function
-    }, [data, sex, age]);
+        handleStream(createPrompt(selectedData, sex, age), setResponseText); // Call the utility function
+    }, [selectedData, sex, age]);
 
     function handleClose() {
         setResponseText("")
         setPage("main")
     }
 
-    console.log(data)
-
     return (
         <div className="bg-basic flex flex-col items-center">
             <section className="flex items-center flex-col pt-24 pb-12 mb-4 w-full">
                 <h1 className="text-white text-7xl tracking-wider uppercase font-bold font-opensans mb-8"
-                    aria-label={`${data.title} Analysis`}>
-                    {data.title} Analysis
+                    aria-label={`${selectedData.title} Analysis`}>
+                    {selectedData.title} Analysis
                 </h1>
                 <p className="text-white font-merriweather text-xl mb-8">Full Analysis</p>
             </section>

@@ -1,6 +1,10 @@
 import PillButton from "../Reusable/PillButton.jsx";
+import {useContext} from "react";
+import {DataContext} from "../../store/store.jsx";
 
-export default function Header({ setPage, setShowForm, noData }) {
+export default function Header({ setPage, setShowForm }) {
+
+    const { noData } = useContext(DataContext)
 
     return (
         <section className="flex items-center flex-col pt-24 pb-12 mb-4 w-full">
