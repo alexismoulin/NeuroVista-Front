@@ -9,6 +9,17 @@ export default function Table({ setPage }) {
         return <div>No data available.</div>;
     }
 
+    // Select a column to sort by. For example, let's sort by the first header.
+    const headerToSortBy = selectedData.headers[0];
+
+    // Make a shallow copy of the data array before sorting.
+    const sortedData = [...selectedData.data].sort((a, b) => {
+        // Ensure the comparison is done on string values and handle undefined cases.
+        const valA = (a[headerToSortBy] || "").toString().toLowerCase();
+        const valB = (b[headerToSortBy] || "").toString().toLowerCase();
+        return valA.localeCompare(valB);
+    });
+
     return (
         <div className="w-11/12 bg-white">
             <table className="w-full my-8 border-separate border-spacing-0">
@@ -25,8 +36,8 @@ export default function Table({ setPage }) {
                 </tr>
                 </thead>
                 <tbody>
-                {selectedData.data.length > 0 ? (
-                    selectedData.data.map((item, index) => (
+                {sortedData.length > 0 ? (
+                    sortedData.map((item, index) => (
                         <TableRow
                             key={item.id || index}
                             item={item}

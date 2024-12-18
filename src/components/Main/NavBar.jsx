@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { DataContext } from "../../store/store.jsx";
 
 export default function NavBar() {
-    const { type, data, selectedData, setSelectedData } = useContext(DataContext);
+    const { type, selectedDataKey, setSelectedDataKey } = useContext(DataContext);
 
     // Define navigation links
     const links = {
@@ -23,7 +23,6 @@ export default function NavBar() {
         ],
     };
 
-    // Dynamic width based on type
     const navItemWidth = type === "cortical" ? "w-1/5" : "w-1/6";
 
     const navItemClass = `px-8 py-4 transition-colors duration-200 cursor-pointer hover:bg-white hover:bg-opacity-10 flex items-center justify-center`;
@@ -36,9 +35,9 @@ export default function NavBar() {
                     <li
                         key={link.title}
                         className={`${navItemClass} ${navItemWidth} ${
-                            selectedData?.title === link.title ? activeNavItemClass : ""
+                            selectedDataKey === link.data ? activeNavItemClass : ""
                         }`}
-                        onClick={() => setSelectedData(data[link.data])}
+                        onClick={() => setSelectedDataKey(link.data)}
                     >
                         <span>{link.title}</span>
                     </li>

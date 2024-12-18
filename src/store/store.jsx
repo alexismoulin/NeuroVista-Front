@@ -9,7 +9,8 @@ export default function DataContextProvider({ children }) {
     const [series, setSeries] = useState(null);
     const [selectedSeries, setSelectedSeries] = useState("AVERAGES");
     const [selectedData, setSelectedData] = useState(null);
-    const [selectedItem, setSelectedItem] = useState()
+    const [selectedDataKey, setSelectedDataKey] = useState(null); // New state
+    const [selectedItem, setSelectedItem] = useState();
     const [noData, setNoData] = useState(false);
 
     useEffect(() => {
@@ -33,7 +34,17 @@ export default function DataContextProvider({ children }) {
                 const result = await initializeData(selectedSeries);
                 if (result) {
                     setData(result);
-                    setSelectedData(result.aseg || null);
+
+                    // If we have a selectedDataKey and it exists in the new data, use it
+                    // Otherwise, default to aseg (for cortical) or another fallback
+                    if (selectedDataKey && result[selectedDataKey]) {
+                        setSelectedData(result[selectedDataKey]);
+                    } else {
+                        // Default fallback if no selectedDataKey or key not found
+                        setSelectedData(result.aseg || null);
+                        setSelectedDataKey(result.aseg ? 'aseg' : null);
+                    }
+
                     setNoData(false);
                     console.log("Data loaded successfully.");
                 } else {
@@ -48,16 +59,18 @@ export default function DataContextProvider({ children }) {
 
         fetchSeries();
         fetchData();
-    }, [selectedSeries]);
+    }, [selectedSeries, selectedDataKey]);
 
     const handleDefaultType = useCallback(
         (defaultType) => {
             if (defaultType === "cortical") {
                 setType("cortical");
                 setSelectedData(data?.aseg || null);
+                setSelectedDataKey(data?.aseg ? "aseg" : null);
             } else if (defaultType === "sub-cortical") {
                 setType("sub-cortical");
                 setSelectedData(data?.brainStem || null);
+                setSelectedDataKey(data?.brainStem ? "brainStem" : null);
             }
         },
         [data]
@@ -66,6 +79,7 @@ export default function DataContextProvider({ children }) {
     const handleSelectedData = useCallback(
         (selection) => {
             setSelectedData(data?.[selection] || null);
+            setSelectedDataKey(selection || null);
         },
         [data]
     );
@@ -88,8 +102,10 @@ export default function DataContextProvider({ children }) {
             setSelectedItem,
             handleDefaultType,
             handleSelectedData,
+            selectedDataKey,
+            setSelectedDataKey
         }),
-        [type, data, series, selectedSeries, selectedData, selectedItem, noData, handleDefaultType, handleSelectedData]
+        [type, data, series, selectedSeries, selectedData, selectedItem, noData, handleDefaultType, handleSelectedData, selectedDataKey]
     );
 
     return (
