@@ -12,6 +12,7 @@ export default function Intro() {
                 Analysis</h1>
             <p className="text-white text-xl font-merriweather mb-8">MRI Analysis Results for Patient Series</p>
             <div className="flex items-center flex-row gap-10">
+                <PillButton onClick={() => handleDefaultType("general")}>General</PillButton>
                 <PillButton onClick={() => handleDefaultType("cortical")}>Cortical</PillButton>
                 <PillButton onClick={() => handleDefaultType("sub-cortical")}>SubCortical</PillButton>
             </div>

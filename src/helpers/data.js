@@ -30,6 +30,11 @@ async function fetchSubcortical(serverUrl) {
     return fetchDataFromEndpoint("/subcortical", serverUrl);
 }
 
+// Fetch subcortical data
+async function fetchGeneral(serverUrl) {
+    return fetchDataFromEndpoint("/general", serverUrl);
+}
+
 // Fetch the series data
 export async function get_series(serverUrl) {
     return fetchDataFromEndpoint("/series", serverUrl);
@@ -40,23 +45,36 @@ export async function initializeData(series) {
     try {
         const corticalData = await fetchCortical(SERVER_URL);
         const subcorticalData = await fetchSubcortical(SERVER_URL);
+        const generalData = await fetchGeneral(SERVER_URL);
 
         // Validate responses
-        if (!corticalData || !subcorticalData) {
-            throw new Error("Failed to load cortical or subcortical data.");
+        if (!corticalData) {
+            throw new Error("Failed to load cortical data.");
+        }
+        if (!subcorticalData) {
+            throw new Error("Failed to load subcortical data.");
+        }
+        if (!generalData) {
+            throw new Error("Failed to load general data.");
         }
 
         const cortical = corticalData[series] || {};
         const subcortical = subcorticalData[series] || {};
+        const general = generalData[series] || {};
 
-        if (!Object.keys(cortical).length || !Object.keys(subcortical).length) {
+        if (!Object.keys(cortical).length || !Object.keys(subcortical).length || !Object.keys(general).length) {
             throw new Error(`No data found for series: ${series}`);
         }
 
         return {
             aseg: {
-                data: cortical.aseg || [],
+                data: general.aseg || [],
                 title: "General Segmentations",
+                headers: ["Structure", "Volume (mm3)", "Analysis"],
+            },
+            lesions: {
+                data: general.lesions || [],
+                title: "Hypointensities",
                 headers: ["Structure", "Volume (mm3)", "Analysis"],
             },
             brain: {

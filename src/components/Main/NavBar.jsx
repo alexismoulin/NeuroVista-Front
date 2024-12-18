@@ -7,7 +7,6 @@ export default function NavBar() {
     // Define navigation links
     const links = {
         cortical: [
-            { title: "General Segmentations", data: "aseg" },
             { title: "General Volumes", data: "brain" },
             { title: "White Matter", data: "whiteMatter" },
             { title: "LHS Parcellations", data: "lhsParcellation" },
@@ -21,9 +20,19 @@ export default function NavBar() {
             { title: "Hypothalamus", data: "hypothalamus" },
             { title: "Cerebellum", data: "cerebellum" },
         ],
+        general: [
+            { title: "General Segmentations", data: "aseg" },
+            { title: "Hypointensities", data: "lesions" },
+        ]
     };
 
-    const navItemWidth = type === "cortical" ? "w-1/5" : "w-1/6";
+    const navWidths = {
+        cortical: "w-1/4",
+        "sub-cortical": "w-1/6",
+        general: "w-1/2",
+    };
+
+    const navItemWidth = navWidths[type] || "w-1/6";
 
     const navItemClass = `px-8 py-4 transition-colors duration-200 cursor-pointer hover:bg-white hover:bg-opacity-10 flex items-center justify-center`;
     const activeNavItemClass = "bg-white text-tahiti";
@@ -48,12 +57,13 @@ export default function NavBar() {
 
     return (
         <nav
-            className="flex transition-transform duration-1000 ease-in-out transform-gpu opacity-100 bg-white
+            className="flex transition-transform duration-500 ease-in-out transform-gpu opacity-100 bg-white
             bg-opacity-20 h-16 mx-auto -mt-16 w-11/12 z-20"
         >
             {type === "cortical"
                 ? renderNavLinks("cortical")
-                : renderNavLinks("sub-cortical")}
+                : type === "sub-cortical" ? renderNavLinks("sub-cortical")
+                : renderNavLinks("general")}
         </nav>
     );
 }

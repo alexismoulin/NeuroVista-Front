@@ -65,13 +65,18 @@ export default function DataContextProvider({ children }) {
         (defaultType) => {
             if (defaultType === "cortical") {
                 setType("cortical");
-                setSelectedData(data?.aseg || null);
-                setSelectedDataKey(data?.aseg ? "aseg" : null);
+                setSelectedData(data?.brain || null);
+                setSelectedDataKey(data?.brain ? "brain" : null);
             } else if (defaultType === "sub-cortical") {
                 setType("sub-cortical");
                 setSelectedData(data?.brainStem || null);
                 setSelectedDataKey(data?.brainStem ? "brainStem" : null);
+            } else if (defaultType === "general") {
+                setType("general");
+                setSelectedData(data?.aseg|| null);
+                setSelectedDataKey(data?.aseg ? "aseg" : null);
             }
+
         },
         [data]
     );
