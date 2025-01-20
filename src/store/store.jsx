@@ -4,7 +4,7 @@ import { initializeData, get_series, SERVER_URL } from "../helpers/data.js";
 export const DataContext = createContext();
 
 export default function DataContextProvider({ children }) {
-    const [type, setType] = useState("cortical");
+    const [type, setType] = useState("general");
     const [data, setData] = useState(null);
     const [series, setSeries] = useState(null);
     const [selectedSeries, setSelectedSeries] = useState("AVERAGES");

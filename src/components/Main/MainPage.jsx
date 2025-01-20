@@ -4,6 +4,7 @@ import NavBar from "./NavBar.jsx";
 import Table from "./Table.jsx";
 import Copyright from "../Reusable/Copyright.jsx";
 import Top from "./Top.jsx";
+import Dashboard from "./Dashboard.jsx";
 
 export default function MainPage({setPage}) {
 
@@ -20,6 +21,7 @@ export default function MainPage({setPage}) {
             <Intro />
             <NavBar />
             <Top handleLargePage={handleLargePage} />
+            <Dashboard />
             <Table setPage={setPage} />
             <Copyright />
         </div>
