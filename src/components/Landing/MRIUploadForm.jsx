@@ -4,7 +4,7 @@ import {SERVER_URL} from "../../helpers/data.js"
 
 export default function MRIUploadForm({ setPage }) {
     const [formData, setFormData] = useState({
-        subject: "",
+        patient: "",
         study: "",
         notes: "",
         dicoms: [],
@@ -30,7 +30,7 @@ export default function MRIUploadForm({ setPage }) {
         }
 
         const data = new FormData();
-        data.append('subject', formData.subject);
+        data.append('patient', formData.patient);
         data.append('study', formData.study);
         data.append('notes', formData.notes);
 
@@ -59,7 +59,7 @@ export default function MRIUploadForm({ setPage }) {
             </header>
             <form onSubmit={handleSubmit} encType="multipart/form-data" className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {['subject', 'study'].map((field) => (
+                    {['patient', 'study'].map((field) => (
                         <div key={field}>
                             <label htmlFor={field} className="block text-slatey mb-2 font-opensans uppercase">
                                 {field.charAt(0).toUpperCase() + field.slice(1)}
