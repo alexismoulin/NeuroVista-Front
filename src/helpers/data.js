@@ -1,5 +1,7 @@
 // Use environment variables for flexibility
 export const SERVER_URL = "http://127.0.0.1:5001";
+const defautPatient = "Alexis";
+const defaultStudy = "ST1";
 
 // Helper function to fetch data from an endpoint
 async function fetchDataFromEndpoint(endpoint, serverUrl) {
@@ -21,13 +23,13 @@ async function fetchDataFromEndpoint(endpoint, serverUrl) {
 }
 
 // Fetch cortical data
-async function fetchCortical(serverUrl) {
-    return fetchDataFromEndpoint("/cortical", serverUrl);
+async function fetchCortical(serverUrl, patient=defautPatient, study=defaultStudy) {
+    return fetchDataFromEndpoint(`/cortical/${patient}/${study}`, serverUrl);
 }
 
 // Fetch subcortical data
-async function fetchSubcortical(serverUrl) {
-    return fetchDataFromEndpoint("/subcortical", serverUrl);
+async function fetchSubcortical(serverUrl, patient=defautPatient, study=defaultStudy) {
+    return fetchDataFromEndpoint(`/subcortical/${patient}/${study}`, serverUrl);
 }
 
 // Fetch subcortical data
