@@ -1,5 +1,5 @@
 import { createContext, useState, useCallback, useEffect, useMemo } from "react";
-import { initializeData, get_series, SERVER_URL } from "../helpers/data.js";
+import { initializeData, getSeries, SERVER_URL } from "../helpers/data.js";
 
 export const DataContext = createContext();
 
@@ -16,7 +16,7 @@ export default function DataContextProvider({ children }) {
     useEffect(() => {
         const fetchSeries = async () => {
             try {
-                const result = await get_series(SERVER_URL);
+                const result = await getSeries(SERVER_URL);
                 if (result) {
                     setSeries(result);
                     console.log("Series data loaded successfully.");
@@ -35,7 +35,7 @@ export default function DataContextProvider({ children }) {
                 if (result) {
                     setData(result);
 
-                    // If we have a selectedDataKey and it exists in the new data, use it
+                    // If we have a selectedDataKey, and it exists in the new data, use it
                     // Otherwise, default to aseg (for cortical) or another fallback
                     if (selectedDataKey && result[selectedDataKey]) {
                         setSelectedData(result[selectedDataKey]);

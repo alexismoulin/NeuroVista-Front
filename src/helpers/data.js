@@ -1,6 +1,5 @@
-// Use environment variables for flexibility
 export const SERVER_URL = "http://127.0.0.1:5001";
-const defautPatient = "Alexis";
+const defaultPatient = "Alexis";
 const defaultStudy = "ST1";
 
 // Helper function to fetch data from an endpoint
@@ -13,7 +12,8 @@ async function fetchDataFromEndpoint(endpoint, serverUrl) {
             },
         });
         if (!response.ok) {
-            throw new Error(`Failed to fetch ${endpoint}: ${response.statusText}`);
+            console.error(`Failed to fetch ${endpoint}: ${response.statusText}`);
+            return null;
         }
         return await response.json();
     } catch (error) {
@@ -23,23 +23,23 @@ async function fetchDataFromEndpoint(endpoint, serverUrl) {
 }
 
 // Fetch cortical data
-async function fetchCortical(serverUrl, patient=defautPatient, study=defaultStudy) {
+async function fetchCortical(serverUrl, patient=defaultPatient, study=defaultStudy) {
     return fetchDataFromEndpoint(`/cortical/${patient}/${study}`, serverUrl);
 }
 
 // Fetch subcortical data
-async function fetchSubcortical(serverUrl, patient=defautPatient, study=defaultStudy) {
+async function fetchSubcortical(serverUrl, patient=defaultPatient, study=defaultStudy) {
     return fetchDataFromEndpoint(`/subcortical/${patient}/${study}`, serverUrl);
 }
 
 // Fetch subcortical data
-async function fetchGeneral(serverUrl) {
-    return fetchDataFromEndpoint("/general", serverUrl);
+async function fetchGeneral(serverUrl, patient=defaultPatient, study=defaultStudy) {
+    return fetchDataFromEndpoint(`/general/${patient}/${study}`, serverUrl);
 }
 
 // Fetch the series data
-export async function get_series(serverUrl) {
-    return fetchDataFromEndpoint("/series", serverUrl);
+export async function getSeries(serverUrl, patient=defaultPatient, study=defaultStudy) {
+    return fetchDataFromEndpoint(`/series/${patient}/${study}`, serverUrl);
 }
 
 // Initialize data for a given series
