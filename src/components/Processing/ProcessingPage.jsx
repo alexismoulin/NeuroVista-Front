@@ -118,31 +118,39 @@ export default function ProcessingPage({ setPage }) {
                     </div>
                 </div>
                 <div>
-                    <ol className="list-decimal text-slatey font-merriweather border-b-2 my-4">
-                        {steps.map(({ key, completedText, loadingText }) => (
-                            <li key={key} className="my-4 mx-8">
-                                {response[key] ? (
-                                    <CompletedStep stepText={completedText} />
-                                ) : (
-                                    <LoadingStep stepText={loadingText} />
-                                )}
-                            </li>
-                        ))}
-                    </ol>
-                </div>
-                <div className="border-t-2 mt-4 p-4">
-                    <h3 className="font-opensans uppercase text-slatey text-xl m-6">
-                        Failed Steps
-                    </h3>
-                    <ol className="list-decimal text-slatey font-merriweather my-4">
-                        {failedSteps.map(({ key, completedText }) => (
-                            failedResponse[key] && (
-                                <li key={key} className="my-4 mx-8">
-                                    <FailedStep stepText={completedText} />
-                                </li>
-                            )
-                        ))}
-                    </ol>
+
+                <ol className="list-decimal text-slatey font-merriweather border-b-2 my-4">
+  {steps.map(({ key, completedText, loadingText }) => {
+    // If the step completed successfully, show CompletedStep.
+    if (response[key]) {
+      return (
+        <li key={key} className="my-4 mx-8">
+          <CompletedStep stepText={completedText} />
+        </li>
+      );
+    }
+    // If the pipeline has finished (loading === false) and this step was not marked complete,
+    // then mark it as failed. This covers both the step that explicitly failed and all subsequent steps.
+    if (!loading) {
+      // Optionally, check if there's a specific failure message for this step.
+      const failedStep = failedSteps.find(f => f.key === `failed_${key}`);
+      return (
+        <li key={key} className="my-4 mx-8">
+          <FailedStep stepText={failedStep ? failedStep.completedText : "Step failed"} />
+        </li>
+      );
+    }
+    // Otherwise, the pipeline is still running, so show the loading state.
+    return (
+      <li key={key} className="my-4 mx-8">
+        <LoadingStep stepText={loadingText} />
+      </li>
+    );
+  })}
+</ol>
+
+
+                 
                 </div>
                 <div className="flex justify-center p-6">
                     <PrimaryButton
