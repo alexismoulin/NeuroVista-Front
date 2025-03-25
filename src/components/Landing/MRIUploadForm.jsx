@@ -55,7 +55,7 @@ export default function MRIUploadForm({ setPage }) {
     return (
         <section className="p-8 w-11/12 mx-auto mt-10 bg-white">
             <header className="text-center mb-6">
-                <h2 className="text-3xl font-bold font-opensans uppercase text-slatey mb-2">Upload & Process your T1 MRI Study</h2>
+                <h2 className="text-3xl font-bold font-opensans uppercase text-slatey mb-2">Upload & Process your T1 MRI Series</h2>
             </header>
             <form onSubmit={handleSubmit} encType="multipart/form-data" className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
