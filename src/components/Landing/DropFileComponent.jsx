@@ -9,37 +9,59 @@ export default function DropFileComponent({ onFileChange }) {
         setIsDragging(isDragEnter);
     };
 
-    const handleDrop = (e) => {
+    const processFile = (item) => {
+        return new Promise((resolve, reject) => {
+            if (item.isFile) {
+                item.file((file) => resolve([file]), reject);
+            } else if (item.isDirectory) {
+                processDirectory(item);
+            } else {
+                resolve([]);
+            }
+        });
+    };
+
+    const processDirectory = (directory) => {
+        return new Promise((resolve, reject) => {
+            const reader = directory.createReader();
+            reader.readEntries(async (entries) => {
+                try {
+                    const filesArrays = await Promise.all(entries.map((entry) => {
+                        return entry.isFile
+                            ? new Promise((res, rej) => entry.file((file) => res([file]), rej))
+                            : processDirectory(entry);
+                    }));
+                    // Flatten the arrays of files
+                    resolve(filesArrays.flat());
+                } catch (error) {
+                    reject(error);
+                }
+            });
+        });
+    };
+
+    const handleDrop = async (e) => {
         e.preventDefault();
         e.stopPropagation();
         setIsDragging(false);
 
-        const files = e.dataTransfer.items;
-        const fileList = [];
+        const items = e.dataTransfer.items;
+        const promises = [];
 
-        for (let i = 0; i < files.length; i++) {
-            const item = files[i].webkitGetAsEntry();
-            if (item.isFile) {
-                item.file((file) => fileList.push(file));
-            } else if (item.isDirectory) {
-                processDirectory(item, fileList);
+        for (let i = 0; i < items.length; i++) {
+            const item = items[i].webkitGetAsEntry();
+            if (item) {
+                promises.push(processFile(item));
             }
         }
 
-        onFileChange(fileList);
-    };
-
-    const processDirectory = (directory, fileList) => {
-        const reader = directory.createReader();
-        reader.readEntries((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isFile) {
-                    entry.file((file) => fileList.push(file));
-                } else if (entry.isDirectory) {
-                    processDirectory(entry, fileList);
-                }
-            });
-        });
+        try {
+            const fileArrays = await Promise.all(promises);
+            const allFiles = fileArrays.flat();
+            onFileChange(allFiles);
+        } catch (error) {
+            console.error('Error processing files:', error);
+        }
     };
 
     const handleChange = (e) => {
@@ -49,13 +71,15 @@ export default function DropFileComponent({ onFileChange }) {
 
     return (
         <label
-            className=""
+            className={isDragging ? 'dragging' : ''}
             onDragOver={(e) => e.preventDefault()}
             onDragEnter={(e) => handleDrag(e, true)}
             onDragLeave={(e) => handleDrag(e, false)}
             onDrop={handleDrop}
         >
-            <p className="font-merriweather text-slatey font-black mb-8">Drop your DICOM files here</p>
+            <p className="font-merriweather text-slatey font-black mb-8">
+                Drop your DICOM files here
+            </p>
             <input
                 type="file"
                 name="dicoms"

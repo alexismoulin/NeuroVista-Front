@@ -1,9 +1,17 @@
+// noinspection JSUnresolvedVariable
+
 export const SERVER_URL = "http://127.0.0.1:5001";
 const defaultPatient = "Alexis";
 const defaultStudy = "ST1";
 
-// Helper function to fetch data from an endpoint
-async function fetchDataFromEndpoint(endpoint, serverUrl) {
+/**
+ * Helper function to fetch data from an endpoint.
+ *
+ * @param {string} endpoint - The API endpoint path.
+ * @param {string} serverUrl - The base server URL.
+ * @returns {Promise<Object|null>} - The parsed JSON data or null if an error occurs.
+ */
+async function fetchDataFromEndpoint(endpoint, serverUrl = SERVER_URL) {
     try {
         const response = await fetch(`${serverUrl}${endpoint}`, {
             method: "GET",
@@ -22,42 +30,52 @@ async function fetchDataFromEndpoint(endpoint, serverUrl) {
     }
 }
 
-// Fetch cortical data
-async function fetchCortical(serverUrl, patient=defaultPatient, study=defaultStudy) {
-    return fetchDataFromEndpoint(`/cortical/${patient}/${study}`, serverUrl);
+/**
+ * Helper function to build endpoint URLs.
+ *
+ * @param {string} base - The base endpoint (e.g., "cortical", "general").
+ * @param {string} patient - The patient identifier.
+ * @param {string} study - The study identifier.
+ * @returns {string} - The constructed endpoint.
+ */
+function buildEndpoint(base, patient = defaultPatient, study = defaultStudy) {
+    return `/${base}/${patient}/${study}`;
 }
 
-// Fetch subcortical data
-async function fetchSubcortical(serverUrl, patient=defaultPatient, study=defaultStudy) {
-    return fetchDataFromEndpoint(`/subcortical/${patient}/${study}`, serverUrl);
+export async function getSeries(serverUrl = SERVER_URL, patient = defaultPatient, study = defaultStudy) {
+    return fetchDataFromEndpoint(buildEndpoint("series", patient, study), serverUrl);
 }
 
-// Fetch subcortical data
-async function fetchGeneral(serverUrl, patient=defaultPatient, study=defaultStudy) {
-    return fetchDataFromEndpoint(`/general/${patient}/${study}`, serverUrl);
+async function fetchCortical(serverUrl = SERVER_URL, patient = defaultPatient, study = defaultStudy) {
+    return fetchDataFromEndpoint(buildEndpoint("cortical", patient, study), serverUrl);
 }
 
-// Fetch the series data
-export async function getSeries(serverUrl, patient=defaultPatient, study=defaultStudy) {
-    return fetchDataFromEndpoint(`/series/${patient}/${study}`, serverUrl);
+async function fetchSubcortical(serverUrl = SERVER_URL, patient = defaultPatient, study = defaultStudy) {
+    return fetchDataFromEndpoint(buildEndpoint("subcortical", patient, study), serverUrl);
 }
 
-// Initialize data for a given series
+async function fetchGeneral(serverUrl = SERVER_URL, patient = defaultPatient, study = defaultStudy) {
+    return fetchDataFromEndpoint(buildEndpoint("general", patient, study), serverUrl);
+}
+
+/**
+ * Initialize data for a given series.
+ * @param {string} series
+ * @returns {Promise<Object|null>}
+ */
 export async function initializeData(series) {
     try {
-        const corticalData = await fetchCortical(SERVER_URL);
-        const subcorticalData = await fetchSubcortical(SERVER_URL);
-        const generalData = await fetchGeneral(SERVER_URL);
+        // Fetch data concurrently
+        const [corticalData, subcorticalData, generalData] = await Promise.all([
+            fetchCortical(),
+            fetchSubcortical(),
+            fetchGeneral(),
+        ]);
 
         // Validate responses
-        if (!corticalData) {
-            throw new Error("Failed to load cortical data.");
-        }
-        if (!subcorticalData) {
-            throw new Error("Failed to load subcortical data.");
-        }
-        if (!generalData) {
-            throw new Error("Failed to load general data.");
+        if (!corticalData || !subcorticalData || !generalData) {
+            console.error("Failed to load one or more datasets.");
+            return null;
         }
 
         const cortical = corticalData[series] || {};
@@ -65,7 +83,8 @@ export async function initializeData(series) {
         const general = generalData[series] || {};
 
         if (!Object.keys(cortical).length || !Object.keys(subcortical).length || !Object.keys(general).length) {
-            throw new Error(`No data found for series: ${series}`);
+            console.error(`No data found for series: ${series}`);
+            return null;
         }
 
         return {
