@@ -17,8 +17,7 @@ export default function NavBar() {
             { title: "Amygdala", data: "amygdala" },
             { title: "Hippocampus", data: "hippocampus" },
             { title: "Thalamus", data: "thalamus" },
-            { title: "Hypothalamus", data: "hypothalamus" },
-            { title: "Cerebellum", data: "cerebellum" },
+            { title: "Hypothalamus", data: "hypothalamus" }
         ],
         general: [
             { title: "General Segmentations", data: "aseg" },
@@ -27,12 +26,12 @@ export default function NavBar() {
     };
 
     const navWidths = {
-        cortical: "w-1/4",
+        cortical: `w-1/${links.cortical.length}`,
         "sub-cortical": "w-1/6",
-        general: "w-1/2",
+        general: `w-1/${links.general.length}`,
     };
 
-    const navItemWidth = navWidths[type] || "w-1/6";
+    const navItemWidth = navWidths[type] || "w-1/5";
 
     const navItemClass = `px-8 py-4 transition-colors duration-200 cursor-pointer hover:bg-white hover:bg-opacity-10 flex items-center justify-center`;
     const activeNavItemClass = "bg-white text-tahiti";

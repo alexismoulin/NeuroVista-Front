@@ -136,13 +136,8 @@ export async function initializeData(series) {
             hypothalamus: {
                 data: subcortical.hypothalamus || [],
                 title: "Hypothalamus",
-                headers: ["Structure", "Volume (mm3)", "Analysis"],
-            },
-            cerebellum: {
-                data: subcortical.cerebellum || [],
-                title: "Cerebellum",
-                headers: ["Structure", "Volume (mm3)", "Analysis"],
-            },
+                headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)", "Analysis"],
+            }
         };
     } catch (error) {
         console.error("Error initializing data:", error.message);
