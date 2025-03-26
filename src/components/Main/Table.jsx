@@ -2,7 +2,7 @@ import TableRow from "./TableRow.jsx";
 import { useContext } from "react";
 import { DataContext } from "../../store/store.jsx";
 
-export default function Table({ setPage }) {
+export default function Table() {
     const { selectedData } = useContext(DataContext);
 
     if (!selectedData || !selectedData.headers || !selectedData.data) {
@@ -42,8 +42,6 @@ export default function Table({ setPage }) {
                             key={item.id || index}
                             item={item}
                             headers={selectedData.headers}
-                            title={selectedData.title}
-                            setPage={setPage}
                         />
                     ))
                 ) : (

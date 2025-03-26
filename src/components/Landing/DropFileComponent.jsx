@@ -1,27 +1,35 @@
-import { useState } from 'react';
+import {useEffect, useRef, useState} from 'react';
 
 export default function DropFileComponent({ onFileChange }) {
+    const inputRef = useRef(null);
+
+    useEffect(() => {
+        if (inputRef.current) {
+            inputRef.current.setAttribute('webkitdirectory', 'true');
+            inputRef.current.setAttribute('directory', 'true');
+        }
+    }, []);
+
     const [isDragging, setIsDragging] = useState(false);
 
-    const handleDrag = (e, isDragEnter) => {
+    function handleDrag(e, isDragEnter) {
         e.preventDefault();
         e.stopPropagation();
         setIsDragging(isDragEnter);
-    };
+    }
 
-    const processFile = (item) => {
-        return new Promise((resolve, reject) => {
-            if (item.isFile) {
+    function processFile(item) {
+        if (item.isFile) {
+            return new Promise((resolve, reject) => {
                 item.file((file) => resolve([file]), reject);
-            } else if (item.isDirectory) {
-                processDirectory(item);
-            } else {
-                resolve([]);
-            }
-        });
-    };
+            });
+        } else if (item.isDirectory) {
+            return processDirectory(item);
+        }
+        return Promise.resolve([]);
+    }
 
-    const processDirectory = (directory) => {
+    function processDirectory(directory) {
         return new Promise((resolve, reject) => {
             const reader = directory.createReader();
             reader.readEntries(async (entries) => {
@@ -38,9 +46,9 @@ export default function DropFileComponent({ onFileChange }) {
                 }
             });
         });
-    };
+    }
 
-    const handleDrop = async (e) => {
+    async function handleDrop(e) {
         e.preventDefault();
         e.stopPropagation();
         setIsDragging(false);
@@ -62,12 +70,12 @@ export default function DropFileComponent({ onFileChange }) {
         } catch (error) {
             console.error('Error processing files:', error);
         }
-    };
+    }
 
-    const handleChange = (e) => {
+    function handleChange(e) {
         const files = e.target.files;
         onFileChange(Array.from(files));
-    };
+    }
 
     return (
         <label
@@ -81,11 +89,10 @@ export default function DropFileComponent({ onFileChange }) {
                 Drop your DICOM files (T1) here
             </p>
             <input
+                ref={inputRef}
                 type="file"
                 name="dicoms"
                 multiple
-                webkitdirectory="true"
-                directory="true"
                 required
                 onChange={handleChange}
             />

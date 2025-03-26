@@ -37,9 +37,14 @@ export default function LargeResultsPage({ setPage }) {
 
     const [responseText, setResponseText] = useState("");
 
-
     useEffect(() => {
-        handleStream(createPrompt(selectedData, sex, age), setResponseText); // Call the utility function
+        (async () => {
+            try {
+                await handleStream(createPrompt(selectedData, sex, age), setResponseText);
+            } catch (error) {
+                console.error("Error in handleStream:", error);
+            }
+        })();
     }, [selectedData, sex, age]);
 
     function handleClose() {

@@ -1,27 +1,40 @@
 import { useState } from 'react';
 import DropFiles from './DropFileComponent.jsx';
-import {SERVER_URL} from "../../helpers/data.js"
+import { SERVER_URL } from "../../helpers/data.js";
 
 export default function MRIUploadForm({ setPage }) {
+
     const [formData, setFormData] = useState({
         patient: "",
         study: "",
         notes: "",
-        dicoms: [],
+        dicoms: []
     });
+    const [resetCounter, setResetCounter] = useState(0);
 
-    const handleInputChange = ({ target: { name, value } }) => {
-        setFormData((prevData) => ({ ...prevData, [name]: value }));
-    };
+    function handleInputChange({ target: { name, value } }) {
+        setFormData(prevData => ({ ...prevData, [name]: value }));
+    }
 
-    const handleFileChange = (files) => {
-        setFormData((prevData) => ({
+    function handleFileChange(files){
+        setFormData(prevData => ({
             ...prevData,
-            dicoms: Array.from(files) // Convert FileList to an array
+            dicoms: Array.from(files)
         }));
-    };
+    }
 
-    const handleSubmit = async (e) => {
+    function handleReset(){
+        setFormData({
+            patient: "",
+            study: "",
+            notes: "",
+            dicoms: [],
+        });
+        // Force DropFiles to re-render/reset by updating key
+        setResetCounter(prev => prev + 1);
+    }
+
+    async function handleSubmit(e){
         e.preventDefault();
 
         if (formData.dicoms.length === 0) {
@@ -35,31 +48,45 @@ export default function MRIUploadForm({ setPage }) {
         data.append('notes', formData.notes);
 
         formData.dicoms.forEach((file) => {
-            data.append('dicoms', file); // Append each file separately
+            data.append('dicoms', file);
         });
 
-        setPage("processing")
+        setPage("processing");
 
         try {
-             await fetch(`${SERVER_URL}/run_script`, {
+            const response = await fetch(`${SERVER_URL}/run_script`, {
                 method: 'POST',
-                body: data,
+                // Casting FormData to BodyInit to satisfy type checking
+                body: /** @type {BodyInit} */ (data),
             });
+
+            if (!response.ok) {
+                console.error('Server error:', response.statusText);
+                alert('An error occurred during file upload. Please try again.');
+                setPage("upload");
+                return;
+            }
+
+            const result = await response.json();
+            console.log('Success:', result);
+            // Optionally, handle the successful response here.
         } catch (error) {
             console.error('Error:', error);
             alert('An error occurred during file upload. Please try again.');
+            setPage("upload");
         }
-
-    };
+    }
 
     return (
         <section className="p-8 w-11/12 mx-auto mt-10 bg-white">
             <header className="text-center mb-6">
-                <h2 className="text-3xl font-bold font-opensans uppercase text-slatey mb-2">Upload & Process your T1 MRI Series</h2>
+                <h2 className="text-3xl font-bold font-opensans uppercase text-slatey mb-2">
+                    Upload & Process your T1 MRI Series
+                </h2>
             </header>
-            <form onSubmit={handleSubmit} encType="multipart/form-data" className="space-y-6">
+            <form onSubmit={handleSubmit} onReset={handleReset} encType="multipart/form-data" className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {['patient', 'study'].map((field) => (
+                    {['patient', 'study'].map(field => (
                         <div key={field}>
                             <label htmlFor={field} className="block text-slatey mb-2 font-opensans uppercase">
                                 {field.charAt(0).toUpperCase() + field.slice(1)}
@@ -77,7 +104,9 @@ export default function MRIUploadForm({ setPage }) {
                     ))}
                 </div>
                 <div>
-                    <label htmlFor="notes" className="block text-slatey font-opensans uppercase mb-2">Notes</label>
+                    <label htmlFor="notes" className="block text-slatey font-opensans uppercase mb-2">
+                        Notes
+                    </label>
                     <textarea
                         name="notes"
                         id="notes"
@@ -88,7 +117,7 @@ export default function MRIUploadForm({ setPage }) {
                     />
                 </div>
                 <div className="border-2 border-dashed border-gray-300 p-6 rounded-lg text-center">
-                    <DropFiles onFileChange={handleFileChange}/>
+                    <DropFiles key={resetCounter} onFileChange={handleFileChange} />
                 </div>
                 <div className="flex justify-end space-x-4">
                     <input

@@ -22,7 +22,7 @@ export default function MainPage({setPage}) {
             <NavBar />
             <Top handleLargePage={handleLargePage} />
             <Dashboard />
-            <Table setPage={setPage} />
+            <Table />
             <Copyright />
         </div>
     )

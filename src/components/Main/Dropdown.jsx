@@ -8,15 +8,15 @@ export default function Dropdown() {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null); // Reference to the dropdown container
 
-    const toggleDropdown = () => {
+    function toggleDropdown() {
         setIsOpen((prev) => !prev);
-    };
+    }
 
     // Handle selection of a series
     function handleSelect(name) {
         setSelectedSeries(name); // Trigger the setSelectedSeries function
         setIsOpen(false); // Close the dropdown
-    };
+    }
 
     // Close dropdown when clicking outside
     useEffect(() => {
@@ -33,12 +33,12 @@ export default function Dropdown() {
     }, []);
 
     // Helper function to format dimensions
-    const formatDimensions = (dimensions) => {
+    function formatDimensions(dimensions) {
         if (Array.isArray(dimensions)) {
             return dimensions.join(" x ");
         }
         return dimensions.split(",").join(" x ");
-    };
+    }
 
     return (
         <div className="relative w-96" ref={dropdownRef}>
