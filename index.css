@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Open+Sans:wght@800&display=swap");
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@layer base {
+    html, body {
+        @apply h-full;
+    }
+    #root {
+        @apply min-h-screen;
+    }
+}
+
+@theme {
+    /* Background images → bg-basic, bg-section-gradient, bg-infos */
+    --background-image-basic: url('src/assets/bg.jpg');
+    --background-image-section-gradient: linear-gradient(180deg, #212931, #1a1e24);
+    --background-image-infos: linear-gradient(45deg, #5f796b, #3a4e59, #2f394e);
+
+    /* Font families → font-merriweather, font-opensans */
+    --font-merriweather: Merriweather, serif;
+    --font-opensans: "Open Sans", sans-serif;
+
+    /* Colors → bg-tahiti / text-tahiti / border-tahiti, etc. */
+    --color-tahiti: #18bfef;
+    --color-slatey: #212931;
+}
