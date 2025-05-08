@@ -12,6 +12,8 @@ export default function DataContextProvider({ children }) {
     const [selectedDataKey, setSelectedDataKey] = useState(null); // New state
     const [selectedItem, setSelectedItem] = useState();
     const [noData, setNoData] = useState(false);
+    const [userName, setUserName] = useState("");
+    const [openAIApiKey, setOpenAIApiKey] = useState("");
 
     useEffect(() => {
         const fetchSeries = async () => {
@@ -91,26 +93,20 @@ export default function DataContextProvider({ children }) {
 
     const ctxValue = useMemo(
         () => ({
-            type,
-            setType,
-            data,
-            setData,
-            series,
-            setSeries,
-            selectedSeries,
-            setSelectedSeries,
-            selectedData,
-            setSelectedData,
-            noData,
-            setNoData,
-            selectedItem,
-            setSelectedItem,
-            handleDefaultType,
-            handleSelectedData,
-            selectedDataKey,
-            setSelectedDataKey
+            type, setType,
+            data, setData,
+            series, setSeries,
+            selectedSeries, setSelectedSeries,
+            selectedData, setSelectedData,
+            noData, setNoData,
+            selectedItem, setSelectedItem,
+            handleDefaultType, handleSelectedData,
+            selectedDataKey, setSelectedDataKey,
+            userName, setUserName,
+            openAIApiKey, setOpenAIApiKey
         }),
-        [type, data, series, selectedSeries, selectedData, selectedItem, noData, handleDefaultType, handleSelectedData, selectedDataKey]
+        [type, data, series, selectedSeries, selectedData, noData, selectedItem,
+            handleDefaultType, handleSelectedData, selectedDataKey, userName, openAIApiKey]
     );
 
     return (

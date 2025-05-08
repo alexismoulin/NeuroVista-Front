@@ -39,6 +39,16 @@ async function readStream(stream, onChunk) {
   }
 }
 
+function getOpenAIApiKey() {
+  const envKey = import.meta.env.VITE_OPENAI_API_KEY
+  if (envKey) {
+    return envKey
+  }
+  else {
+    return 'YOUR_OPENAI_API_KEY'
+  }
+}
+
 export async function handleStream(prompt, updateResponseText) {
   try {
     const response = await fetch(API_URL, {
