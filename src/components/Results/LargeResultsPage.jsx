@@ -10,7 +10,7 @@ export default function LargeResultsPage({ setPage }) {
     const age = 40
     const sex = "Male"
 
-    const { selectedData } = useContext(DataContext)
+    const { selectedData, openAIApiKey } = useContext(DataContext)
 
     function createPrompt(data, sex, age) {
         // Loop through each item in the data array and create Markdown for its details
@@ -40,12 +40,12 @@ export default function LargeResultsPage({ setPage }) {
     useEffect(() => {
         (async () => {
             try {
-                await handleStream(createPrompt(selectedData, sex, age), setResponseText);
+                await handleStream(createPrompt(selectedData, sex, age), setResponseText, openAIApiKey);
             } catch (error) {
                 console.error("Error in handleStream:", error);
             }
         })();
-    }, [selectedData, sex, age]);
+    }, [selectedData, sex, age, openAIApiKey]);
 
     function handleClose() {
         setResponseText("")

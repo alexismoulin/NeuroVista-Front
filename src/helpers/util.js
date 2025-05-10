@@ -39,23 +39,23 @@ async function readStream(stream, onChunk) {
   }
 }
 
-function getOpenAIApiKey() {
+function getOpenAIApiKey(key) {
   const envKey = import.meta.env.VITE_OPENAI_API_KEY
   if (envKey) {
     return envKey
   }
   else {
-    return 'YOUR_OPENAI_API_KEY'
+    return key
   }
 }
 
-export async function handleStream(prompt, updateResponseText) {
+export async function handleStream(prompt, updateResponseText, key) {
   try {
     const response = await fetch(API_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
+        Authorization: `Bearer ${getOpenAIApiKey(key)}`,
       },
       body: JSON.stringify({
         model: MODEL,

@@ -13,7 +13,7 @@ export default function Top({ handleLargePage }) {
                 {selectedData.title}
             </h3>
             <Dropdown series={series} selectedSeries={selectedSeries} setSelectedSeries={setSelectedSeries} />
-            <RobotButton className="mx-8 text-2xl" onClick={handleLargePage} />
+            <RobotButton className="mx-8 text-xl" onClick={handleLargePage} />
         </div>
     );
 }

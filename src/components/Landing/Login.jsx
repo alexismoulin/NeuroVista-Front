@@ -1,9 +1,12 @@
 import { useContext } from "react";
 import { DataContext } from "../../store/store.jsx";
 
-export default function Login() {
+export default function Login({ setShowLogin }) {
     const { userName, setUserName, openAIApiKey, setOpenAIApiKey } = useContext(DataContext);
-
+    function resetInputs() {
+        setUserName("");
+        setOpenAIApiKey("");
+    }
     return (
         <section className="p-8 w-11/12 mx-auto mt-10 bg-white">
             <header className="text-center mb-6">
@@ -50,15 +53,15 @@ export default function Login() {
                 </div>
             </div>
 
-            <div className="flex justify-end space-x-4">
+            <div className="flex justify-end space-x-4 pb-1 pt-6">
                 <button
                     className="font-opensans uppercase text-slatey border-slatey border-2 py-3 px-6 text-center bg-white text-sm tracking-widest hover:text-tahiti hover:border-tahiti transition-colors duration-200 ease-in-out w-32"
-                    onClick={() => setUserName("")}
-                >Reset</button>/
+                    onClick={resetInputs}
+                >Reset</button>
                 <button
                     className="font-opensans uppercase text-white py-3 px-6 text-center bg-slatey text-sm tracking-widest hover:bg-tahiti transition-colors duration-200 ease-in-out w-32"
-                    onClick={() => console.log("Validate")}
-                >Validate</button>/
+                    onClick={() => setShowLogin(false)}
+                >Validate</button>
             </div>
 
         </section>
