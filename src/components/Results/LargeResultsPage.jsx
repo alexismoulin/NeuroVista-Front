@@ -72,7 +72,7 @@ export default function LargeResultsPage({ setPage }) {
                 <section className="border-b-2">
                     <h3 className="font-opensans uppercase text-slatey pt-6 px-6">Analysis</h3>
                     <div className="p-6 font-merriweather text-slatey">
-                        <MarkdownRenderer markdown={responseText}/>
+                        <MarkdownRenderer markdown={responseText || "Loading analysis..."}/>
                     </div>
                 </section>
                 <section className="flex justify-end p-6">

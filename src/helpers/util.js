@@ -4,7 +4,7 @@
  */
 
 const API_URL = 'https://api.openai.com/v1/chat/completions';
-const MODEL = 'o3-mini';
+const MODEL = 'o4-mini';
 const THROTTLE_DELAY = 100; // in ms
 
 /**
