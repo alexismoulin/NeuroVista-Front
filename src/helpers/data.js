@@ -1,6 +1,6 @@
 // noinspection JSUnresolvedVariable
 
-export const SERVER_URL = "http://127.0.0.1:5001";
+export const SERVER_URL = "https://neurovista-back.onrender.com";
 const defaultPatient = "Alexis";
 const defaultStudy = "ST1";
 
@@ -43,7 +43,7 @@ function buildEndpoint(base, patient = defaultPatient, study = defaultStudy) {
 }
 
 export async function getSeries(serverUrl = SERVER_URL, patient = defaultPatient, study = defaultStudy) {
-    return fetchDataFromEndpoint(buildEndpoint("series", patient, study), serverUrl);
+    return fetchDataFromEndpoint(buildEndpoint("nifti_dim", patient, study), serverUrl);
 }
 
 async function fetchCortical(serverUrl = SERVER_URL, patient = defaultPatient, study = defaultStudy) {
