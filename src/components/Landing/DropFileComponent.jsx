@@ -86,7 +86,7 @@ export default function DropFileComponent({ onFileChange }) {
             onDrop={handleDrop}
         >
             <p className="font-merriweather text-slatey font-black mb-8">
-                Drop your DICOM files (T1) here
+                Select your DICOM (T1) series or study
             </p>
             <input
                 ref={inputRef}
