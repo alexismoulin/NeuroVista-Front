@@ -1,6 +1,6 @@
 // noinspection JSUnresolvedVariable
 
-export const SERVER_URL = "https://neurovista-back.onrender.com";
+export const SERVER_URL = import.meta.env.VITE_LOCAL;
 const defaultPatient = "Alexis";
 const defaultStudy = "ST1";
 

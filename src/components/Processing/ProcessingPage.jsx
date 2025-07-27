@@ -45,9 +45,9 @@ export default function ProcessingPage({ setPage }) {
             loadingText: "Json files in Progress",
         },
         {
-            key: "corestats",
-            completedText: "Statistics created",
-            loadingText: "Statistics in Progress",
+            key: "viewer",
+            completedText: "3D models created",
+            loadingText: "3D models in Progress",
         },
     ];
 
