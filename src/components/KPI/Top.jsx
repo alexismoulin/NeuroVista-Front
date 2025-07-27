@@ -1,9 +1,9 @@
-import RobotButton from "../Reusable/RobotButton.jsx";
+import TopButton from "../Reusable/TopButton.jsx";
 import Dropdown from "./Dropdown.jsx";
 import {useContext} from "react";
 import {DataContext} from "../../store/store.jsx";
 
-export default function Top({ handleLargePage }) {
+export default function Top({ handleViewer, handleAnalyze }) {
 
     const {selectedData, series, selectedSeries, setSelectedSeries} = useContext(DataContext)
 
@@ -13,7 +13,10 @@ export default function Top({ handleLargePage }) {
                 {selectedData.title}
             </h3>
             <Dropdown series={series} selectedSeries={selectedSeries} setSelectedSeries={setSelectedSeries} />
-            <RobotButton className="mx-8 text-2xl" onClick={handleLargePage} />
+            <div className="pr-4">
+                <TopButton className="mx-8 text-2xl" iconType="brain" onClick={handleViewer} />
+                <TopButton className="mx-8 text-2xl" iconType="robot" onClick={handleAnalyze} />
+            </div>
         </div>
     );
 }

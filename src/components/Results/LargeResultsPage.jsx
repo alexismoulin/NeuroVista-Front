@@ -2,7 +2,7 @@ import {useState, useEffect, useContext} from 'react';
 import {handleStream} from "../../helpers/util.js";
 import PrimaryButton from "../Reusable/PrimaryButton.jsx";
 import Copyright from "../Reusable/Copyright.jsx";
-import MarkdownRenderer from "../Main/MarkdownRenderer.jsx";
+import MarkdownRenderer from "../KPI/MarkdownRenderer.jsx";
 import {DataContext} from "../../store/store.jsx";
 
 export default function LargeResultsPage({ setPage }) {

@@ -12,15 +12,19 @@ export default function MainPage({setPage}) {
         window.scrollTo(0, 0)
     }, [])
 
-    function handleLargePage() {
-        setPage("large-results")
+    function handleAnalyze() {
+        setPage("analyze")
+    }
+
+    function handleViewer() {
+        setPage("viewer")
     }
 
     return (
         <div className="bg-basic flex flex-col items-center">
             <Intro />
             <NavBar />
-            <Top handleLargePage={handleLargePage} />
+            <Top handleViewer={handleViewer} handleAnalyze={handleAnalyze} />
             <Dashboard />
             <Table />
             <Copyright />
