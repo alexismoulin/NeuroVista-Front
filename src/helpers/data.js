@@ -91,7 +91,7 @@ export async function initializeData(series) {
             aseg: {
                 data: general.aseg || [],
                 title: "General Segmentations",
-                headers: ["Structure", "Volume (mm3)"],
+                headers: ["Structure", "Volume (mm3)"]
             },
             lesions: {
                 data: general.lesions || [],
@@ -106,7 +106,7 @@ export async function initializeData(series) {
             whiteMatter: {
                 data: cortical.whitematter || [],
                 title: "White Matter",
-                headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)"],
+                headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)"]
             },
             lhsParcellation: {
                 data: cortical.lh_dkatlas || [],
@@ -117,7 +117,7 @@ export async function initializeData(series) {
                     "Gray Matter Vol (mm3)",
                     "Thickness Avg (mm)",
                     "Mean Curvature (mm-1)"
-                ],
+                ]
             },
             rhsParcellation: {
                 data: cortical.rh_dkatlas || [],
@@ -128,12 +128,12 @@ export async function initializeData(series) {
                     "Gray Matter Vol (mm3)",
                     "Thickness Avg (mm)",
                     "Mean Curvature (mm-1)"
-                ],
+                ]
             },
             hippocampus: {
                 data: subcortical.hippocampus || [],
                 title: "Hippocampus",
-                headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)"],
+                headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)"]
             },
             thalamus: {
                 data: subcortical.thalamus || [],

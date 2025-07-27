@@ -1,4 +1,4 @@
-import { Suspense, useState } from 'react';
+import {Suspense, useContext, useState} from 'react';
 import { Canvas } from '@react-three/fiber';
 import * as THREE from 'three';
 import Loading from "./Loading.jsx";
@@ -6,13 +6,13 @@ import LegendPanel from "./LegendPanel.jsx";
 import SceneContents from "./SceneContents.jsx";
 import PrimaryButton from "../Reusable/PrimaryButton.jsx";
 import Copyright from "../Reusable/Copyright.jsx";
+import {DataContext} from "../../store/store.jsx";
 
 /**
  * Viewer
  * Displays the aseg_all.glb model and a legend of structures + colors.
  */
 export default function Viewer({
-                                          url = "mockup/Alexis/ST1/VIEWER/MPR_AX_T1/aseg.glb",
                                           setPage,
                                           background = '#111',
                                           showAxes = true,
@@ -25,6 +25,7 @@ export default function Viewer({
     const [structures, setStructures] = useState([]); // {id,name,color:[r,g,b,a],visible,mesh}
     const [filter, setFilter] = useState('');
     const [selectedId, setSelectedId] = useState(null);
+    const { selectedData } = useContext(DataContext);
 
     return (
         <div className="bg-basic flex flex-col items-center">
@@ -56,7 +57,7 @@ export default function Viewer({
                     >
                         <Suspense fallback={<Loading />}>
                             <SceneContents
-                                url={url}
+                                url={`mockup/Alexis/ST1/VIEWER/MPR_AX_T1/${selectedData.model}`}
                                 showAxes={showAxes}
                                 showGrid={showGrid}
                                 autoRotate={autoRotate}

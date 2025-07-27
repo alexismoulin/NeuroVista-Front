@@ -71,11 +71,13 @@ export async function initializeData(
                 data: general.aseg || [],
                 title: "General Segmentations",
                 headers: ["Structure", "Volume (mm3)"],
+                model: "aseg.glb"
             },
             lesions: {
                 data: general.lesions || [],
                 title: "Hypointensities",
                 headers: ["Structure", "Volume (mm3)"],
+                model: undefined
             },
             brain: {
                 data: cortical.brain || [],
@@ -86,6 +88,7 @@ export async function initializeData(
                 data: cortical.whitematter || [],
                 title: "White Matter",
                 headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)"],
+                model: "wmparc.glb"
             },
             lhsParcellation: {
                 data: cortical.lh_dkatlas || [],
@@ -95,6 +98,7 @@ export async function initializeData(
                     "Gray Matter Vol (mm3)", "Thickness Avg (mm)",
                     "Mean Curvature (mm-1)"
                 ],
+                model: "aparc.DKTatlas+aseg.glb"
             },
             rhsParcellation: {
                 data: cortical.rh_dkatlas || [],
@@ -104,31 +108,37 @@ export async function initializeData(
                     "Gray Matter Vol (mm3)", "Thickness Avg (mm)",
                     "Mean Curvature (mm-1)"
                 ],
+                model: "aparc.DKTatlas+aseg.glb"
             },
             hippocampus: {
                 data: subcortical.hippocampus || [],
                 title: "Hippocampus",
                 headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)"],
+                model: "hippoAmygLabels.glb"
             },
             thalamus: {
                 data: subcortical.thalamus || [],
                 title: "Thalamus",
                 headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)"],
+                model: "ThalamicNuclei.glb"
             },
             amygdala: {
                 data: subcortical.amygdala || [],
                 title: "Amygdala",
                 headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)"],
+                model: "hippoAmygLabels.glb"
             },
             brainStem: {
                 data: subcortical.brain_stem || [],
                 title: "Brain Stem",
                 headers: ["Structure", "Volume (mm3)"],
+                model: "brainstemSsLabels.glb"
             },
             hypothalamus: {
                 data: subcortical.hypothalamus || [],
                 title: "Hypothalamus",
                 headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)"],
+                model: "hypothalamic_subunits_seg.v1.glb"
             },
         };
     } catch (error) {

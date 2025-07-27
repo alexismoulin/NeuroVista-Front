@@ -14,7 +14,11 @@ export default function Top({ handleViewer, handleAnalyze }) {
             </h3>
             <Dropdown series={series} selectedSeries={selectedSeries} setSelectedSeries={setSelectedSeries} />
             <div className="pr-4">
-                <TopButton className="mx-8 text-2xl" iconType="brain" onClick={handleViewer} />
+                <TopButton
+                    className="mx-8 text-2xl"
+                    iconType="brain"
+                    onClick={handleViewer}
+                    hidden={selectedData.title === "Hypointensities"} />
                 <TopButton className="mx-8 text-2xl" iconType="robot" onClick={handleAnalyze} />
             </div>
         </div>

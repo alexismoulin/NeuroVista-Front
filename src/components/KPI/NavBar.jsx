@@ -8,21 +8,20 @@ export default function NavBar() {
     const links = useMemo(
         () => ({
             cortical: [
-                { title: "General Volumes", data: "brain" },
                 { title: "White Matter", data: "whiteMatter" },
                 { title: "LHS Parcellations", data: "lhsParcellation" },
-                { title: "RHS Parcellations", data: "rhsParcellation" },
+                { title: "RHS Parcellations", data: "rhsParcellation" }
             ],
             "sub-cortical": [
                 { title: "Brain Stem", data: "brainStem" },
                 { title: "Amygdala", data: "amygdala" },
                 { title: "Hippocampus", data: "hippocampus" },
                 { title: "Thalamus", data: "thalamus" },
-                { title: "Hypothalamus", data: "hypothalamus" },
+                { title: "Hypothalamus", data: "hypothalamus" }
             ],
             general: [
                 { title: "General Segmentations", data: "aseg" },
-                { title: "Hypointensities", data: "lesions" },
+                { title: "Hypointensities", data: "lesions" }
             ],
         }),
         []

@@ -47,6 +47,7 @@ export default function DataContextProvider({ children }) {
 
                     setNoData(false);
                     console.log("Data loaded successfully.");
+                    console.log(result);
                 } else {
                     setNoData(true);
                     console.error("No data found.");
