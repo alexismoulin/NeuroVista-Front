@@ -79,11 +79,6 @@ export async function initializeData(
                 headers: ["Structure", "Volume (mm3)"],
                 model: undefined
             },
-            brain: {
-                data: cortical.brain || [],
-                title: "General Volumes",
-                headers: ["Structure", "Volume (mm3)"],
-            },
             whiteMatter: {
                 data: cortical.whitematter || [],
                 title: "White Matter",

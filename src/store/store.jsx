@@ -66,8 +66,8 @@ export default function DataContextProvider({ children }) {
         (defaultType) => {
             if (defaultType === "cortical") {
                 setType("cortical");
-                setSelectedData(data?.brain || null);
-                setSelectedDataKey(data?.brain ? "brain" : null);
+                setSelectedData(data?.whiteMatter || null);
+                setSelectedDataKey(data?.whiteMatter? "whiteMatter" : null);
             } else if (defaultType === "sub-cortical") {
                 setType("sub-cortical");
                 setSelectedData(data?.brainStem || null);
