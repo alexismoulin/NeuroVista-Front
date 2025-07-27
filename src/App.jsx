@@ -21,7 +21,7 @@ export default function App() {
             case "main":
                 return <MainPage setPage={setPage} />;
             case "viewer":
-                return <Viewer />
+                return <Viewer setPage={setPage} />
             case "analyze":
                 return <LargeResultsPage setPage={setPage} />;
             default:
