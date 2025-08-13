@@ -2,7 +2,7 @@ import {useState, useEffect, useContext} from 'react';
 import {handleStream} from "../../helpers/util.js";
 import PrimaryButton from "../Reusable/PrimaryButton.jsx";
 import Copyright from "../Reusable/Copyright.jsx";
-import MarkdownRenderer from "../Main/MarkdownRenderer.jsx";
+import MarkdownRenderer from "../KPI/MarkdownRenderer.jsx";
 import {DataContext} from "../../store/store.jsx";
 
 export default function LargeResultsPage({ setPage }) {
@@ -10,7 +10,7 @@ export default function LargeResultsPage({ setPage }) {
     const age = 40
     const sex = "Male"
 
-    const { selectedData, openAIApiKey } = useContext(DataContext)
+    const { selectedData } = useContext(DataContext)
 
     function createPrompt(data, sex, age) {
         // Loop through each item in the data array and create Markdown for its details
@@ -40,12 +40,12 @@ export default function LargeResultsPage({ setPage }) {
     useEffect(() => {
         (async () => {
             try {
-                await handleStream(createPrompt(selectedData, sex, age), setResponseText, openAIApiKey);
+                await handleStream(createPrompt(selectedData, sex, age), setResponseText);
             } catch (error) {
                 console.error("Error in handleStream:", error);
             }
         })();
-    }, [selectedData, sex, age, openAIApiKey]);
+    }, [selectedData, sex, age]);
 
     function handleClose() {
         setResponseText("")
@@ -72,7 +72,7 @@ export default function LargeResultsPage({ setPage }) {
                 <section className="border-b-2">
                     <h3 className="font-opensans uppercase text-slatey pt-6 px-6">Analysis</h3>
                     <div className="p-6 font-merriweather text-slatey">
-                        <MarkdownRenderer markdown={responseText || "Loading analysis..."}/>
+                        <MarkdownRenderer markdown={responseText || "Analysis in progress..."}/>
                     </div>
                 </section>
                 <section className="flex justify-end p-6">

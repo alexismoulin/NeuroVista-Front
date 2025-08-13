@@ -1,6 +1,6 @@
 // noinspection JSUnresolvedVariable
 
-export const SERVER_URL = "http://127.0.0.1:5001";
+export const SERVER_URL = import.meta.env.VITE_LOCAL;
 const defaultPatient = "Alexis";
 const defaultStudy = "ST1";
 
@@ -43,7 +43,7 @@ function buildEndpoint(base, patient = defaultPatient, study = defaultStudy) {
 }
 
 export async function getSeries(serverUrl = SERVER_URL, patient = defaultPatient, study = defaultStudy) {
-    return fetchDataFromEndpoint(buildEndpoint("series", patient, study), serverUrl);
+    return fetchDataFromEndpoint(buildEndpoint("nifti_dim", patient, study), serverUrl);
 }
 
 async function fetchCortical(serverUrl = SERVER_URL, patient = defaultPatient, study = defaultStudy) {
@@ -91,7 +91,7 @@ export async function initializeData(series) {
             aseg: {
                 data: general.aseg || [],
                 title: "General Segmentations",
-                headers: ["Structure", "Volume (mm3)"],
+                headers: ["Structure", "Volume (mm3)"]
             },
             lesions: {
                 data: general.lesions || [],
@@ -106,7 +106,7 @@ export async function initializeData(series) {
             whiteMatter: {
                 data: cortical.whitematter || [],
                 title: "White Matter",
-                headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)"],
+                headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)"]
             },
             lhsParcellation: {
                 data: cortical.lh_dkatlas || [],
@@ -117,7 +117,7 @@ export async function initializeData(series) {
                     "Gray Matter Vol (mm3)",
                     "Thickness Avg (mm)",
                     "Mean Curvature (mm-1)"
-                ],
+                ]
             },
             rhsParcellation: {
                 data: cortical.rh_dkatlas || [],
@@ -128,12 +128,12 @@ export async function initializeData(series) {
                     "Gray Matter Vol (mm3)",
                     "Thickness Avg (mm)",
                     "Mean Curvature (mm-1)"
-                ],
+                ]
             },
             hippocampus: {
                 data: subcortical.hippocampus || [],
                 title: "Hippocampus",
-                headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)"],
+                headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)"]
             },
             thalamus: {
                 data: subcortical.thalamus || [],
