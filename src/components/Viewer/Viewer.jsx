@@ -1,4 +1,4 @@
-import {Suspense, useContext, useState} from 'react';
+import { Suspense, useContext, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import * as THREE from 'three';
 import Loading from "./Loading.jsx";
@@ -6,7 +6,8 @@ import LegendPanel from "./LegendPanel.jsx";
 import SceneContents from "./SceneContents.jsx";
 import PrimaryButton from "../Reusable/PrimaryButton.jsx";
 import Copyright from "../Reusable/Copyright.jsx";
-import {DataContext} from "../../store/store.jsx";
+import { DataContext } from "../../store/store.jsx";
+import { getModelUrl , SERVER_URL, DEFAULT_PATIENT, DEFAULT_STUDY } from "../../helpers/data.js";
 
 /**
  * Viewer
@@ -25,7 +26,18 @@ export default function Viewer({
     const [structures, setStructures] = useState([]); // {id,name,color:[r,g,b,a],visible,mesh}
     const [filter, setFilter] = useState('');
     const [selectedId, setSelectedId] = useState(null);
-    const { selectedData } = useContext(DataContext);
+    const { selectedData, selectedSeries } = useContext(DataContext);
+
+    let modelUrl = getModelUrl(SERVER_URL, DEFAULT_PATIENT, DEFAULT_STUDY, selectedSeries, selectedData.model);
+    function subtitleTransformer(subtitle) {
+        if (subtitle.includes("Parcellations")) {
+            return "LHS & RHS Parcellations";
+        }
+        if (subtitle.includes("Amygdala") || subtitle.includes("Hippocampus")) {
+            return "Amygdala & Hippocampus"
+        }
+        return subtitle;
+    }
 
     return (
         <div className="bg-basic flex flex-col items-center">
@@ -33,6 +45,7 @@ export default function Viewer({
                 <h1 className="text-white text-7xl tracking-wider uppercase font-bold font-opensans mb-8">
                     3D Viewer
                 </h1>
+                <p className="text-white text-xl font-merriweather mb-8">{subtitleTransformer(selectedData.title)} - {selectedSeries}</p>
             </header>
             <div style={{ display: 'flex', position: 'relative', height: '600px' }} className="w-11/12 font-merriweather">
                 {showLegend && (
@@ -57,7 +70,7 @@ export default function Viewer({
                     >
                         <Suspense fallback={<Loading />}>
                             <SceneContents
-                                url={`mockup/Alexis/ST1/VIEWER/MPR_AX_T1/${selectedData.model}`}
+                                url={modelUrl}
                                 showAxes={showAxes}
                                 showGrid={showGrid}
                                 autoRotate={autoRotate}
@@ -70,6 +83,7 @@ export default function Viewer({
                     </Canvas>
                 </div>
             </div>
+            <div className="py-1"></div>
             <section className="flex justify-end p-6 bg-white w-11/12">
                 <PrimaryButton onClick={() => setPage("main")}>Close</PrimaryButton>
             </section>

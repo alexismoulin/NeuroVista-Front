@@ -1,5 +1,5 @@
 import { createContext, useState, useCallback, useEffect, useMemo } from "react";
-import { initializeData, getSeries, SERVER_URL } from "../helpers/data_mockup.js";
+import { initializeData, getSeries, SERVER_URL, DEFAULT_PATIENT, DEFAULT_STUDY } from "../helpers/data.js";
 
 export const DataContext = createContext();
 
@@ -18,7 +18,7 @@ export default function DataContextProvider({ children }) {
     useEffect(() => {
         const fetchSeries = async () => {
             try {
-                const result = await getSeries(SERVER_URL);
+                const result = await getSeries(SERVER_URL, DEFAULT_PATIENT, DEFAULT_STUDY);
                 if (result) {
                     setSeries(result);
                     console.log("Series data loaded successfully.");

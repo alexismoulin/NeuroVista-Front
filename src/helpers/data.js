@@ -1,8 +1,8 @@
 // noinspection JSUnresolvedVariable
 
 export const SERVER_URL = import.meta.env.VITE_LOCAL;
-const defaultPatient = "Alexis";
-const defaultStudy = "ST1";
+export const DEFAULT_PATIENT = import.meta.env.VITE_DEFAULT_PATIENT;
+export const DEFAULT_STUDY = import.meta.env.VITE_DEFAULT_STUDY;
 
 /**
  * Helper function to fetch data from an endpoint.
@@ -38,23 +38,23 @@ async function fetchDataFromEndpoint(endpoint, serverUrl = SERVER_URL) {
  * @param {string} study - The study identifier.
  * @returns {string} - The constructed endpoint.
  */
-function buildEndpoint(base, patient = defaultPatient, study = defaultStudy) {
+function buildEndpoint(base, patient, study) {
     return `/${base}/${patient}/${study}`;
 }
 
-export async function getSeries(serverUrl = SERVER_URL, patient = defaultPatient, study = defaultStudy) {
+export async function getSeries(serverUrl = SERVER_URL, patient = DEFAULT_PATIENT, study = DEFAULT_STUDY) {
     return fetchDataFromEndpoint(buildEndpoint("nifti_dim", patient, study), serverUrl);
 }
 
-async function fetchCortical(serverUrl = SERVER_URL, patient = defaultPatient, study = defaultStudy) {
+async function fetchCortical(serverUrl, patient, study) {
     return fetchDataFromEndpoint(buildEndpoint("cortical", patient, study), serverUrl);
 }
 
-async function fetchSubcortical(serverUrl = SERVER_URL, patient = defaultPatient, study = defaultStudy) {
+async function fetchSubcortical(serverUrl, patient, study) {
     return fetchDataFromEndpoint(buildEndpoint("subcortical", patient, study), serverUrl);
 }
 
-async function fetchGeneral(serverUrl = SERVER_URL, patient = defaultPatient, study = defaultStudy) {
+async function fetchGeneral(serverUrl, patient, study) {
     return fetchDataFromEndpoint(buildEndpoint("general", patient, study), serverUrl);
 }
 
@@ -67,9 +67,9 @@ export async function initializeData(series) {
     try {
         // Fetch data concurrently
         const [corticalData, subcorticalData, generalData] = await Promise.all([
-            fetchCortical(),
-            fetchSubcortical(),
-            fetchGeneral(),
+            fetchCortical(SERVER_URL, DEFAULT_PATIENT, DEFAULT_STUDY),
+            fetchSubcortical(SERVER_URL, DEFAULT_PATIENT, DEFAULT_STUDY),
+            fetchGeneral(SERVER_URL, DEFAULT_PATIENT, DEFAULT_STUDY),
         ]);
 
         // Validate responses
@@ -91,22 +91,20 @@ export async function initializeData(series) {
             aseg: {
                 data: general.aseg || [],
                 title: "General Segmentations",
-                headers: ["Structure", "Volume (mm3)"]
+                headers: ["Structure", "Volume (mm3)"],
+                model: "aseg.glb"
             },
             lesions: {
                 data: general.lesions || [],
                 title: "Hypointensities",
                 headers: ["Structure", "Volume (mm3)"],
-            },
-            brain: {
-                data: cortical.brain || [],
-                title: "General Volumes",
-                headers: ["Structure", "Volume (mm3)"],
+                model: undefined
             },
             whiteMatter: {
                 data: cortical.whitematter || [],
                 title: "White Matter",
-                headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)"]
+                headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)"],
+                model: "wmparc.glb"
             },
             lhsParcellation: {
                 data: cortical.lh_dkatlas || [],
@@ -117,7 +115,8 @@ export async function initializeData(series) {
                     "Gray Matter Vol (mm3)",
                     "Thickness Avg (mm)",
                     "Mean Curvature (mm-1)"
-                ]
+                ],
+                model: "aparc.DKTatlas+aseg.glb"
             },
             rhsParcellation: {
                 data: cortical.rh_dkatlas || [],
@@ -128,36 +127,46 @@ export async function initializeData(series) {
                     "Gray Matter Vol (mm3)",
                     "Thickness Avg (mm)",
                     "Mean Curvature (mm-1)"
-                ]
+                ],
+                model: "aparc.DKTatlas+aseg.glb"
             },
             hippocampus: {
                 data: subcortical.hippocampus || [],
                 title: "Hippocampus",
-                headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)"]
+                headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)"],
+                model: "hippoAmygLabels.glb"
             },
             thalamus: {
                 data: subcortical.thalamus || [],
                 title: "Thalamus",
-                headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)"]
+                headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)"],
+                model: "ThalamicNuclei.glb"
             },
             amygdala: {
                 data: subcortical.amygdala || [],
                 title: "Amygdala",
-                headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)"]
+                headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)"],
+                model: "hippoAmygLabels.glb"
             },
             brainStem: {
                 data: subcortical.brain_stem || [],
                 title: "Brain Stem",
-                headers: ["Structure", "Volume (mm3)"]
+                headers: ["Structure", "Volume (mm3)"],
+                model: "brainstemSsLabels.glb"
             },
             hypothalamus: {
                 data: subcortical.hypothalamus || [],
                 title: "Hypothalamus",
-                headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)"]
+                headers: ["Structure", "LHS Volume (mm3)", "RHS Volume (mm3)"],
+                model: "hypothalamic_subunits_seg.v1.glb"
             }
         };
     } catch (error) {
         console.error("Error initializing data:", error.message);
         return null;
     }
+}
+
+export function getModelUrl(server_url, patient, study, series, filename) {
+    return `${server_url}/models/${patient}/${study}/${series}/${filename}`;
 }

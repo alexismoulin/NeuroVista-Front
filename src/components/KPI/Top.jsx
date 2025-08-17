@@ -18,7 +18,7 @@ export default function Top({ handleViewer, handleAnalyze }) {
                     className="mx-8 text-2xl"
                     iconType="brain"
                     onClick={handleViewer}
-                    hidden={selectedData.title === "Hypointensities"} />
+                    hidden={selectedData.title === "Hypointensities" || selectedSeries === "AVERAGES"} />
                 <TopButton className="mx-8 text-2xl" iconType="robot" onClick={handleAnalyze} />
             </div>
         </div>
