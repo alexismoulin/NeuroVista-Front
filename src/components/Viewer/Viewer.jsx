@@ -7,7 +7,7 @@ import SceneContents from "./SceneContents.jsx";
 import PrimaryButton from "../Reusable/PrimaryButton.jsx";
 import Copyright from "../Reusable/Copyright.jsx";
 import { DataContext } from "../../store/store.jsx";
-import { getModelUrl , SERVER_URL, DEFAULT_PATIENT, DEFAULT_STUDY } from "../../helpers/data.js";
+import { getModelUrl , SERVER_URL, DEFAULT_PATIENT, DEFAULT_STUDY } from "@/data";
 
 /**
  * Viewer

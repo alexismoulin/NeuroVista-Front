@@ -69,7 +69,7 @@ export async function initializeData(series) {
         const [corticalData, subcorticalData, generalData] = await Promise.all([
             fetchCortical(SERVER_URL, DEFAULT_PATIENT, DEFAULT_STUDY),
             fetchSubcortical(SERVER_URL, DEFAULT_PATIENT, DEFAULT_STUDY),
-            fetchGeneral(SERVER_URL, DEFAULT_PATIENT, DEFAULT_STUDY),
+            fetchGeneral(SERVER_URL, DEFAULT_PATIENT, DEFAULT_STUDY)
         ]);
 
         // Validate responses
