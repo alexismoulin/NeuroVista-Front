@@ -32,7 +32,8 @@ export default function LargeResultsPage({ setPage }) {
             
             ${markdownList}
             
-            Please provide an analysis of these measurements and return this analysis in a Markdown format.`.trim();
+            Please provide an analysis of these measurements and return this analysis in a Markdown format.
+            The response shall fit into the "<MarkdownRenderer markdown={responseText}/>" component`.trim();
     }
 
     const [responseText, setResponseText] = useState("");

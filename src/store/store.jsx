@@ -1,5 +1,5 @@
 import { createContext, useState, useCallback, useEffect, useMemo } from "react";
-import { initializeData, getSeries, SERVER_URL, DEFAULT_PATIENT, DEFAULT_STUDY } from "../helpers/data.js";
+import { initializeData, getSeries, SERVER_URL, DEFAULT_PATIENT, DEFAULT_STUDY } from "@/data";
 
 export const DataContext = createContext();
 
