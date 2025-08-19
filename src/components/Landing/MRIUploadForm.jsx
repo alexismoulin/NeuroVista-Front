@@ -98,7 +98,7 @@ export default function MRIUploadForm({ setPage }) {
                                 placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
                                 value={formData[field]}
                                 onChange={handleInputChange}
-                                className="w-full px-4 py-2 border border-gray-400 rounded-lg font-merriweather focus:outline-none focus:ring-2 focus:ring-tahiti"
+                                className="w-full px-4 py-2 border border-gray-400 rounded-lg font-merriweather focus:outline-none focus:ring-2 focus:ring-tahiti focus:border-white"
                             />
                         </div>
                     ))}
@@ -113,7 +113,7 @@ export default function MRIUploadForm({ setPage }) {
                         placeholder="Notes"
                         value={formData.notes}
                         onChange={handleInputChange}
-                        className="w-full h-32 px-4 py-2 border border-gray-400 rounded-lg font-merriweather focus:outline-none focus:ring-2 focus:ring-tahiti"
+                        className="w-full h-32 px-4 py-2 border border-gray-400 rounded-lg font-merriweather focus:outline-none focus:ring-2 focus:ring-tahiti focus:border-white"
                     />
                 </div>
                 <div className="border-2 border-dashed border-gray-300 p-6 rounded-lg text-center">
