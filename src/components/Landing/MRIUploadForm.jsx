@@ -42,6 +42,16 @@ export default function MRIUploadForm({ setPage }) {
             return;
         }
 
+        if (formData.patient.length === 0) {
+            alert('Please enter a name for the patient.');
+            return;
+        }
+
+        if (formData.study.length === 0) {
+            alert('Please enter a study name.');
+            return;
+        }
+
         const data = new FormData();
         data.append('patient', formData.patient);
         data.append('study', formData.study);

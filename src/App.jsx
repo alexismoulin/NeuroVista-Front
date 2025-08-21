@@ -25,7 +25,7 @@ export default function App() {
             case "analyze":
                 return <LargeResultsPage setPage={setPage} />;
             default:
-                return "foo";
+                return <h2 className="text-center mt-8">Please reload the page</h2>
         }
     }
 
