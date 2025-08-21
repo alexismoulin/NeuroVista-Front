@@ -42,13 +42,13 @@ export default function MRIUploadForm({ setPage }) {
             return;
         }
 
-        if (formData.patient.length === 0) {
-            alert('Please enter a name for the patient.');
+        if (formData.patient.trim() === "") {
+            alert("Please enter a name for the patient");
             return;
         }
 
-        if (formData.study.length === 0) {
-            alert('Please enter a study name.');
+        if (formData.study.trim() === "") {
+            alert("Please enter a name for the study");
             return;
         }
 
