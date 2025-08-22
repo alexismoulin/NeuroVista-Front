@@ -7,6 +7,7 @@ import ProcessingPage from "./components/Processing/ProcessingPage.jsx";
 
 import DataContextProvider from "./store/store.jsx";
 import Viewer from "./components/Viewer/Viewer.jsx";
+import DefaultPage from "./components/Default/DefaultPage.jsx";
 
 export default function App() {
     const [page, setPage] = useState("landing");
@@ -25,7 +26,7 @@ export default function App() {
             case "analyze":
                 return <LargeResultsPage setPage={setPage} />;
             default:
-                return <h2 className="text-center mt-8">Error: Please reload the page</h2>
+                return <DefaultPage setPage={setPage} />;
         }
     }
 
