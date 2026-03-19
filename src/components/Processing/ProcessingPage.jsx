@@ -59,7 +59,7 @@ export default function ProcessingPage({ setPage }) {
         { key: "failed_subs", completedText: "Subcortical segmentations failed" },
         { key: "failed_hyp", completedText: "Hypothalamus segmentations failed" },
         { key: "failed_json", completedText: "Json files creation failed" },
-        { key: "failed_corestats", completedText: "Statistics creation failed" },
+        { key: "failed_viewer", completedText: "3D models creation failed" },
     ];
 
     // Track successful step completions.
@@ -71,7 +71,7 @@ export default function ProcessingPage({ setPage }) {
         subs: false,
         hyp: false,
         json: false,
-        corestats: false,
+        viewer: false,
     });
 
     // Track steps that have failed.
@@ -83,7 +83,7 @@ export default function ProcessingPage({ setPage }) {
         failed_subs: false,
         failed_hyp: false,
         failed_json: false,
-        failed_corestats: false,
+        failed_viewer: false,
     });
 
     const [loading, setLoading] = useState(true);
